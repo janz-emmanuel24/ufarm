@@ -1,0 +1,26 @@
+Rules to follow:
+
+>>>>>>>>>>>>>>>>>>> Body <<<<<<<<<<<<<<<<<<<<<<<<
+Background Color: E5E5E5
+
+>>>>>>>>>>>>>>>>>>> Body <<<<<<<<<<<<<<<<<<<<<<<< 
+Background: 21643C
+Opacity: 86%;
+color: white
+
+Responsive Screen Sizes:
+
+Smartphone:
+@media screen and (max-width: 767px) {
+
+}
+
+Tablet
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+
+}
+
+Desktop 
+@media screen and (min-width: 1024px) {
+    
+}
