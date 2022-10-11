@@ -1,12 +1,5 @@
 /* >>>>>>>>>>>>>>>>>>>>> GENERAL STYLES <<<<<<<<<<<<<<<<<<<<<<<<<< */
 
-
-/* Body styles */
-/* * {
-    margin: 0;
-    padding: 0;
-} */
-
 body {
     background: rgb(229,229,229);
 }
@@ -31,39 +24,123 @@ li .shopDropdown {
 }
 
 #topHeader_banner {
-    background-image: url(../../srcs/img/header_banner_img.jpg);
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 60%),rgba(0, 0, 0, 60%)), url(../../srcs/img/header_banner_img.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 500px;
+    height: auto;
     width: 100%;
 }
 
-#topHeader_banner .topHeader_overlay {
+/* pdt Banners */
+#pdt-banner {
     width: 100%;
-    height: 500px;
-    background-color: rgba(0, 0, 0, 60%);
+    margin-top: 0;
+    position: relative;
+    margin-bottom: 8%;
+}
+
+#pdt-banner img {
+    width: 100%;
+    margin-top: -25%;
+}
+
+.pdt-wrd {
+    color: black;
+    position: absolute;
+    top: 30%;
+    width: 50%;
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+    color: white;
+    display: flex;
+    background: linear-gradient(0deg,rgba(0, 0, 0, 0.39),rgba(0, 0, 0, 0.39));
+    border-radius: 5px;
+}
+
+.pdt-wrd h2 {
+    margin: 0 auto;
+    padding: 2%;
+    font-size: 60px;
+}
+
+.pdt-desc {
+    color: black;
+    position: absolute;
+    bottom: -7%;
+    width: 70%;
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+    background: white;
+    height: 15%;
+    display: flex;
+    padding: 2%;
+    border-radius: 10px;;
+}
+
+.pdt-main {
+    width: 100%;
+    /* background: aliceblue; */
+}
+
+.pdt-main .pdt-category-boxes {
+    width: 25%;
+    background: rgba(33, 100, 60, 0.86);
+    height: 50px;
+    border-radius: 0 25px 25px 0;
+}
+
+.pdt-main .pdt-category-boxes h6 {
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 2.5%;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.other-section {
+    /* background: lightgreen; */
+}
+
+
+.bxes h5 a {
+    color: rgb(33,100,60)
+}
+
+.bxes .card {
+    cursor:pointer;
+}
+
+.banner_menu {
+    color: black;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+    background: white;
+    opacity: 0.5;
 }
 
 #topHeader_banner #banner_word {
-    margin-left: 10%;
-    /* margin-top: %; */
-    margin-bottom: 5%;
+    margin: 5% auto;
+}
+
+#topHeader_banner #banner_word h2 {
+    font-size:50px;
+}
+#topHeader_banner #banner_word p {
+    font-size:18px;
 }
 
 #topHeader_banner #banner_word h1 {
     color: rgb(226, 218, 218);
     display: flex;
     justify-content: center;
-}
-#topHeader_banner #banner_word p {
-    color: rgb(226, 218, 218);
-    margin-top: 5%;
-    margin-left: 26%;
-}
-
-#topHeader_banner #banner_word #to_end {
-    justify-content: end;
 }
 
 /* how to Order Section */
@@ -215,7 +292,7 @@ li .shopDropdown {
     margin-bottom: 5%;
 }
 
-#exploreUfarm a {
+#exploreUfarm a, .other-section a {
     display: inline-block;
     color: white;
     background: rgb(33,100,60);
@@ -333,6 +410,43 @@ li .shopDropdown {
         height: 650px;
     }
 
+    #pdt-banner {
+        margin-bottom: 20%;
+    }
+    
+    #pdt-banner img {
+        width: 100%;
+        margin-top: -20%;
+    }
+
+    .pdt-wrd h2 {
+        font-size:30px;
+    }
+
+    .pdt-desc {
+        color: black;
+        position: absolute;
+        bottom: -15%;
+        width: 80%;
+        margin: 0 auto;
+        right: 0;
+        padding: 2%;
+        left: 0;
+        background: white;
+        height: auto;
+        display: flex;
+    }
+
+    .pdt-main .pdt-category-boxes {
+        width: 50%;
+        height: 50px;
+    }
+
+    .pdt-main .pdt-category-boxes h6 {
+        padding: 5%;
+        font-size: 16px;
+    }
+
     #topHeader_banner .topHeader_overlay {
         height: 650px;
         width: 100%;
@@ -442,6 +556,33 @@ li .shopDropdown {
         margin: 1% 5%;
         filter: blur(2px);
         float: left;
+    }
+
+    .pdt-wrd h2 {
+        font-size:40px;
+    }
+
+    .pdt-desc {
+        color: black;
+        position: absolute;
+        bottom: 3%;
+        width: 70%;
+        margin: -4% auto;
+        right: 0;
+        left: 0;
+        background: white;
+        height: auto;
+        display: flex;
+    }
+
+    .pdt-main .pdt-category-boxes {
+        width: 50%;
+        height: 50px;
+    }
+
+    .pdt-main .pdt-category-boxes h6 {
+        padding: 3%;
+        font-size: 20px;
     }
 
     .inst .instrtnsFollow {
