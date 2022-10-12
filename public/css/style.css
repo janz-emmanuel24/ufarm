@@ -1,0 +1,637 @@
+/* >>>>>>>>>>>>>>>>>>>>> GENERAL STYLES <<<<<<<<<<<<<<<<<<<<<<<<<< */
+
+body {
+    background: rgb(229,229,229);
+}
+
+/* Header */
+#navToExpand {
+    justify-content: center;
+}
+
+.navbar {
+    background: rgba(33, 100, 60, 86%);
+}
+
+li .sh {
+    color: white;
+}
+
+li .shopDropdown {
+    background: rgba(33, 100, 60, 86%);
+    border: none;
+    margin-top: 0px;
+}
+
+#topHeader_banner {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 60%),rgba(0, 0, 0, 60%)), url(img/header_banner_img.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: auto;
+    width: 100%;
+}
+
+/* pdt Banners */
+#pdt-banner {
+    width: 100%;
+    margin-top: 0;
+    position: relative;
+    margin-bottom: 8%;
+}
+
+#pdt-banner img {
+    width: 100%;
+    margin-top: -25%;
+}
+
+.pdt-wrd {
+    color: black;
+    position: absolute;
+    top: 30%;
+    width: 50%;
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+    color: white;
+    display: flex;
+    background: linear-gradient(0deg,rgba(0, 0, 0, 0.39),rgba(0, 0, 0, 0.39));
+    border-radius: 5px;
+}
+
+.pdt-wrd h2 {
+    margin: 0 auto;
+    padding: 2%;
+    font-size: 60px;
+}
+
+.pdt-desc {
+    color: black;
+    position: absolute;
+    bottom: -7%;
+    width: 70%;
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+    background: white;
+    height: 15%;
+    display: flex;
+    padding: 2%;
+    border-radius: 10px;;
+}
+
+.pdt-main {
+    width: 100%;
+    /* background: aliceblue; */
+}
+
+.pdt-main .pdt-category-boxes {
+    width: 25%;
+    background: rgba(33, 100, 60, 0.86);
+    height: 50px;
+    border-radius: 0 25px 25px 0;
+}
+
+.pdt-main .pdt-category-boxes h6 {
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 2.5%;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.other-section {
+    /* background: lightgreen; */
+}
+
+
+.bxes h5 a {
+    color: rgb(33,100,60)
+}
+
+.bxes .card {
+    cursor:pointer;
+}
+
+.banner_menu {
+    color: black;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    margin: 0 auto;
+    right: 0;
+    left: 0;
+    background: white;
+    opacity: 0.5;
+}
+
+#topHeader_banner #banner_word {
+    margin: 5% auto;
+}
+
+#topHeader_banner #banner_word h2 {
+    font-size:50px;
+}
+#topHeader_banner #banner_word p {
+    font-size:18px;
+}
+
+#topHeader_banner #banner_word h1 {
+    color: rgb(226, 218, 218);
+    display: flex;
+    justify-content: center;
+}
+
+/* how to Order Section */
+#howTo {
+    margin-top: 4%;
+    width: 100%;
+    position: relative;
+}
+
+#howTo h2, p, #exploreUfarm h2, p {
+    text-align: center;
+}
+
+#howTo .viewShop {
+    margin-right: 0px;
+    width: 250px;
+    height: 64px;
+    background: rgba(33, 100, 60, 0.86);
+    border-radius: 32px 0px 0px 32px;
+    position: absolute;
+    right: 0px;
+    top: 5px;
+    color: white;
+    text-align: center;
+}
+
+.viewShop h6 {
+    display: flex;
+    justify-content: center;
+    margin-top: 8%;
+}
+
+#howTo .instrtns {
+    margin-top: 4%;
+    width: 100%;
+    background-image: url(/img/howtopic.jpg);
+    background-size: cover;
+    height: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.instrtns .row {
+    justify-content: center;
+    margin-right: 0px;
+
+}
+
+.inst {
+    height: 300px;
+    background: #F9F9F9;
+    border-radius: 3px;
+    margin: 4%;
+    filter: blur(0.5px);
+    padding-top: 3.6%;
+}
+
+.inst .numbering {
+    background: rgba(33, 100, 60, 0.86);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 1%;
+    position: relative;
+    filter: blur(2px);
+    float: left;
+}
+
+.inst .numbering .num {
+    display: block;
+    padding-top: 30%;
+    font-size: 30px;
+    position: absolute;
+    left: 40%;
+    color: white;
+}
+
+.inst .instrtnsFollow {
+    margin: 1%;
+}
+
+.viewShopSmall {
+    width: 120px;
+    height: 30px;
+    background: rgba(33, 100, 60, 0.86);
+    border-radius: 32px 0px 0px 32px;
+    color: white;
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 20px;
+    float: right;
+} 
+
+#gettingStarted {
+    width: 100%;
+    display: flex;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    align-items: center;
+}
+
+.getStarted {
+    margin: 0 auto;
+    width: 700px;
+    background: white;
+    border-radius: 5px;
+}
+
+.getStarted h4 {
+    text-align: center;
+    margin-top: 2%;
+}
+.getStarted p {
+    text-align: left;
+}
+
+.getStarted a {
+    text-decoration: none;
+    padding: 2%;
+    height: 50px;
+    width: 250px;
+    background: rgba(33, 100, 60, 0.86);
+    color: white;
+    display: inline-block;
+    border-radius: 0 25px 25px 0;
+    margin-bottom: 2%; 
+}
+
+.signToAcct {
+    float: right;
+    text-align: center;
+    margin-bottom: 10%;
+}
+
+.signToAcct a {
+    text-decoration: none;
+    padding: 5%;
+    height: 50px;
+    width: 250px;
+    background: rgba(33, 100, 60, 0.86);
+    color: white;
+    display: inline-block;
+    border-radius: 25px 0 0 25px;
+    margin-bottom: 2%; 
+}
+
+/* Expore Ufarm */
+#exploreUfarm {
+    margin-bottom: 5%;
+}
+
+#exploreUfarm a, .other-section a {
+    display: inline-block;
+    color: white;
+    background: rgb(33,100,60);
+    text-decoration: none;
+    width: 55%;
+    height: 40px;
+    padding-top:1.5%;
+    border-radius: 20px;
+    font-weight:500;
+}
+
+.horticulture img {
+    display: flex;
+    height: 80%;
+}
+
+/* Testimonials and why us */
+.testimonials {
+    margin: 3% 3%;
+}
+
+.our_features {
+    background-image: linear-gradient(0deg,rgba(0, 0, 0, 0.39),rgba(0, 0, 0, 0.39)),url(../../srcs/img/why_us.jpg);
+    background-size: contain;
+}
+
+.testimonials .bx1 {
+    background-color: #F9F9F9;
+    width: 300px;
+    height: 250px;
+    margin: 5%;
+    border-radius: 15px;
+}
+
+.user-testimonials {
+    padding: 1%;
+}
+
+.user-testimonials a {
+    color: rgb(42,151,86);
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top:4%
+}
+
+.user-testimonials p {
+    text-align: left;
+}
+
+.testi p {
+    text-align: left;
+}
+
+/* why us */
+.us-img {
+    width: 120px;
+}
+
+.secure-ordering, .timeDelivery {
+    height: 100px;
+    margin-top: 7%;
+}
+
+.bx1 p {
+    color: gray;
+    letter-spacing: 1.5;
+}
+
+/* Footer */
+#footer {
+    width: 100%;
+    height: auto;
+    background: rgb(57,90,7);
+    color: #fff;
+    margin-top:5%;
+}
+
+#footer p {
+    text-align: left;
+}
+
+#footer ul li {
+    list-style: none;
+    margin-bottom: 4%;
+}
+
+#footer ul li a {
+    color: #fff;
+}
+
+.socials ul li {
+    display: inline-block;
+    margin: 3%
+}
+
+#footer .careof {
+    width: 100%;
+    background:rgb(65,65,65);
+}
+
+.careof p {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+/* >>>>>>>>>>>>>>>>>>>>> SCREENS STYLES <<<<<<<<<<<<<<<<<<<<<<<<<< */
+
+/* Smart Phones */
+@media screen and (max-width: 767px) {
+    body {
+        background: gray;
+    }   
+    #topHeader_banner {
+        height: 650px;
+    }
+
+    #pdt-banner {
+        margin-bottom: 20%;
+    }
+    
+    #pdt-banner img {
+        width: 100%;
+        margin-top: -20%;
+    }
+
+    .pdt-wrd h2 {
+        font-size:30px;
+    }
+
+    .pdt-desc {
+        color: black;
+        position: absolute;
+        bottom: -15%;
+        width: 80%;
+        margin: 0 auto;
+        right: 0;
+        padding: 2%;
+        left: 0;
+        background: white;
+        height: auto;
+        display: flex;
+    }
+
+    .pdt-main .pdt-category-boxes {
+        width: 50%;
+        height: 50px;
+    }
+
+    .pdt-main .pdt-category-boxes h6 {
+        padding: 5%;
+        font-size: 16px;
+    }
+
+    #topHeader_banner .topHeader_overlay {
+        height: 650px;
+        width: 100%;
+    }
+
+    #topHeader_banner #banner_word {
+        margin-left: 2%;
+        margin-top: 10%;
+    }
+
+    .inst {
+        padding-top: 5%;
+    }
+
+    #howTo {
+        position: relative;
+    }
+
+    #howTo .viewShop {
+        width: 150px;
+        height: 50px;
+        background: rgba(33, 100, 60, 0.86);
+        border-radius: 32px 0px 0px 32px;
+        color: white;
+        text-align: center;
+        margin-top: 5%;
+        margin-bottom: 20px;
+    }
+
+    .inst .numbering {
+        background: rgba(33, 100, 60, 0.86);
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin: 2% 40%;
+        filter: blur(2px);
+    }
+
+    .inst .instrtnsFollow {
+        padding: 20px;
+    }
+
+    .viewShop{
+        display: none;
+    }
+
+    .viewShopSmall {
+        display: visible;
+    }
+
+    .viewShopSmall h6 {
+        text-align: center;
+        font-size: 13px;
+        padding: 6px;
+    }
+
+    .user-testimonials {
+        margin-left: 4%;
+        margin-right: 4%;
+    }
+
+    .testimonials {
+        /* margin-left: 2%;
+        margin-right: 2%; */
+        width: 88%;
+        margin-left: 6%;
+    }
+
+    .testimonials .bx1 {
+        background-color: lightblue;
+        width: 80%;
+        height: 250px;
+        margin: 5% auto;
+    }
+
+    .user-testimonials {
+        width: 100%;
+        /* padding: 10%; */
+    }
+}
+
+/* Tablets */
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+    body {
+        background:rgb(187, 142, 142);
+    }
+    #howTo {
+        position: relative;
+    }
+
+    #howTo .viewShop {
+        width: 150px;
+        height: 50px;
+        background: rgba(33, 100, 60, 0.86);
+        border-radius: 32px 0px 0px 32px;
+        color: white;
+        text-align: center;
+        margin-top: 5%;
+        margin-bottom: 20px;
+    }
+
+    .inst .numbering {
+        background: rgba(33, 100, 60, 0.86);
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin: 1% 5%;
+        filter: blur(2px);
+        float: left;
+    }
+
+    .pdt-wrd h2 {
+        font-size:40px;
+    }
+
+    .pdt-desc {
+        color: black;
+        position: absolute;
+        bottom: 3%;
+        width: 70%;
+        margin: -4% auto;
+        right: 0;
+        left: 0;
+        background: white;
+        height: auto;
+        display: flex;
+    }
+
+    .pdt-main .pdt-category-boxes {
+        width: 50%;
+        height: 50px;
+    }
+
+    .pdt-main .pdt-category-boxes h6 {
+        padding: 3%;
+        font-size: 20px;
+    }
+
+    .inst .instrtnsFollow {
+        margin-top: 5%;
+        float: left;
+    }
+
+    .viewShop{
+        display: none;
+    }
+
+    .viewShopSmall{
+        display: visible;
+    }
+
+    .viewShopSmall h6 {
+        text-align: center;
+        font-size: 13px;
+        padding: 6px;
+    }
+
+}
+
+/* Desktop */
+@media screen and (min-width: 1024px){
+    #topHeader_banner #banner_word {
+        width: 600px;
+        height: 200px;  
+    }
+
+    .viewShopSmall {
+        display: none;
+    }
+    /* .inst .instrtnsFollow {
+        width: 250px;
+    } */
+    .inst .numbering {
+        background: rgba(33, 100, 60, 0.86);
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin: 1% 1%;
+        filter: blur(2px);
+        float: left;
+    }
+
+    .inst .instrtnsFollow {
+        margin-top: 1%;
+        width:300px ;
+        float: left;
+    }
+}

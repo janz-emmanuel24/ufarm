@@ -1,0 +1,21 @@
+.topHeader_banner
+    header 
+        nav.navbar.navbar-expand-lg 
+            .container-fluid 
+                a.navbar-brand(href='#') Ufarm 
+                button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navToExpand"
+                aria-controls="navToExpand" aria-expanded="false" aria-label="Toggle navigation")   
+                    span.navbar-toggler-icon 
+                .collapse.navbar-collapse#navToExpand 
+                    ul.navbar-nav 
+                        li.nav-item.dropdown.topNavItem 
+                            a.nav-link.dropdown-toggle.sh(role="button" data-bs-toggle="dropdown" aria-expanded="false") Shop
+                            ul.dropdown-menu.shopDropdown 
+                                li: a.dropdown-item.sh(href='#') Horticulture 
+                                li: a.dropdown-item.sh(href='#') Diary 
+                                li: a.dropdown-item.sh(href='#') Poultry 
+                        li: a.nav-link.sh(href="#") Our Farmers 
+                        li: a.nav-link.sh(href="#") About     
+    .text-center.text-white 
+        h2.text-center Welcome to Ufarm 
+        p ~ A market place for all your horticulture, poultry and diary products ~
