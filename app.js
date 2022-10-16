@@ -2,8 +2,13 @@
 const path = require('path');
 //dependencies
 const express = require('express');
-
 const app = express()
+
+//routes
+const agricOfficerRoutes = require('./routes/agricOfficerRoute');
+const farmerOneRoutes = require('./routes/farmerOneRoute')
+const urbanFarmerRoutes = require('./routes/urbanFarmerRoute')
+const publicUserRoutes = require('./routes/publicUserRoute')
 
 //pug config
 app.set('view engine', 'pug')
@@ -14,6 +19,12 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false }));
 // app.use(express.static(`${__dirname}/public`))
+
+//Routes middleware
+app.use('/agricOfficer', agricOfficerRoutes);
+app.use('/farmerOne', farmerOneRoutes)
+app.use('/urbanFarmer', urbanFarmerRoutes)
+app.use('/publicUser', publicUserRoutes)
 
 
 
