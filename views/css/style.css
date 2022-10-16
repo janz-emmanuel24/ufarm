@@ -45,7 +45,20 @@ li .shopDropdown {
     margin-top: -25%;
 }
 
-.pdt-wrd {
+.farmers-header {
+    width: 100%;
+    position: relative;
+    margin-top: 0;
+    margin-left: 0;
+    margin-bottom: 5%;
+}
+
+.farmers-header img {
+    width: 100%;
+    margin-top: -40%;
+}
+
+.pdt-wrd, .farmers-head {
     color: black;
     position: absolute;
     top: 30%;
@@ -54,12 +67,70 @@ li .shopDropdown {
     right: 0;
     left: 0;
     color: white;
-    display: flex;
-    background: linear-gradient(0deg,rgba(0, 0, 0, 0.39),rgba(0, 0, 0, 0.39));
+    /* display: flex; */
+    background: linear-gradient(0deg,rgba(0, 0, 0, 0.486),rgba(0, 0, 0, 0.486));
     border-radius: 5px;
 }
 
-.pdt-wrd h2 {
+.farmers-main {
+    width: 100%;
+}
+
+.dashboard-tabs {
+    margin-left: 2%;
+}
+.farmers-main a {
+    text-decoration: none;
+    color: rgb(76,191,101)
+}
+
+.farmers-main .registered-farmers p{
+    text-align: left;
+}
+
+.farmers-main .registered-farmers p a {
+    background: rgb(98,159,204);
+    display: inline-block;
+    width: 20%;
+    padding: 0.5%;
+    text-align: center;
+    border-radius: 20px;
+    color: white;
+}
+
+.dashboard-tabs a, .general_btn {
+    background:rgb(98,159,204);
+    color: white;
+    padding: 2% 15%;
+    border-radius: 20px;
+}
+
+.dashboard-tabs .form_btn {
+    display: inline-block;
+    padding: 0.5% 5%;
+    margin-left: 45%;
+    border: none;
+    background: rgb(98,159,204);
+    color: white;
+    border-radius: 20px;
+}
+
+.general_button {
+
+}
+
+.farmers-main .registered-farmers-info .farmImg {
+    display: flex;
+    justify-content: center;
+}
+.farmers-main .registered-farmers-info .round-img {
+    width: 150px;
+    border-radius: 50%;
+    height: 150px;
+    text-align: center;
+}
+
+.pdt-wrd h2, .farmers-head h2 {
     margin: 0 auto;
     padding: 2%;
     font-size: 60px;
@@ -80,29 +151,25 @@ li .shopDropdown {
     border-radius: 10px;;
 }
 
-.pdt-main {
+.pdt-main, .veg-main {
     width: 100%;
     /* background: aliceblue; */
 }
 
-.pdt-main .pdt-category-boxes {
+.pdt-main .pdt-category-boxes, .veg-main .veg-category-boxes, .about-farmer-registration, .meet-the-farmers {
     width: 25%;
     background: rgba(33, 100, 60, 0.86);
     height: 50px;
     border-radius: 0 25px 25px 0;
 }
 
-.pdt-main .pdt-category-boxes h6 {
+.pdt-main .pdt-category-boxes h6, .veg-main .veg-category-boxes h6, .about-farmer-registration h6, .meet-the-farmers h6 {
     color: white;
     display: flex;
     justify-content: center;
     padding: 2.5%;
     font-weight: bolder;
     font-size: 20px;
-}
-
-.other-section {
-    /* background: lightgreen; */
 }
 
 
@@ -122,8 +189,9 @@ li .shopDropdown {
     margin: 0 auto;
     right: 0;
     left: 0;
+    z-index: 2;
     background: white;
-    opacity: 0.5;
+    /* opacity: 0.8; */
 }
 
 #topHeader_banner #banner_word {
@@ -399,13 +467,24 @@ li .shopDropdown {
     margin-bottom: 0;
 }
 
+
+/*  Boxes  */
+.add2cart-btn {
+    background: rgb(98,159,204);
+    color: white;
+    width: 80%;
+    border-radius: 25px;
+}
+
+.btn-lg:hover {
+    border: 1px solid red
+}
+
+
 /* >>>>>>>>>>>>>>>>>>>>> SCREENS STYLES <<<<<<<<<<<<<<<<<<<<<<<<<< */
 
 /* Smart Phones */
-@media screen and (max-width: 767px) {
-    body {
-        background: gray;
-    }   
+@media screen and (max-width: 767px) { 
     #topHeader_banner {
         height: 650px;
     }
@@ -437,12 +516,12 @@ li .shopDropdown {
         display: flex;
     }
 
-    .pdt-main .pdt-category-boxes {
+    .pdt-main .pdt-category-boxes, .veg-main .veg-category-boxes, .about-farmer-registration, .meet-the-farmers {
         width: 50%;
         height: 50px;
     }
 
-    .pdt-main .pdt-category-boxes h6 {
+    .pdt-main .pdt-category-boxes h6, .veg-main .veg-category-boxes h6, .about-farmer-registration h6, .meet-the-farmers h6 {
         padding: 5%;
         font-size: 16px;
     }
@@ -455,6 +534,10 @@ li .shopDropdown {
     #topHeader_banner #banner_word {
         margin-left: 2%;
         margin-top: 10%;
+    }
+
+    .farmers-header img {
+        margin-top: -15%;
     }
 
     .inst {
