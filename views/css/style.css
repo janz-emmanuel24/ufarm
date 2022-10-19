@@ -222,17 +222,16 @@ li .shopDropdown {
     text-align: center;
 }
 
-#howTo .viewShop {
-    margin-right: 0px;
-    width: 250px;
-    height: 64px;
-    background: rgba(33, 100, 60, 0.86);
-    border-radius: 32px 0px 0px 32px;
-    position: absolute;
-    right: 0px;
-    top: 5px;
+.viewShop {
+    margin-top: 5%;
+    background: rgb(98,159,204);
     color: white;
-    text-align: center;
+    padding: 0.5% 2%;
+    display: inline-block;
+    align-items: center;
+    margin-left: 45%;
+    text-decoration: none;
+    border-radius: 20px;
 }
 
 .viewShop h6 {
@@ -302,59 +301,6 @@ li .shopDropdown {
     float: right;
 } 
 
-#gettingStarted {
-    width: 100%;
-    display: flex;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    align-items: center;
-}
-
-.getStarted {
-    margin: 0 auto;
-    width: 700px;
-    background: white;
-    border-radius: 5px;
-}
-
-.getStarted h4 {
-    text-align: center;
-    margin-top: 2%;
-}
-.getStarted p {
-    text-align: left;
-}
-
-.getStarted a {
-    text-decoration: none;
-    padding: 2%;
-    height: 50px;
-    width: 250px;
-    background: rgba(33, 100, 60, 0.86);
-    color: white;
-    display: inline-block;
-    border-radius: 0 25px 25px 0;
-    margin-bottom: 2%; 
-}
-
-.signToAcct {
-    float: right;
-    text-align: center;
-    margin-bottom: 10%;
-}
-
-.signToAcct a {
-    text-decoration: none;
-    padding: 5%;
-    height: 50px;
-    width: 250px;
-    background: rgba(33, 100, 60, 0.86);
-    color: white;
-    display: inline-block;
-    border-radius: 25px 0 0 25px;
-    margin-bottom: 2%; 
-}
-
 /* Expore Ufarm */
 #exploreUfarm {
     margin-bottom: 5%;
@@ -363,7 +309,7 @@ li .shopDropdown {
 #exploreUfarm a, .other-section a {
     display: inline-block;
     color: white;
-    background: rgb(33,100,60);
+    background: rgb(98,159,204);
     text-decoration: none;
     width: 55%;
     height: 40px;
@@ -377,6 +323,11 @@ li .shopDropdown {
     height: 80%;
 }
 
+.card-img-top {
+    width: 100%;
+    height: 14vw;
+    object-fit: cover;
+}
 /* Testimonials and why us */
 .testimonials {
     margin: 3% 3%;
@@ -492,6 +443,12 @@ li .shopDropdown {
     #pdt-banner {
         margin-bottom: 20%;
     }
+
+    .card-img-top {
+        width: 100%;
+        height: 60vw;
+        object-fit: cover;
+    }
     
     #pdt-banner img {
         width: 100%;
@@ -548,7 +505,7 @@ li .shopDropdown {
         position: relative;
     }
 
-    #howTo .viewShop {
+    .viewShop {
         width: 150px;
         height: 50px;
         background: rgba(33, 100, 60, 0.86);
@@ -620,7 +577,7 @@ li .shopDropdown {
         position: relative;
     }
 
-    #howTo .viewShop {
+    .viewShop {
         width: 150px;
         height: 50px;
         background: rgba(33, 100, 60, 0.86);
