@@ -1,0 +1,661 @@
+doctype html
+head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet' href='bootstrap-5.0.2-dist/bootstrapCss/bootstrap.css')
+    link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT' crossorigin='anonymous')
+    link(rel='stylesheet' href='css/style.css')
+    title Farmer One Dashboard
+body
+    .farmers-header
+        .banner_menu
+            nav.navbar.navbar-expand-lg.navbar-light.bg-light
+                .container-fluid
+                    a.navbar-brand(href='#') Navbar
+                    button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation')
+                        span.navbar-toggler-icon
+                    #navbarNavAltMarkup.collapse.navbar-collapse
+                        .navbar-nav
+                            a.nav-link.active(aria-current='page' href='#') Home
+                            a.nav-link(href='#') Features
+                            a.nav-link(href='#') Pricing
+                            a.nav-link.disabled Disabled
+        img(src='img/ourfarmers.jpg' alt='')
+        .farmers-head
+            h3.text-center Farmer One Dashboard
+            p ~ Just some text ~
+    .farmers-main
+        .dashboard-tabs.urban-farmer-dashboard
+            ul#myTab.nav.nav-tabs(role='tablist')
+                li.nav-item(role='presentation')
+                    button#home-tab.nav-link.active(data-bs-toggle='tab' data-bs-target='#home' type='button' role='tab' aria-controls='home' aria-selected='true') Urban Farmers
+                li.nav-item(role='presentation')
+                    button#profile-tab.nav-link(data-bs-toggle='tab' data-bs-target='#profile' type='button' role='tab' aria-controls='profile' aria-selected='false') Uploaded Produce
+                li.nav-item(role='presentation')
+                    button#bookings-tab.nav-link(data-bs-toggle='tab' data-bs-target='#bookings' type='button' role='tab' aria-controls='booings' aria-selected='false') Bookings and Orders
+                li.nav-item(role='presentation')
+                    button#approved-bookings-tab.nav-link(data-bs-toggle='tab' data-bs-target='#approved-bookings' type='button' role='tab' aria-controls='approved-bookings' aria-selected='false') Approved Bookings
+                li.nav-item(role='presentation')
+                    button#contact-tab.nav-link(data-bs-toggle='tab' data-bs-target='#contact' type='button' role='tab' aria-controls='contact' aria-selected='false') Registration
+            // Urban Farmers
+            #myTabContent.tab-content
+                #home.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='home-tab')
+                    .container.mt-5
+                        .row
+                            .col-md-6.mt-3
+                                p(style='text-align: left;')
+                                    strong U.F Name:
+                                    i  Jacob B
+                                p(style='text-align: left;')
+                                    strong U.F Gender:
+                                    i  Male
+                                p(style='text-align: left;')
+                                    strong U.F Date of Registration:
+                                    i  12-10-2022
+                                p(style='text-align: left;')
+                                    strong U.F Activites:
+                                    i  Vegetables Growing, Fruits Fruits
+                                p(style='text-align: left;')
+                                    strong U.F Contacts:
+                                    i  0700000001
+                                p(style='text-align: left;')
+                                    strong U.F Location:
+                                    i  14-B: Malaba Zone, malaba village
+                                .row
+                                    .col-md-6
+                                        a.general_button(href='#') Delete Uf
+                                    .col-md-6
+                                        a(href='#') Update Uf
+                            .col-md-6.mt-3
+                                p(style='text-align: left;')
+                                    strong U.F Name:
+                                    i  Jacob B
+                                p(style='text-align: left;')
+                                    strong U.F Gender:
+                                    i  Male
+                                p(style='text-align: left;')
+                                    strong U.F Date of Registration:
+                                    i  12-10-2022
+                                p(style='text-align: left;')
+                                    strong U.F Activites:
+                                    i  Vegetables Growing, Fruits Fruits
+                                p(style='text-align: left;')
+                                    strong U.F Contacts:
+                                    i  0700000001
+                                p(style='text-align: left;')
+                                    strong U.F Location:
+                                    i  14-B: Malaba Zone, malaba village
+                                .row
+                                    .col-md-6
+                                        a.general_button(href='#') Delete Uf
+                                    .col-md-6
+                                        a(href='#') Update Uf
+                            .col-md-6.mt-3
+                                p(style='text-align: left;')
+                                    strong U.F Name:
+                                    i  Jacob B
+                                p(style='text-align: left;')
+                                    strong U.F Gender:
+                                    i  Male
+                                p(style='text-align: left;')
+                                    strong U.F Date of Registration:
+                                    i  12-10-2022
+                                p(style='text-align: left;')
+                                    strong U.F Activites:
+                                    i  Vegetables Growing, Fruits Fruits
+                                p(style='text-align: left;')
+                                    strong U.F Contacts:
+                                    i  0700000001
+                                p(style='text-align: left;')
+                                    strong U.F Location:
+                                    i  14-B: Malaba Zone, malaba village
+                                .row
+                                    .col-md-6
+                                        a.general_button(href='#') Delete Uf
+                                    .col-md-6
+                                        a(href='#') Update Uf
+                            .col-md-6.mt-3
+                                p(style='text-align: left;')
+                                    strong U.F Name:
+                                    i  Jacob B
+                                p(style='text-align: left;')
+                                    strong U.F Gender:
+                                    i  Male
+                                p(style='text-align: left;')
+                                    strong U.F Date of Registration:
+                                    i  12-10-2022
+                                p(style='text-align: left;')
+                                    strong U.F Activites:
+                                    i  Vegetables Growing, Fruits Fruits
+                                p(style='text-align: left;')
+                                    strong U.F Contacts:
+                                    i  0700000001
+                                p(style='text-align: left;')
+                                    strong U.F Location:
+                                    i  14-B: Malaba Zone, malaba village
+                                .row
+                                    .col-md-6
+                                        a.general_button(href='#') Delete Uf
+                                    .col-md-6
+                                        a(href='#') Update Uf
+                // Uploaded Produce
+                #profile.tab-pane.fade(role='tabpanel' aria-labelledby='profile-tab')
+                    .container.mt-5
+                        .row
+                            .col-md-6.mt-3
+                                .row
+                                    .col-md-7
+                                        p(style='text-align: left;')
+                                            strong Produce ID:
+                                            i  001
+                                        p(style='text-align: left;')
+                                            strong Produce Category:
+                                            i  Horticulture
+                                        p(style='text-align: left;')
+                                            strong Produce Subcategory:
+                                            i  Vegetables
+                                        p(style='text-align: left;')
+                                            strong Produce Name:
+                                            i  Tomatoes
+                                        p(style='text-align: left;')
+                                            strong Produce Quantity:
+                                            i  300kg
+                                        p(style='text-align: left;')
+                                            strong Price Per Quantity:
+                                            i  2000
+                                        p(style='text-align: left;')
+                                            strong Produce Status:
+                                            i  Available
+                                        p(style='text-align: left;')
+                                            strong Upload Date:
+                                            i  12-10-2022
+                                        p(style='text-align: left;')
+                                            strong U.F ward:
+                                            i  LC1
+                                        p(style='text-align: left;')
+                                            strong Contact:
+                                            i  0700000001
+                                    .col-md-5
+                                        h1.h3 Uploaded Image
+                                        .text-center
+                                            img.img-thumbnail(src='img/greenpaper.jpg' alt='...')
+                                hr
+                                .row
+                                    .col-md-6
+                                        a.general_button(href='#') Decline
+                                    .col-md-6
+                                        a(href='#') Approve
+                                hr
+                            .col-md-6.mt-3
+                                .row
+                                    .col-md-7
+                                        p(style='text-align: left;')
+                                            strong Produce ID:
+                                            i  001
+                                        p(style='text-align: left;')
+                                            strong Produce Category:
+                                            i  Horticulture
+                                        p(style='text-align: left;')
+                                            strong Produce Subcategory:
+                                            i  Vegetables
+                                        p(style='text-align: left;')
+                                            strong Produce Name:
+                                            i  Tomatoes
+                                        p(style='text-align: left;')
+                                            strong Produce Quantity:
+                                            i  300kg
+                                        p(style='text-align: left;')
+                                            strong Price Per Quantity:
+                                            i  2000
+                                        p(style='text-align: left;')
+                                            strong Produce Status:
+                                            i  Available
+                                        p(style='text-align: left;')
+                                            strong Upload Date:
+                                            i  12-10-2022
+                                        p(style='text-align: left;')
+                                            strong U.F ward:
+                                            i  LC1
+                                        p(style='text-align: left;')
+                                            strong Contact:
+                                            i  0700000001
+                                    .col-md-5
+                                        h1.h3 Uploaded Image
+                                        .text-center
+                                            img.img-thumbnail(src='img/mushrooms.jpg' alt='...')
+                                hr
+                                .row
+                                    .col-md-6
+                                        a.general_button(href='#') Decline
+                                    .col-md-6
+                                        a(href='#') Approve
+                                hr
+                            .col-md-6.mt-3
+                                .row
+                                    .col-md-7
+                                        p(style='text-align: left;')
+                                            strong Produce ID:
+                                            i  001
+                                        p(style='text-align: left;')
+                                            strong Produce Category:
+                                            i  Horticulture
+                                        p(style='text-align: left;')
+                                            strong Produce Subcategory:
+                                            i  Vegetables
+                                        p(style='text-align: left;')
+                                            strong Produce Name:
+                                            i  Tomatoes
+                                        p(style='text-align: left;')
+                                            strong Produce Quantity:
+                                            i  300kg
+                                        p(style='text-align: left;')
+                                            strong Price Per Quantity:
+                                            i  2000
+                                        p(style='text-align: left;')
+                                            strong Produce Status:
+                                            i  Available
+                                        p(style='text-align: left;')
+                                            strong Upload Date:
+                                            i  12-10-2022
+                                        p(style='text-align: left;')
+                                            strong U.F ward:
+                                            i  LC1
+                                        p(style='text-align: left;')
+                                            strong Contact:
+                                            i  0700000001
+                                    .col-md-5
+                                        h1.h3 Uploaded Image
+                                        .text-center
+                                            img.img-thumbnail(src='img/greenpaper.jpg' alt='...')
+                                hr
+                                .row
+                                    .col-md-6
+                                        a.general_button(href='#') Decline
+                                    .col-md-6
+                                        a(href='#') Approve
+                                hr
+                            .col-md-6.mt-3
+                                .row
+                                    .col-md-7
+                                        p(style='text-align: left;')
+                                            strong Produce ID:
+                                            i  001
+                                        p(style='text-align: left;')
+                                            strong Produce Category:
+                                            i  Horticulture
+                                        p(style='text-align: left;')
+                                            strong Produce Subcategory:
+                                            i  Vegetables
+                                        p(style='text-align: left;')
+                                            strong Produce Name:
+                                            i  Tomatoes
+                                        p(style='text-align: left;')
+                                            strong Produce Quantity:
+                                            i  300kg
+                                        p(style='text-align: left;')
+                                            strong Price Per Quantity:
+                                            i  2000
+                                        p(style='text-align: left;')
+                                            strong Produce Status:
+                                            i  Available
+                                        p(style='text-align: left;')
+                                            strong Upload Date:
+                                            i  12-10-2022
+                                        p(style='text-align: left;')
+                                            strong U.F ward:
+                                            i  LC1
+                                        p(style='text-align: left;')
+                                            strong Contact:
+                                            i  0700000001
+                                    .col-md-5
+                                        h1.h3 Uploaded Image
+                                        .text-center
+                                            img.img-thumbnail(src='img/greenpaper.jpg' alt='...')
+                                hr
+                                .row
+                                    .col-md-6
+                                        a.general_button(href='#') Decline
+                                    .col-md-6
+                                        a(href='#') Approve
+                                hr
+                // Bookings and Orders
+                #bookings.tab-pane.fade(role='tabpanel' aria-labelledby='bookings-tab')
+                    .container.mt-5
+                        .row
+                            .col-md-6.mt-3
+                                p(style='text-align: left;')
+                                    strong Public User:
+                                    i  Jansuk
+                                p(style='text-align: left;')
+                                    strong Public User Phone:
+                                    i  0720000000
+                                p(style='text-align: left;')
+                                    strong Public User Location:
+                                    i  Wandegeya, Kulumba Zone
+                                h5 Bookings Details:
+                                p(style='text-align: left;')
+                                    strong Date:
+                                    i  12-10-2022
+                                p(style='text-align: left;')
+                                    strong Purchase Reference ID:
+                                    i  1KDJSK325DD
+                                p(style='text-align: left;')
+                                    strong Purchase Message:
+                                    i  Pending Approval
+                                h5 Delivery Details:
+                                p(style='text-align: left;')
+                                    strong Mode:
+                                    i  home
+                                p(style='text-align: left;')
+                                    strong Personel:
+                                    i  
+                                p(style='text-align: left;')
+                                    strong Personel Contact:
+                                    i  
+                                h5 Produce Details:
+                                p(style='text-align: left;')
+                                    strong Produce ID:
+                                    i  002
+                                p(style='text-align: left;')
+                                    strong Produce Category:
+                                    i  Horticulture
+                                p(style='text-align: left;')
+                                    strong Produce name:
+                                    i  tomatoes
+                                p(style='text-align: left;')
+                                    strong Produce Quantiy:
+                                    i  1kg
+                                p(style='text-align: left;')
+                                    strong Produce Price Per Quantity:
+                                    i  2000
+                                p(style='text-align: left;')
+                                    strong Urban Farmer:
+                                    i  Lucy
+                                .row
+                                    .col-md-6
+                                        // approve and a modal window shows up where we put the message(to change the purchase message) and the details of the delivered: contact and name
+                                        a.general_button(href='#') Approve Order
+                                    .col-md-6
+                                        // Decline order with a message to the user about referal of the money: this is in the purchase message
+                                        a(href='#') Decline Order
+                            .col-md-6.mt-3
+                                p(style='text-align: left;')
+                                    strong Public User:
+                                    i  Jansuk
+                                p(style='text-align: left;')
+                                    strong Public User Phone:
+                                    i  0720000000
+                                p(style='text-align: left;')
+                                    strong Public User Location:
+                                    i  Wandegeya, Kulumba Zone
+                                h5 Bookings Details:
+                                p(style='text-align: left;')
+                                    strong Date:
+                                    i  12-10-2022
+                                p(style='text-align: left;')
+                                    strong Purchase Reference ID:
+                                    i  1KDJSK325DD
+                                p(style='text-align: left;')
+                                    strong Purchase Message:
+                                    i  Pending Approval
+                                h5 Delivery Details:
+                                p(style='text-align: left;')
+                                    strong Mode:
+                                    i  home
+                                p(style='text-align: left;')
+                                    strong Personel:
+                                    i  
+                                p(style='text-align: left;')
+                                    strong Personel Contact:
+                                    i  
+                                h5 Produce Details:
+                                p(style='text-align: left;')
+                                    strong Produce ID:
+                                    i  002
+                                p(style='text-align: left;')
+                                    strong Produce Category:
+                                    i  Horticulture
+                                p(style='text-align: left;')
+                                    strong Produce name:
+                                    i  tomatoes
+                                p(style='text-align: left;')
+                                    strong Produce Quantiy:
+                                    i  1kg
+                                p(style='text-align: left;')
+                                    strong Produce Price Per Quantity:
+                                    i  2000
+                                p(style='text-align: left;')
+                                    strong Urban Farmer:
+                                    i  Lucy
+                                .row
+                                    .col-md-6
+                                        // approve and a modal window shows up where we put the message(to change the purchase message) and the details of the delivered: contact and name
+                                        a.general_button(href='#') Approve Order
+                                    .col-md-6
+                                        // Decline order with a message to the user about referal of the money: this is in the purchase message
+                                        a(href='#') Decline Order
+                // Approved Bookings
+                #approved-bookings.tab-pane.fade(role='tabpanel' aria-labelledby='approved-bookings-tab')
+                    .container.mt-5
+                        .row
+                            .col-md-6.mt-3
+                                p(style='text-align: left;')
+                                    strong Public User:
+                                    i  Jansuk
+                                p(style='text-align: left;')
+                                    strong Public User Phone:
+                                    i  0720000000
+                                p(style='text-align: left;')
+                                    strong Public User Location:
+                                    i  Wandegeya, Kulumba Zone
+                                h5 Bookings Details:
+                                p(style='text-align: left;')
+                                    strong Date:
+                                    i  12-10-2022
+                                p(style='text-align: left;')
+                                    strong Purchase Reference ID:
+                                    i  1KDJSK325DD
+                                p(style='text-align: left;')
+                                    strong Purchase Message:
+                                    i  Approved for Delivery
+                                h5 Delivery Details:
+                                p(style='text-align: left;')
+                                    strong Mode:
+                                    i  home
+                                p(style='text-align: left;')
+                                    strong Personel:
+                                    i  Kayondo Jackson
+                                p(style='text-align: left;')
+                                    strong Personel Contact:
+                                    i  078887876
+                                h5 Produce Details:
+                                p(style='text-align: left;')
+                                    strong Produce ID:
+                                    i  002
+                                p(style='text-align: left;')
+                                    strong Produce Category:
+                                    i  Horticulture
+                                p(style='text-align: left;')
+                                    strong Produce name:
+                                    i  tomatoes
+                                p(style='text-align: left;')
+                                    strong Produce Quantiy:
+                                    i  1kg
+                                p(style='text-align: left;')
+                                    strong Produce Price Per Quantity:
+                                    i  2000
+                                p(style='text-align: left;')
+                                    strong Urban Farmer:
+                                    i  Lucy
+                                .row
+                                    .col-md-6
+                                        // Once Delivered I can delete the details from database
+                                        a(href='#') Delete
+                            .col-md-6.mt-3
+                                p(style='text-align: left;')
+                                    strong Public User:
+                                    i  Jansuk
+                                p(style='text-align: left;')
+                                    strong Public User Phone:
+                                    i  0720000000
+                                p(style='text-align: left;')
+                                    strong Public User Location:
+                                    i  Wandegeya, Kulumba Zone
+                                h5 Bookings Details:
+                                p(style='text-align: left;')
+                                    strong Date:
+                                    i  12-10-2022
+                                p(style='text-align: left;')
+                                    strong Purchase Reference ID:
+                                    i  1KDJSK325DD
+                                p(style='text-align: left;')
+                                    strong Purchase Message:
+                                    i  Approved for Delivery
+                                h5 Delivery Details:
+                                p(style='text-align: left;')
+                                    strong Mode:
+                                    i  home
+                                p(style='text-align: left;')
+                                    strong Personel:
+                                    i  Ngabz Leonard
+                                p(style='text-align: left;')
+                                    strong Personel Contact:
+                                    i  078887876
+                                h5 Produce Details:
+                                p(style='text-align: left;')
+                                    strong Produce ID:
+                                    i  002
+                                p(style='text-align: left;')
+                                    strong Produce Category:
+                                    i  Horticulture
+                                p(style='text-align: left;')
+                                    strong Produce name:
+                                    i  tomatoes
+                                p(style='text-align: left;')
+                                    strong Produce Quantiy:
+                                    i  1kg
+                                p(style='text-align: left;')
+                                    strong Produce Price Per Quantity:
+                                    i  2000
+                                p(style='text-align: left;')
+                                    strong Urban Farmer:
+                                    i  Lucy
+                                .row
+                                    .col-md-6
+                                        // Once Delivered I can delete the details from database
+                                        a(href='#') Delete
+                // Registration
+                #contact.tab-pane.fade(role='tabpanel' aria-labelledby='contact-tab')
+                    .container.mt-5
+                        form(action='' method='post')
+                            .row
+                                .col-md-4.mb-3
+                                    label.form-label(for='fo_name') FO Name:
+                                    input#fo_name.form-control(type='text' name='fo_name')
+                                .col-md-2.mb-3
+                                    label.form-label(for='fo_ward') FO Ward:
+                                    input#fo_ward.form-control(type='text' name='fo_ward')
+                                .col-md-3.mb-3
+                                    label.form-label(for='fo_ward_staus') FO Status in ward:
+                                    select#fo_ward_staus.form-select
+                                        option(selected='') Select a status
+                                        option(value='appointed') Appoointed
+                                        option(value='removed') Removed
+                                        option(value='not_appointed') Never appointed
+                                .col-md-3.mb-3
+                                    label.form-label.d-block.mb-3 Gender:
+                                    .form-check.d-inline-block
+                                        input#gender.form-check-input(type='radio' name='gender' value='male')
+                                        label.form-check-label(for='gender')
+                                            | Male
+                                    .form-check.d-inline-block.ms-4
+                                        input#female.form-check-input(type='radio' name='gender' value='female')
+                                        label.form-check-label(for='gender')
+                                            | female
+                                .col-md-4.mb-3
+                                    label.form-label(for='date_of_birth') Date of Birth:
+                                    input#date_of_birth.form-control(type='date' name='date_of_birth')
+                                .col-md-6
+                                    label.form-label.d-block.mb-3 Activities:
+                                    .form-check.d-inline-block
+                                        input#approve_produces.form-check-input(type='checkbox' name='approve_produces')
+                                        label.form-check-label(for='approve_produces')
+                                            | Approve Produces
+                                    .form-check.d-inline-block.ms-4
+                                        input#foresee_bookings.form-check-input(type='checkbox' name='foresee_bookings')
+                                        label.form-check-label(for='foresee_bookings')
+                                            | Foresee bookings
+                                    .form-check.d-inline-block.ms-4
+                                        input#register_urban_farmers.form-check-input(type='checkbox' name='register_urban_farmers')
+                                        label.form-check-label(for='register_urban_farmers')
+                                            | Register Urban Farmers
+                                .col-md-4.mb-3
+                                    label.form-label(for='nin') NIN
+                                    input#nin.form-control(type='text' name='nin')
+                                .col-md-2.mb-3
+                                    label.form-label(for='phone') Phone
+                                    input#phone.form-control(type='text' name='phone')
+                                .col-md-3.mb-3
+                                    label.form-label(for='fo_residence_type') Residence Type:
+                                    select#fo_residence_type.form-select
+                                        option(selected='') Select a residence type
+                                        option(value='permanent') Permanent
+                                        option(value='temporary') Temporary
+                                .col-md-3.mb-3
+                                    label.form-label(for='period_of_stay') Period of Stay in Residence:
+                                    input#period_of_stay.form-control(type='text' name='period_of_stay' placeholder='10')
+                                .col-md-4.mb-3
+                                    label.form-label(for='directions_to_fo_place') Directions to farmer One Home
+                                    input#directions_to_fo_place.form-control(type='text' name='directions_to_fo_place')
+                                .col-md-2.mb-3
+                                    label.form-label(for='id_to_login') ID to login
+                                    input#id_to_login.form-control(type='text' name='id_to_login')
+                            button.form_btn.mt-5(type='submit') Register FO
+#footer
+    .container
+        .row
+            .col-md-4.p-3.mt-5
+                h5 Urban Farmer:
+                p From your farm to our stores and from our stores to your hand.
+                h5 Our Clients:
+                p From our stores to your household.
+                i We strive to make your meals delicious
+            .col-sm-4.col-md-4.p-3.mt-5
+                h5 Pages:
+                ul
+                    li
+                        a(href='#') Home
+                    li
+                        a(href='#') Shop
+                    li
+                        a(href='#') Our Farmers
+                    li
+                        a(href='#') About us
+                    li
+                        a(href='#') Testimonials
+            .col-sm-4.col-md-4.p-3.mt-5
+                h5 Information:
+                h6 Main Office:
+                ul
+                    li Wandegeya Market
+                    li South Wing - shop 2001A
+                h6 Tel: 0789482852
+                h5 Opening Hours
+                ul
+                    li Monday - Friday: 8am - 8pm
+                    li Saturday - Sunday: 10am - 2pm
+                h5 Socials
+                .socials
+                    ul
+                        li
+                            a(href='#') Facebook
+                        li
+                            a(href='#') whatsApp
+                        li
+                            a(href='#') Twitter
+    .careof
+        p.text-center &copy; 2022 Ufarm. All rights reserved
+script(src='../../srcs/bootstrap-5.0.2-dist/js/bootstrap.min.js')
+script(src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js' integrity='sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3' crossorigin='anonymous')
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js' integrity='sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz' crossorigin='anonymous')
