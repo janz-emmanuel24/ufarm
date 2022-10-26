@@ -1,0 +1,25 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='/css/login.css')
+  title Login
+.container
+  .screen
+    .screen__content
+      form.login(action="/login" method="post")
+        .login__field
+          i.login__icon.fas.fa-user
+          input.login__input(type='text' placeholder='Login Id / Email' name="loginId")
+        .login__field
+          i.login__icon.fas.fa-lock
+          input.login__input(type='password' placeholder='Password' name="password")
+        button.button.login__submit(type="submit")
+          span.button__text Log In Now
+          i.button__icon.fas.fa-chevron-right
+    .screen__background
+      span.screen__background__shape.screen__background__shape4
+      span.screen__background__shape.screen__background__shape3
+      span.screen__background__shape.screen__background__shape2
+      span.screen__background__shape.screen__background__shape1

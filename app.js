@@ -4,73 +4,64 @@ const path = require('path');
 const express = require('express');
 const app = express()
 const mongoose = require('mongoose')
-const configurations = require('./config/config')
+const passport = require('passport')
+const session = require('express-session')
 
-//requireModels
-const AgricOfficerModel = require('./model/AgricOfficerModel');
+
+//Required
+const RegisterUserModel = require('./model/Register_usersModel');
+const configurations = require('./config/config')
+const agricRoutes = require('./routes/agricOfficerRoutes')
+const farmerOneRoutes = require('./routes/farmerOneRoutes');
+const urbanFarmerRoutes = require('./routes/urbanFarmerRoutes');
+const authRoutes = require('./routes/authRoutes')
+const generalRoutes = require('./routes/publicUserRoutes')
 
 //pug config
 app.set('view engine', 'pug')
-app.set('views', [path.join(__dirname, 'views'), path.join(__dirname, 'views/agricOfficer'), path.join(__dirname, 'views/farmerOne'),  path.join(__dirname, 'views/BoxSelections')])
+app.set('views', [path.join(__dirname, 'views'), path.join(__dirname, 'views/agricOfficer'), path.join(__dirname, 'views/urbanFarmer'), path.join(__dirname, 'views/farmerOne'),  path.join(__dirname, 'views/BoxSelections')])
+
+//express session setup
+app.use(session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: true
+}))
 
 //middleware
 // app.use('/public/uploads', express.static(__dirname + '/public/uploads')) 
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.urlencoded({ extended: false }));
+
 app.use(express.json())
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.static(`${__dirname}/public`))
+app.use(express.urlencoded({ extended: true }));
+
+//initializing passport
+app.use(passport.initialize())
+//initializing passport to use sessions
+app.use(passport.session())
+
+//declaring static methods to use on the model
+passport.use(RegisterUserModel.createStrategy())
+passport.serializeUser(RegisterUserModel.serializeUser())
+passport.deserializeUser(RegisterUserModel.deserializeUser())
 
 /** DATABASE CONNECTIONS */
 mongoose.connect(`${configurations.DB}`, {useNewUrlParser: true})
     .then(() => console.log('Connected to Database'))
     .catch(err => console.log(err))
 
+//routes middleware
+app.use('/', generalRoutes);
+app.use('/agric_dashboard', agricRoutes)
+app.use('/farmer_one_dashboard', farmerOneRoutes)
+app.use('/urban_farmer_dashboard', urbanFarmerRoutes)
+app.use('/', authRoutes);
+
+
 //routes
-app.get('/', (req,res) => {
-    res.status(200).render('landingpage')
+app.get('*', (req,res) => {
+    res.status(400).send('Page Not Found')
 })
-
-app.get('/agricOfficer', async (req, res) => {
-    const registeredFarmerOnes = await AgricOfficerModel.find()
-    // console.log(registeredFarmerOnes)
-    res.render('agricOfficerDashboard', {registeredFarmerOnes: registeredFarmerOnes})
-    // res.send(registeredFarmerOnes);
-})
-
-app.post('/registerFarmerOnes', async (req,res) => {
-    const farmerOneRegistration = new AgricOfficerModel(req.body)
-    // farmerOneRegistration.activities = ['register', 'approve']
-    res.send(farmerOneRegistration)
-    await farmerOneRegistration.save();
-})
-
-app.get('/updateFarmerOne/:farmerOneId', async (req, res) => {
-    const farmerOneId = req.params.farmerOneId;
-    const farmerOne = await AgricOfficerModel.findOne({_id: farmerOneId})
-    // console.log(farmerOne)
-    res.render('agricOfficerUpdateFarmerOne', {farmerOne: farmerOne})
-})
-
-app.post('/updateFarmerOne/:farmerOneId', async (req, res) => {
-    const farmerOneId = req.params.farmerOneId;
-    await AgricOfficerModel.findByIdAndUpdate(farmerOneId, req.body)
-    res.redirect('/agricOfficer')
-})
-
-app.get('/farmerOne', (req, res) => {
-    res.render('farmerOneDashboard')
-})
-
-app.get('/categoriesInShop', (req, res) => {
-    res.render('categoriesInShop')
-})
-
-app.get('/categoriesInShop/vegetables', (req, res) => {
-    res.render('vegetables')
-})
-
-
 
 const port = 4000 || process.env.PORT;
 

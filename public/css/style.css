@@ -24,7 +24,7 @@ li .shopDropdown {
 }
 
 #topHeader_banner {
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, 60%),rgba(0, 0, 0, 60%)), url(../../srcs/img/header_banner_img.jpg);
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 60%),rgba(0, 0, 0, 60%)), url(/img/header_banner_img.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -243,7 +243,7 @@ li .shopDropdown {
 #howTo .instrtns {
     margin-top: 4%;
     width: 100%;
-    background-image: url(../../srcs/img/howtopic.jpg);
+    background-image: url(/img/howtopic.jpg);
     background-size: cover;
     height: auto;
     background-position: center;
@@ -334,7 +334,7 @@ li .shopDropdown {
 }
 
 .our_features {
-    background-image: linear-gradient(0deg,rgba(0, 0, 0, 0.39),rgba(0, 0, 0, 0.39)),url(../../srcs/img/why_us.jpg);
+    background-image: linear-gradient(0deg,rgba(0, 0, 0, 0.39),rgba(0, 0, 0, 0.39)),url(/img/why_us.jpg);
     background-size: contain;
 }
 
@@ -430,6 +430,7 @@ li .shopDropdown {
 .btn-lg:hover {
     border: 1px solid red
 }
+
 
 
 /* >>>>>>>>>>>>>>>>>>>>> SCREENS STYLES <<<<<<<<<<<<<<<<<<<<<<<<<< */

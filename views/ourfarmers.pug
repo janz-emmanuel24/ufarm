@@ -1,0 +1,126 @@
+doctype html
+head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet' href='bootstrap-5.0.2-dist/bootstrapCss/bootstrap.css')
+    link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT' crossorigin='anonymous')
+    link(rel='stylesheet' href='css/style.css')
+    title Our Farmers
+.farmers-header
+    .banner_menu
+        nav.navbar.navbar-expand-lg.navbar-light.bg-light
+            .container-fluid
+                a.navbar-brand(href='#') Navbar
+                button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation')
+                    span.navbar-toggler-icon
+                #navbarNavAltMarkup.collapse.navbar-collapse
+                    .navbar-nav
+                        a.nav-link.active(aria-current='page' href='#') Home
+    img(src='/img/our_farmers.jpg' alt='')
+    .farmers-head
+        h3.text-center Our Farmers
+        p ~ Just some text ~
+.farmers-main
+    .container.mb-5
+        .about-farmer-registration.mb-5
+            h6.text-center Farmer Registration
+        p
+            | Our urban farmers are registered by the Farmer One Officer at the respective wards for easy monitoring
+            | and regular check on.
+            | To be registered as one of our farmers, visit any of our wards near your location or check our 
+            a(href='#') contact us page
+            |                 for more information about wards in your vicinity.
+        .registered-farmers.mt-5
+            p
+                | Are you a registered farmer? Click 
+                a(href='/login') Here
+        hr
+    .container-fluid.mt-5
+        .registered-farmers-info.container
+            .meet-the-farmers.mb-5
+                h6.mb-5.text-center Meet the farmers
+            .row
+                .col-md-6.my-4
+                    .row
+                        .col-md-4
+                            .farmImg
+                                img.round-img(src='/img/farmer-img.jpg' alt='')
+                        .col-md-8.mt-2
+                            | Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea ipsam dolore reiciendis dicta sint
+                            | perferendis ad recusandae quisquam dolorum officiis nobis porro in incidunt, fugiat voluptas
+                            | perspiciatis! Nisi, natus nesciunt.
+                .col-md-6.my-4
+                    .row
+                        .col-md-4
+                            .farmImg
+                                img.round-img(src='/img/farmer-img2.jpg' alt='')
+                        .col-md-8.mt-2
+                            | Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea ipsam dolore reiciendis dicta sint
+                            | perferendis ad recusandae quisquam dolorum officiis nobis porro in incidunt, fugiat voluptas
+                            | perspiciatis! Nisi, natus nesciunt.
+                .col-md-6.my-4
+                    .row
+                        .col-md-4
+                            .farmImg
+                                img.round-img(src='/img/farmer-img3.jpg' alt='')
+                        .col-md-8.mt-2
+                            | Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea ipsam dolore reiciendis dicta sint
+                            | perferendis ad recusandae quisquam dolorum officiis nobis porro in incidunt, fugiat voluptas
+                            | perspiciatis! Nisi, natus nesciunt.
+                .col-md-6.my-4
+                    .row
+                        .col-md-4
+                            .farmImg
+                                img.round-img(src='/img/farmer-img4.jpg' alt='')
+                        .col-md-8.mt-2
+                            | Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea ipsam dolore reiciendis dicta sint
+                            | perferendis ad recusandae quisquam dolorum officiis nobis porro in incidunt, fugiat voluptas
+                            | perspiciatis! Nisi, natus nesciunt.
+#footer
+    .container
+        .row
+            .col-md-4.p-3.mt-5
+                h5 Urban Farmer:
+                p From your farm to our stores and from our stores to your hand.
+                h5 Our Clients:
+                p From our stores to your household.
+                i We strive to make your meals delicious
+            .col-sm-4.col-md-4.p-3.mt-5
+                h5 Pages:
+                ul
+                    li
+                        a(href='/') Home
+                    li
+                        a(href='/categories_in_shop') Shop
+                    li
+                        a(href='/our_farmers') Our Farmers
+                    li
+                        a(href='#') About us
+                    li
+                        a(href='#') Testimonials
+            .col-sm-4.col-md-4.p-3.mt-5
+                h5 Information:
+                h6 Main Office:
+                ul
+                    li Wandegeya Market
+                    li South Wing - shop 2001A
+                h6 Tel: 0789482852
+                h5 Opening Hours
+                ul
+                    li Monday - Friday: 8am - 8pm
+                    li Saturday - Sunday: 10am - 2pm
+                h5 Socials
+                .socials
+                    ul
+                        li
+                            a(href='#') Facebook
+                        li
+                            a(href='#') whatsApp
+                        li
+                            a(href='#') Twitter
+    .careof
+        p.text-center &copy; 2022 Ufarm. All rights reserved
+script(src='bootstrap-5.0.2-dist/js/bootstrap.min.js')
+script(src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js' integrity='sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3' crossorigin='anonymous')
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js' integrity='sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz' crossorigin='anonymous')
