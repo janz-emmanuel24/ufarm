@@ -9,25 +9,21 @@ head
 body
     .farmers-header 
         .banner_menu 
-            nav.navbar.navbar-expand-lg.navbar-light.bg-light 
+            nav.navbar.navbar-expand-lg.navbar-light 
                 .container-fluid 
                     a.navbar-brand(href="#") Navbar 
                     button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation")
                         span.navbar-toggler-icon
                     .collapse.navbar-collapse#navbarNavAltMarkup
                         .navbar-nav 
-                            a.nav-link.active(href="#" aria-current="page") Home
-                            a.nav-link(href="#") Home
-                            a.nav-link(href="#") Features
-                            a.nav-link(href="#") Pricing
-                            a.nav-link(href="#") Pricing
+                            a.nav-link.active(href="/" aria-current="page") Home
+                            form.justify-content-end(action="/logout" method='post')
+                                button.btn.btn-primary.d-flex.justify-content-end(type="submit") Logout 
         img(src="img/ourfarmers.jpg" alt="")
         .farmers-head 
             h3.text-center Agricultural Officer Dashboard 
             p ~ Just some text ~
     .farmers-main
-        form(action="/logout" method='post')
-            button.btn.btn-primary.d-flex.justify-content-end(type="submit") Logout 
         .dashboard-tabs 
             ul.nav.nav-tabs#myTab(role="tablist")
                 li.nav-item(role="presentation")
@@ -45,23 +41,24 @@ body
                                     if registeredFarmerOne.status_appointed == "appointed"  
                                         .col-md-6.mt-3
                                             p(style='text-align: left;')
-                                                strong F.O Name:
+                                                strong Name:
                                                 i  #{registeredFarmerOne.fullname}
                                             p(style='text-align: left;')
-                                                strong F.O Ward:
+                                                strong Ward:
                                                 i  #{registeredFarmerOne.ward}
                                             p(style='text-align: left;')
-                                                strong F.O Residence:
+                                                strong Residence:
                                                 i  #{registeredFarmerOne.residence}
                                             p(style='text-align: left;')
-                                                strong F.O Status:
+                                                strong Status in ward:
                                                 i  #{registeredFarmerOne.status_appointed}
                                             p(style='text-align: left;')
                                                 strong Date of appointment:
-                                                i  #{registeredFarmerOne.dob}
+                                                i  #{registeredFarmerOne.dor}
                                             p(style='text-align: left;')
                                                 strong Gender:
                                                 i  #{registeredFarmerOne.gender}
+                                            hr
                             else 
                                 p There are no farmer Ones in the Database Register New Farmer Ones
                 #profile.tab-pane.fade(role='tabpanel' aria-labelledby='profile-tab')
@@ -84,11 +81,12 @@ body
                                             i  #{registeredFarmerOne.status_appointed}
                                         p(style='text-align: left;')
                                             strong Date of appointment:
-                                            i  #{registeredFarmerOne.dob}
+                                            i  #{registeredFarmerOne.dor}
                                         p(style='text-align: left;')
                                             strong Gender:
                                             i  #{registeredFarmerOne.gender}
                                         a(href=`/agric_dashboard/updateFarmerOne/${registeredFarmerOne._id}`) Update FO
+                                        hr.my-4
                             else 
                                 p All farmers will be listed Here
                 #contact.tab-pane.fade(role='tabpanel' aria-labelledby='contact-tab')

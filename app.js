@@ -29,7 +29,7 @@ app.use(session({
 }))
 
 //middleware
-// app.use('/public/uploads', express.static(__dirname + '/public/uploads')) 
+app.use('/public/uploads', express.static(__dirname + '/public/uploads'))
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.json())

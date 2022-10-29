@@ -10,17 +10,16 @@ head
 body
     .farmers-header
         .banner_menu
-            nav.navbar.navbar-expand-lg.navbar-light.bg-light
+            nav.navbar.navbar-expand-lg.navbar-light
                 .container-fluid
                     a.navbar-brand(href='#') Navbar
                     button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation')
                         span.navbar-toggler-icon
                     #navbarNavAltMarkup.collapse.navbar-collapse
-                        .navbar-nav
-                            a.nav-link.active(aria-current='page' href='#') Home
-                            a.nav-link(href='#') Features
-                            a.nav-link(href='#') Pricing
-                            a.nav-link.disabled Disabled
+                        .navbar-nav 
+                            a.nav-link.active(href="/" aria-current="page") Home
+                            form.justify-content-end(action="/logout" method='post')
+                                button.btn.btn-primary.d-flex.justify-content-end(type="submit") Logout 
         img(src='img/ourfarmers.jpg' alt='')
         .farmers-head
             h3.text-center Urban Farmer Dashboard
@@ -88,7 +87,7 @@ body
                                         .col-md-5
                                             h1.h3 Uploaded Image
                                             .text-center
-                                                img.img-thumbnail(src='#{userProduce.produce_image}' alt='...')
+                                                img.img-thumbnail(src='/'+userProduce.produce_image alt='...')
                                         hr
                 // Approved Produce
                 #bookings.tab-pane.fade(role='tabpanel' aria-labelledby='bookings-tab')

@@ -10,7 +10,14 @@ head
     title Vegetables
 #pdt-banner
     .banner_menu
-        | This is where the heading will be
+         nav.navbar.navbar-expand-lg.navbar-light
+            .container-fluid
+                a.navbar-brand(href='#') Navbar
+                button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation')
+                    span.navbar-toggler-icon
+                #navbarNavAltMarkup.collapse.navbar-collapse
+                    .navbar-nav
+                        a.nav-link.active(aria-current='page' href='#') Home
     img.banner-img(src='/img/veg_banner.jpg' alt='')
     .pdt-wrd
         h2 Vegetable Description
