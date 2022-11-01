@@ -33,6 +33,12 @@ const produce_Schema = new mongoose.Schema({
     produce_availability: {
         type: String
     },
+    fullname: {
+        type: String
+    },
+    contact: {
+        type: String
+    },
     product_status: {
         type: String,
         default: 'pending'

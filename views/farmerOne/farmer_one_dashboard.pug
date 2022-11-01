@@ -25,8 +25,6 @@ body
             h3.text-center Farmer One Dashboard
             p ~ Just some text ~
     .farmers-main
-        form(action="/logout" method='post')
-            button.btn.btn-primary.d-flex.justify-content-end(type="submit") Logout
         .dashboard-tabs.urban-farmer-dashboard
             ul#myTab.nav.nav-tabs(role='tablist')
                 li.nav-item(role='presentation')
@@ -45,192 +43,69 @@ body
                     .container.mt-5
                         .row
                             // show urban farmers Details
-                            if urbanfarmers_produce
-                                each urbanfarmer_produce in urbanfarmers_produce
-                                    .col-md-6.mt-3
-                                        p(style='text-align: left;')
-                                            strong Urban Produce:
-                                            i  #{urbanfarmer_produce.pname}
+                            if urbanfarmers
+                                each urbanfarmer in urbanfarmers
+                                    if urbanfarmer.ward === loggedInFarmerOne.ward
+                                        .col-md-6.mt-3
+                                            p(style='text-align: left;')
+                                                strong Urban Farmer Name:
+                                                i  #{urbanfarmer.fullname}
+                                            p(style='text-align: left;')
+                                                strong Urban Farmer ward:
+                                                i  #{urbanfarmer.ward}
+                                            p(style='text-align: left;')
+                                                strong Date of Registration:
+                                                i  #{urbanfarmer.dor}
+                                            p(style='text-align: left;')
+                                                strong Urban Farmer Phone:
+                                                i  #{urbanfarmer.phone}
+                                            hr
                 // Uploaded Produce
                 #profile.tab-pane.fade(role='tabpanel' aria-labelledby='profile-tab')
                     .container.mt-5
                         .row
-                            .col-md-6.mt-3
-                                .row
-                                    .col-md-7
-                                        p(style='text-align: left;')
-                                            strong Produce ID:
-                                            i  001
-                                        p(style='text-align: left;')
-                                            strong Produce Category:
-                                            i  Horticulture
-                                        p(style='text-align: left;')
-                                            strong Produce Subcategory:
-                                            i  Vegetables
-                                        p(style='text-align: left;')
-                                            strong Produce Name:
-                                            i  Tomatoes
-                                        p(style='text-align: left;')
-                                            strong Produce Quantity:
-                                            i  300kg
-                                        p(style='text-align: left;')
-                                            strong Price Per Quantity:
-                                            i  2000
-                                        p(style='text-align: left;')
-                                            strong Produce Status:
-                                            i  Available
-                                        p(style='text-align: left;')
-                                            strong Upload Date:
-                                            i  12-10-2022
-                                        p(style='text-align: left;')
-                                            strong U.F ward:
-                                            i  LC1
-                                        p(style='text-align: left;')
-                                            strong Contact:
-                                            i  0700000001
-                                    .col-md-5
-                                        h1.h3 Uploaded Image
-                                        .text-center
-                                            img.img-thumbnail(src='img/greenpaper.jpg' alt='...')
-                                hr
-                                .row
-                                    .col-md-6
-                                        a.general_button(href='#') Decline
-                                    .col-md-6
-                                        a(href='#') Approve
-                                hr
-                            .col-md-6.mt-3
-                                .row
-                                    .col-md-7
-                                        p(style='text-align: left;')
-                                            strong Produce ID:
-                                            i  001
-                                        p(style='text-align: left;')
-                                            strong Produce Category:
-                                            i  Horticulture
-                                        p(style='text-align: left;')
-                                            strong Produce Subcategory:
-                                            i  Vegetables
-                                        p(style='text-align: left;')
-                                            strong Produce Name:
-                                            i  Tomatoes
-                                        p(style='text-align: left;')
-                                            strong Produce Quantity:
-                                            i  300kg
-                                        p(style='text-align: left;')
-                                            strong Price Per Quantity:
-                                            i  2000
-                                        p(style='text-align: left;')
-                                            strong Produce Status:
-                                            i  Available
-                                        p(style='text-align: left;')
-                                            strong Upload Date:
-                                            i  12-10-2022
-                                        p(style='text-align: left;')
-                                            strong U.F ward:
-                                            i  LC1
-                                        p(style='text-align: left;')
-                                            strong Contact:
-                                            i  0700000001
-                                    .col-md-5
-                                        h1.h3 Uploaded Image
-                                        .text-center
-                                            img.img-thumbnail(src='img/mushrooms.jpg' alt='...')
-                                hr
-                                .row
-                                    .col-md-6
-                                        a.general_button(href='#') Decline
-                                    .col-md-6
-                                        a(href='#') Approve
-                                hr
-                            .col-md-6.mt-3
-                                .row
-                                    .col-md-7
-                                        p(style='text-align: left;')
-                                            strong Produce ID:
-                                            i  001
-                                        p(style='text-align: left;')
-                                            strong Produce Category:
-                                            i  Horticulture
-                                        p(style='text-align: left;')
-                                            strong Produce Subcategory:
-                                            i  Vegetables
-                                        p(style='text-align: left;')
-                                            strong Produce Name:
-                                            i  Tomatoes
-                                        p(style='text-align: left;')
-                                            strong Produce Quantity:
-                                            i  300kg
-                                        p(style='text-align: left;')
-                                            strong Price Per Quantity:
-                                            i  2000
-                                        p(style='text-align: left;')
-                                            strong Produce Status:
-                                            i  Available
-                                        p(style='text-align: left;')
-                                            strong Upload Date:
-                                            i  12-10-2022
-                                        p(style='text-align: left;')
-                                            strong U.F ward:
-                                            i  LC1
-                                        p(style='text-align: left;')
-                                            strong Contact:
-                                            i  0700000001
-                                    .col-md-5
-                                        h1.h3 Uploaded Image
-                                        .text-center
-                                            img.img-thumbnail(src='img/greenpaper.jpg' alt='...')
-                                hr
-                                .row
-                                    .col-md-6
-                                        a.general_button(href='#') Decline
-                                    .col-md-6
-                                        a(href='#') Approve
-                                hr
-                            .col-md-6.mt-3
-                                .row
-                                    .col-md-7
-                                        p(style='text-align: left;')
-                                            strong Produce ID:
-                                            i  001
-                                        p(style='text-align: left;')
-                                            strong Produce Category:
-                                            i  Horticulture
-                                        p(style='text-align: left;')
-                                            strong Produce Subcategory:
-                                            i  Vegetables
-                                        p(style='text-align: left;')
-                                            strong Produce Name:
-                                            i  Tomatoes
-                                        p(style='text-align: left;')
-                                            strong Produce Quantity:
-                                            i  300kg
-                                        p(style='text-align: left;')
-                                            strong Price Per Quantity:
-                                            i  2000
-                                        p(style='text-align: left;')
-                                            strong Produce Status:
-                                            i  Available
-                                        p(style='text-align: left;')
-                                            strong Upload Date:
-                                            i  12-10-2022
-                                        p(style='text-align: left;')
-                                            strong U.F ward:
-                                            i  LC1
-                                        p(style='text-align: left;')
-                                            strong Contact:
-                                            i  0700000001
-                                    .col-md-5
-                                        h1.h3 Uploaded Image
-                                        .text-center
-                                            img.img-thumbnail(src='img/greenpaper.jpg' alt='...')
-                                hr
-                                .row
-                                    .col-md-6
-                                        a.general_button(href='#') Decline
-                                    .col-md-6
-                                        a(href='#') Approve
-                                hr
+                            if urban_farmers_uploads 
+                                each urban_farmer_upload in urban_farmers_uploads
+                                    if urban_farmer_upload.product_status === 'pending' && urban_farmer_upload.ward === loggedInFarmerOne.ward
+                                        .col-md-6.mt-3
+                                            .row
+                                                h6(style="color: #708238") Produce
+                                                .col-md-6.mt-3
+                                                    p(style='text-align: left;')
+                                                        strong Name:
+                                                        i  #{urban_farmer_upload.pname}
+                                                    p(style='text-align: left;')
+                                                        strong Category:
+                                                        i  #{urban_farmer_upload.produce_type}
+                                                    p(style='text-align: left;')
+                                                        strong Owner:
+                                                        i  #{urban_farmer_upload.fullname}
+                                                .col-md-5.mt-3
+                                                    h6(style="color: #3F704D") Image
+                                                    .text-center
+                                                        img.img-thumbnail(src=`/${urban_farmer_upload.produce_image}` alt='...')
+                                            hr
+                                            .row.btnApproveDecline
+                                                .col-md-6
+                                                    //- form(action=`/farmer_one_dashboard/decline/${urban_farmer_upload._id}`)
+                                                    button.btn_dec_app.btn.btn-primary(type='button' data-bs-toggle='modal' data-bs-target='#staticBackdrop')
+                                                        | Approve / Decline
+                                                    #staticBackdrop.modal.fade(data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true')
+                                                        .modal-dialog.modal-dialog-centered
+                                                            .modal-content
+                                                                .modal-header
+                                                                    h5#staticBackdropLabel.modal-title Approve or Decline
+                                                                    button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                                                                .modal-body
+                                                                    form(action=`/farmer_one_dashboard/approve_decline/${urban_farmer_upload._id}` method="post")
+                                                                        .form-check.d-inline-block.me-5.my-4
+                                                                            input#approve.form-check-input(type='radio' name='approve_decline' value="approved")
+                                                                            label.form-check-label(for='approve') Approve
+                                                                        .form-check.d-inline-block.ms-5.my-4
+                                                                            input#decline.form-check-input(type='radio' name='approve_decline' value="declined")
+                                                                            label.form-check-label(for='decline') Decline
+                                                                        button.btn_dec_app.btn.btn-secondary.d-block.mt-2(type='submit' style="width: 150px; padding: 1%;") Submit
+                                            hr
                 // Bookings and Orders
                 #bookings.tab-pane.fade(role='tabpanel' aria-labelledby='bookings-tab')
                     .container.mt-5

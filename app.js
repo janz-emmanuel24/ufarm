@@ -63,7 +63,7 @@ app.get('*', (req,res) => {
     res.status(400).send('Page Not Found')
 })
 
-const port = 4000 || process.env.PORT;
+const port = 3000 || process.env.PORT;
 
 
 app.listen(`${port}`, () => {

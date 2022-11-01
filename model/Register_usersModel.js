@@ -41,6 +41,9 @@ const registerUsers_schema = new mongoose.Schema({
     periodOfStay: {
         type: Number
     },
+    activities: [{
+        type: String
+    }],// in the checkbox have same name but different values
     loginId: {
         type: String,
         required: true

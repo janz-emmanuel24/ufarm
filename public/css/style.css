@@ -53,6 +53,20 @@ li .shopDropdown {
     margin-bottom: 5%;
 }
 
+.img-thumbnail {
+    width: 100%;
+    height: 200px !important;
+    object-fit: cover;
+}
+.btnApproveDecline .btn_dec_app {
+    background:rgb(98,159,204);
+    color: white;
+    border: none;
+    width: 220px;
+    padding: 3% 5%;
+    border-radius: 20px;
+}
+
 .farmers-header img {
     width: 100%;
     margin-top: -40%;

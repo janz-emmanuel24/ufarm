@@ -3,6 +3,7 @@ const multer = require('multer')
 const connectEnsureLogin = require('connect-ensure-login')
 
 const Produce_upload_model = require('../model/Produce_upload_model')
+const RegisterModel = require('../model/Register_usersModel')
 
 //image upload
 var storage = multer.diskStorage({
@@ -24,7 +25,7 @@ router.get('/', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
     //Get all produces upload by this particular user
     const userProduces = await Produce_upload_model.find({produce_owner: req.user})
 
-    console.log("The uploaded produce", userProduces);
+    // console.log("The uploaded produce", userProduces);
 
     //we are passing the user session data to the user object key
     res.render('urban_farmer_dashboard', {userProduces})
@@ -39,9 +40,18 @@ router.post('/', connectEnsureLogin.ensureLoggedIn(), upload.single("produce_ima
         const produce = new Produce_upload_model(req.body)
 
         produce.produce_image = req.file.path;
-        produce.produce_owner = req.user._id
+        produce.produce_owner = req.user._id;
 
-        console.log(produce)
+        console.log("This is from the produce", produce.produce_owner)
+        console.log("This is from the req.user", req.user._id)
+
+        const ownerDetails = await RegisterModel.findById(produce.produce_owner)
+
+        produce.fullname = ownerDetails.fullname;
+        produce.contact = ownerDetails.phone;
+
+
+        // console.log(produce)
 
         await produce.save();
 

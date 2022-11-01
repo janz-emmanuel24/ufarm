@@ -3,7 +3,8 @@ const RegistrationModel = require('../model/Register_usersModel')
 const connectEnsureLogin = require('connect-ensure-login')
 
 router.get('/', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
-    const registeredFarmerOnes = await RegistrationModel.find()
+    const registeredFarmerOnes = await RegistrationModel.find({role: "farmer one"})
+    console.log(registeredFarmerOnes);
     res.render('agric_officer_dashboard', {registeredFarmerOnes})
 })
 
