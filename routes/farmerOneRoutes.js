@@ -17,17 +17,9 @@ router.get('/', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
     const urbanfarmers = await Register_usersModel.find({role: "urban farmer"});
     const urban_farmers_uploads = await Produce_upload_model.find();
 
-    res.render('farmer_one_dashboard', {urbanfarmers, urban_farmers_uploads, loggedInFarmerOne})
-})
+    console.log(urban_farmers_uploads)
 
-router.post('/register_urban_farmer', connectEnsureLogin.ensureLoggedIn(), async (req,res) => {
-    const registerUrbanFarmers = new Register_usersModel(req.body);
-    await Register_usersModel.register(registerUrbanFarmers, req.body.password, (err, user) => {
-        if(err) console.log(err)
-        // console.log(user)
-        res.redirect('/farmer_one_dashboard')
-        // res.send('Urban Farmer Registered')
-    })
+    res.render('farmer_one_dashboard', {urbanfarmers, urban_farmers_uploads, loggedInFarmerOne})
 })
 
 router.post('/approve_decline/:productId', async (req, res) => {

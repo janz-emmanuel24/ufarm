@@ -1,0 +1,32 @@
+head
+    link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css')
+section.vh-100(style='background-color: #9A616D;')
+    .container.py-5.h-100
+        .row.d-flex.justify-content-center.align-items-center.h-100
+            .col.col-xl-10
+                .card(style='border-radius: 1rem;')
+                    .row.g-0
+                        .col-md-6.col-lg-5.d-none.d-md-block
+                            img.img-fluid(src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp' alt='login form' style='border-radius: 1rem 0 0 1rem;')
+                        .col-md-6.col-lg-7.d-flex.align-items-center
+                            .card-body.p-4.p-lg-5.text-black
+                                form(action='/user_login' method='post')
+                                    .d-flex.align-items-center.mb-3.pb-1
+                                        i.fas.fa-cubes.fa-2x.me-3(style='color: #ff6219;')
+                                        span.h1.fw-bold.mb-0 Logo
+                                    h5.fw-normal.mb-3.pb-3(style='letter-spacing: 1px;')
+                                        | Sign into your account
+                                    .form-outline.mb-4
+                                        input#form2Example17.form-control.form-control-lg(type='email' name='username')
+                                        label.form-label(for='form2Example17') Email address
+                                    .form-outline.mb-4
+                                        input#form2Example27.form-control.form-control-lg(type='password' name='password')
+                                        label.form-label(for='form2Example27') Password
+                                    .pt-1.mb-4
+                                        button.btn.btn-dark.btn-lg.btn-block(type='submit') Login
+                                    a.small.text-muted(href='#!') Forgot password?
+                                    p.mb-5.pb-lg-2(style='color: #393f81;')
+                                        | Don&apos;t have an account? 
+                                        a(href='#!' style='color: #393f81;') Register here
+                                    a.small.text-muted(href='#!') Terms of use.
+                                    a.small.text-muted(href='#!') Privacy policy

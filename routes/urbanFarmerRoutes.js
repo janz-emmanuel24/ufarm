@@ -25,10 +25,16 @@ router.get('/', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
     //Get all produces upload by this particular user
     const userProduces = await Produce_upload_model.find({produce_owner: req.user})
 
+    // console.log(req.user)
+
+    const loggedInUrbanFarmer = await RegisterModel.findById(req.user._id)
+
+    // console.log('This is the logged in urban farmer', loggedInUrbanFarmer)
+
     // console.log("The uploaded produce", userProduces);
 
     //we are passing the user session data to the user object key
-    res.render('urban_farmer_dashboard', {userProduces})
+    res.render('urban_farmer_dashboard', {userProduces, loggedInUrbanFarmer})
 })
 
 

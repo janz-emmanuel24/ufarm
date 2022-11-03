@@ -30,12 +30,12 @@ body
                 li.nav-item(role='presentation')
                     button#home-tab.nav-link.active(data-bs-toggle='tab' data-bs-target='#home' type='button' role='tab' aria-controls='home' aria-selected='true') Declined Produce
                 li.nav-item(role='presentation')
-                    button#profile-tab.nav-link(data-bs-toggle='tab' data-bs-target='#profile' type='button' role='tab' aria-controls='profile' aria-selected='false') Uploaded Produce
+                    button#profile-tab.nav-link(data-bs-toggle='tab' data-bs-target='#profile' type='button' role='tab' aria-controls='profile' aria-selected='false') Pending Approval
                 li.nav-item(role='presentation')
                     button#bookings-tab.nav-link(data-bs-toggle='tab' data-bs-target='#bookings' type='button' role='tab' aria-controls='booings' aria-selected='false') Approved Produce
                 li.nav-item(role='presentation')
                     button#contact-tab.nav-link(data-bs-toggle='tab' data-bs-target='#contact' type='button' role='tab' aria-controls='contact' aria-selected='false') Registration
-            // Urban Farmers
+            // Declined Produces - if declined provide an option of editing else have an option of deleting and uploading again
             #myTabContent.tab-content
                 #home.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='home-tab')
                     .container.mt-5
@@ -44,49 +44,50 @@ body
                                p this is where declined produce will be
                                if user 
                                     p #{user._id} #{user.fullname}
-                // Uploaded Produce
+                // Pending Approval
                 #profile.tab-pane.fade(role='tabpanel' aria-labelledby='profile-tab')
                     .container.mt-5
                         .row
                             each userProduce in userProduces
-                                .col-md-6.mt-3
-                                    .row
-                                        .col-md-7
-                                            p(style='text-align: left;')
-                                                strong Produce ID:
-                                                i  #{userProduce._id}
-                                            p(style='text-align: left;')
-                                                strong Produce Category:
-                                                i  #{userProduce.produce_type}
-                                            //- p(style='text-align: left;')
-                                            //-     strong Produce Subcategory:
-                                            //-     i  Vegetables
-                                            p(style='text-align: left;')
-                                                strong Produce Name:
-                                                i  #{userProduce.pname}
-                                            p(style='text-align: left;')
-                                                strong Produce Quantity:
-                                                i  #{userProduce.quantity}
-                                            p(style='text-align: left;')
-                                                strong Price Per Quantity:
-                                                i  #{userProduce.unit_price}
-                                            p(style='text-align: left;')
-                                                strong Produce Status:
-                                                i  #{userProduce.product_status}
-                                            p(style='text-align: left;')
-                                                strong Upload Date:
-                                                i  #{userProduce.upload_date}
-                                            p(style='text-align: left;')
-                                                strong U.F ward:
-                                                i  #{userProduce.pward}
-                                            //- p(style='text-align: left;')
-                                            //-     strong Contact:
-                                            //-     i  0700000001
-                                        .col-md-5
-                                            h1.h3 Uploaded Image
-                                            .text-center
-                                                img.img-thumbnail(src='/'+userProduce.produce_image alt='...')
-                                        hr
+                                if userProduce.product_status === 'pending'
+                                    .col-md-6.mt-3
+                                        .row
+                                            .col-md-7
+                                                p(style='text-align: left;')
+                                                    strong Produce ID:
+                                                    i  #{userProduce._id}
+                                                p(style='text-align: left;')
+                                                    strong Produce Category:
+                                                    i  #{userProduce.produce_type}
+                                                //- p(style='text-align: left;')
+                                                //-     strong Produce Subcategory:
+                                                //-     i  Vegetables
+                                                p(style='text-align: left;')
+                                                    strong Produce Name:
+                                                    i  #{userProduce.pname}
+                                                p(style='text-align: left;')
+                                                    strong Produce Quantity:
+                                                    i  #{userProduce.quantity}
+                                                p(style='text-align: left;')
+                                                    strong Price Per Quantity:
+                                                    i  #{userProduce.unit_price}
+                                                p(style='text-align: left;')
+                                                    strong Produce Status:
+                                                    i  #{userProduce.product_status}
+                                                p(style='text-align: left;')
+                                                    strong Upload Date:
+                                                    i  #{userProduce.upload_date}
+                                                p(style='text-align: left;')
+                                                    strong U.F ward:
+                                                    i  #{userProduce.pward}
+                                                //- p(style='text-align: left;')
+                                                //-     strong Contact:
+                                                //-     i  0700000001
+                                            .col-md-5
+                                                h1.h3 Uploaded Image
+                                                .text-center
+                                                    img.img-thumbnail(src='/'+userProduce.produce_image alt='...')
+                                            hr
                 // Approved Produce
                 #bookings.tab-pane.fade(role='tabpanel' aria-labelledby='bookings-tab')
                     .container.mt-5
@@ -148,10 +149,10 @@ body
                                     input#fo_name.form-control(type='text' name='pname')
                                 .col-md-2.mb-3
                                     label.form-label(for='fo_ward') Produce Ward:
-                                    input#fo_ward.form-control(type='text' name='pward')
-                                .col-md-4.mb-3
-                                    label.form-label(for='upload_date') Upload Date:
-                                    input#date_of_birth.form-control(type='date' name='upload_date')
+                                    input#fo_ward.form-control(type='text' name='pward' value=`${loggedInUrbanFarmer.ward}` readonly)
+                                //- .col-md-4.mb-3
+                                //-     label.form-label(for='upload_date') Upload Date:
+                                //-     input#date_of_birth.form-control(type='date' name='upload_date')
                                 .col-md-4.mb-3
                                     label.form-label(for='unit_price') Unit Price:
                                     input#unit_price.form-control(type='number' name='unit_price')
@@ -165,9 +166,9 @@ body
                                         option(value='horticulture') Horticulture
                                         option(value='poultry') Poultry
                                         option(value='diary') Diary
-                                .col-md-3.mb-3
-                                    label.form-label(for='produce_status') Produce Status:
-                                    input#period_of_stay.form-control(type='text' name='produce_status')
+                                //- .col-md-3.mb-3
+                                //-     label.form-label(for='produce_status') Produce Status:
+                                //-     input#period_of_stay.form-control(type='text' name='produce_status')
                                 .col-md-4.mb-3
                                     label.form-label(for='produce_image') produce Image
                                     input#produce_image.form-control(type='file' name='produce_image')

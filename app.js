@@ -10,12 +10,16 @@ const session = require('express-session')
 
 //Required
 const RegisterUserModel = require('./model/Register_usersModel');
+const RegisterPublicUsersModel = require('./model/Public_registration');
+
 const configurations = require('./config/config')
 const agricRoutes = require('./routes/agricOfficerRoutes')
 const farmerOneRoutes = require('./routes/farmerOneRoutes');
 const urbanFarmerRoutes = require('./routes/urbanFarmerRoutes');
-const authRoutes = require('./routes/authRoutes')
 const generalRoutes = require('./routes/publicUserRoutes')
+
+const authRoutes = require('./routes/authRoutes')
+const public_authRoutes = require('./routes/public_auth');
 
 //pug config
 app.set('view engine', 'pug')
@@ -41,9 +45,18 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 //declaring static methods to use on the model
-passport.use(RegisterUserModel.createStrategy())
-passport.serializeUser(RegisterUserModel.serializeUser())
-passport.deserializeUser(RegisterUserModel.deserializeUser())
+passport.use('level1', RegisterUserModel.createStrategy())
+
+passport.use('level2', RegisterPublicUsersModel.createStrategy())
+
+//Farmers
+// passport.serializeUser(RegisterUserModel.serializeUser())
+// passport.deserializeUser(RegisterUserModel.deserializeUser())
+
+//public
+passport.serializeUser(RegisterPublicUsersModel.serializeUser())
+passport.deserializeUser(RegisterPublicUsersModel.deserializeUser())
+
 
 /** DATABASE CONNECTIONS */
 mongoose.connect(`${configurations.DB}`, {useNewUrlParser: true})
@@ -56,6 +69,7 @@ app.use('/agric_dashboard', agricRoutes)
 app.use('/farmer_one_dashboard', farmerOneRoutes)
 app.use('/urban_farmer_dashboard', urbanFarmerRoutes)
 app.use('/', authRoutes);
+app.use('/', public_authRoutes);
 
 
 //routes

@@ -1,0 +1,78 @@
+head
+    link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css')
+    link(rel='stylesheet' href='css/public_user_signup_signin.css')
+section.vh-100.gradient-custom
+    .container.py-5.h-100
+        .row.justify-content-center.align-items-center.h-100
+            .col-12.col-lg-9.col-xl-7
+                .card.shadow-2-strong.card-registration(style='border-radius: 15px;')
+                    .card-body.p-4.p-md-5
+                        h3.mb-4.pb-2.pb-md-0.mb-md-5 Registration Form
+                        form(action='/user_signup' method='post')
+                            .row
+                                .col-md-4.mb-3
+                                    label.form-label(for='fistname') First name:
+                                    input#firstname.form-control(type='text' name='firstname')
+                                .col-md-2.mb-3
+                                    label.form-label(for='lastname') Last Name:
+                                    input#lastname.form-control(type='text' name='lastname')
+                                //- Activities undertake
+                                //- .col-md-3.mb-3
+                                //-     label.form-label(for='fo_ward_staus') FO Status in ward:
+                                //-     select#fo_ward_staus.form-select
+                                //-         option(selected='') Select a status
+                                //-         option(value='appointed') Appoointed
+                                //-         option(value='removed') Removed
+                                //-         option(value='not_appointed') Never appointed
+                                .col-md-3.mb-3
+                                    label.form-label.d-block.mb-3 Gender:
+                                    .form-check.d-inline-block
+                                        input#gender.form-check-input(type='radio' name='gender' value='male')
+                                        label.form-check-label(for='gender')
+                                            | Male
+                                    .form-check.d-inline-block.ms-4
+                                        input#female.form-check-input(type='radio' name='gender' value='female')
+                                        label.form-check-label(for='gender')
+                                            | female
+                                .col-md-4.mb-3
+                                    label.form-label(for='date_of_birth') Date of Birth:
+                                    input#date_of_birth.form-control(type='date' name='dob')
+                                //- .col-md-6
+                                //-     label.form-label.d-block.mb-3 Contacts:
+                                //-     .form-check.d-inline-block
+                                //-         input#approve_produces.form-check-input(type='checkbox' name='approve_produces')
+                                //-         label.form-check-label(for='approve_produces')
+                                //-             | Approve Produces
+                                //-     .form-check.d-inline-block.ms-4
+                                //-         input#foresee_bookings.form-check-input(type='checkbox' name='foresee_bookings')
+                                //-         label.form-check-label(for='foresee_bookings')
+                                //-             | Foresee bookings
+                                //-     .form-check.d-inline-block.ms-4
+                                //-         input#register_urban_farmers.form-check-input(type='checkbox' name='register_urban_farmers')
+                                //-         label.form-check-label(for='register_urban_farmers')
+                                //-             | Register Urban Farmers
+                                .col-md-4.mb-3
+                                    label.form-label(for='email') Email
+                                    input#email.form-control(type='email' name='username')
+                                //- .col-md-2.mb-3
+                                //-     label.form-label(for='phone') Password
+                                //-     input#phone.form-control(type='text' name='password')
+                                //- .col-md-3.mb-3
+                                //-     label.form-label(for='fo_residence_type') Residence Type:
+                                //-     select#fo_residence_type.form-select(name="residence")
+                                //-         option(selected='') Select a residence type
+                                //-         option(value='permanent') Permanent
+                                //-         option(value='temporary') Temporary
+                                //- .col-md-3.mb-3
+                                //-     label.form-label(for='period_of_stay') Period of Stay in Residence:
+                                //-     input#period_of_stay.form-control(type='text' name='period_of_stay' placeholder='10')
+                                //- .col-md-4.mb-3
+                                //-     label.form-label(for='directions_to_fo_place') Directions to farmer One Home
+                                //-     input#directions_to_fo_place.form-control(type='text' name='directions_to_fo_place')
+                                .col-md-2.mb-3 
+                                    label.form-label(for='password') Password
+                                    input#password.form-control(type='password' name='password')
+                            button.form_btn.mt-5(type='submit') Register
+
+script(src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js' integrity='sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3' crossorigin='anonymous')
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js' integrity='sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk' crossorigin='anonymous')
