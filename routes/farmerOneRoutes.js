@@ -17,7 +17,8 @@ router.get('/', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
     const urbanfarmers = await Register_usersModel.find({role: "urban farmer"});
     const urban_farmers_uploads = await Produce_upload_model.find();
 
-    console.log(urban_farmers_uploads)
+    //Aggregations to get the total produces for different categories
+    
 
     res.render('farmer_one_dashboard', {urbanfarmers, urban_farmers_uploads, loggedInFarmerOne})
 })

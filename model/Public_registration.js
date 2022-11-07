@@ -2,28 +2,17 @@ const mongoose = require('mongoose')
 const passportLocalMongoose = require('passport-local-mongoose')
 
 const publicRegSchema = new mongoose.Schema({
-    firstname: {
+   google: {
+    id: {
         type: String
     },
-    lastname: {
+    name: {
         type: String
     },
-    dob: {
-        type: Date
-    },
-    gender: {
-        type: String
-    },
-    username: {
-        type: String
-    },
-    phoneNumber: {
+    email: {
         type: String
     }
-})
-
-publicRegSchema.plugin(passportLocalMongoose,{
-    usernameField: 'username'
+   }
 })
 
 module.exports = mongoose.model('PublicUser', publicRegSchema)

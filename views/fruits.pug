@@ -36,9 +36,7 @@ head
                         h4.card-title Apple Mangoes
                         h6.quantity.my-3(style='font-weight: lighter;') medium
                         h6.price.my-3(style='font-weight: lighter;') Ugx. 5000
-                        button.btn.btn-lg.add2cart-btn(type='button')
-                            i.fa-sharp.fa-solid.fa-cart-shopping.px-2
-                            | Add to cart
+                        a.add2cart-btn.btn(href="/categories_check") Buy
             .col
                 .card.h-100
                     img.card-img-top.px-2.py-2(src='/img/avocado.jpg' alt='...')
@@ -46,9 +44,7 @@ head
                         h4.card-title Avocado
                         h6.quantity.my-3(style='font-weight: lighter;') medium
                         h6.price.my-3(style='font-weight: lighter;') Ugx. 5000
-                        button.btn.btn-lg.add2cart-btn(type='button')
-                            i.fa-sharp.fa-solid.fa-cart-shopping.px-2
-                            | Add to cart
+                        a.add2cart-btn.btn(href="/categories_check") Buy
             .col
                 .card.h-100
                     img.card-img-top.px-2.py-2(src='/img/watermelon.jpg' alt='...')
@@ -56,59 +52,7 @@ head
                         h4.card-title Black water melon
                         h6.quantity.my-3(style='font-weight: lighter;') medium
                         h6.price.my-3(style='font-weight: lighter;') Ugx. 5000
-                        button.btn.btn-lg.add2cart-btn(type='button')
-                            i.fa-sharp.fa-solid.fa-cart-shopping.px-2
-                            | Add to cart
-            .col
-                .card.h-100
-                    img.card-img-top.px-2.py-2(src='/img/apples.jpg' alt='...')
-                    .card-body.text-center.my-4
-                        h4.card-title Green Apples
-                        h6.quantity.my-3(style='font-weight: lighter;') medium
-                        h6.price.my-3(style='font-weight: lighter;') Ugx. 5000
-                        button.btn.btn-lg.add2cart-btn(type='button')
-                            i.fa-sharp.fa-solid.fa-cart-shopping.px-2
-                            | Add to cart
-            .col
-                .card.h-100
-                    img.card-img-top.px-2.py-2(src='/img/coconuts.jpg' alt='...')
-                    .card-body.text-center.my-4
-                        h4.card-title Green Coconuts
-                        h6.quantity.my-3(style='font-weight: lighter;') medium
-                        h6.price.my-3(style='font-weight: lighter;') Ugx. 5000
-                        button.btn.btn-lg.add2cart-btn(type='button')
-                            i.fa-sharp.fa-solid.fa-cart-shopping.px-2
-                            | Add to cart
-            .col
-                .card.h-100
-                    img.card-img-top.px-2.py-2(src='/img/jack_fruit.jpg' alt='...')
-                    .card-body.text-center.my-4
-                        h4.card-title Jack fruit
-                        h6.quantity.my-3(style='font-weight: lighter;') medium
-                        h6.price.my-3(style='font-weight: lighter;') Ugx. 5000
-                        button.btn.btn-lg.add2cart-btn(type='button')
-                            i.fa-sharp.fa-solid.fa-cart-shopping.px-2
-                            | Add to cart
-            .col
-                .card.h-100
-                    img.card-img-top.px-2.py-2(src='/img/oranges.jpg' alt='...')
-                    .card-body.text-center.my-4
-                        h4.card-title Local oranges
-                        h6.quantity.my-3(style='font-weight: lighter;') medium
-                        h6.price.my-3(style='font-weight: lighter;') Ugx. 5000
-                        button.btn.btn-lg.add2cart-btn(type='button')
-                            i.fa-sharp.fa-solid.fa-cart-shopping.px-2
-                            | Add to cart
-            .col
-                .card.h-100
-                    img.card-img-top.px-2.py-2(src='/img/tangarine.jpg' alt='...')
-                    .card-body.text-center.my-4
-                        h4.card-title Local tangerine
-                        h6.quantity.my-3(style='font-weight: lighter;') medium
-                        h6.price.my-3(style='font-weight: lighter;') Ugx. 5000
-                        button.btn.btn-lg.add2cart-btn(type='button')
-                            i.fa-sharp.fa-solid.fa-cart-shopping.px-2
-                            | Add to cart
+                        a.add2cart-btn.btn(href="/categories_check") Buy
             .col
                 .card.h-100
                     img.card-img-top.px-2.py-2(src='/img/pineapples.jpg' alt='...')
@@ -116,9 +60,7 @@ head
                         h4.card-title Pine apples
                         h6.quantity.my-3(style='font-weight: lighter;') medium
                         h6.price.my-3(style='font-weight: lighter;') Ugx. 5000
-                        button.btn.btn-lg.add2cart-btn(type='button')
-                            i.fa-sharp.fa-solid.fa-cart-shopping.px-2
-                            | Add to cart
+                        a.add2cart-btn.btn(href="/categories_check") Buy
     .veg-category-boxes.mb-5.mt-5
         h6 Other Horticulture Boxes
     .container.mb-5.bxes
@@ -128,13 +70,13 @@ head
                     img.card-img-top(src='/img/veg-fruits_box.jpg' alt='...')
                     .card-body.mt-5.mb-5
                         h5.card-title.text-center
-                            a(href='../boxSelections/vegetable_Boxes.html') Vegetable Boxes
+                            a.add2cart-btn.btn(href='/vegetables') Vegetable Boxes
             .col
                 .card.h-100
                     img.card-img-top(src='/img/salads_boxes.jpg' alt='...')
                     .card-body.mt-5.mb-5
                         h5.card-title.text-center
-                            a(href='#') Mixed Boxes
+                            a.add2cart-btn.btn(href='#') Mixed Boxes
 #footer
     .container
         .row

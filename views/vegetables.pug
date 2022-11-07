@@ -40,9 +40,7 @@ head
                                     h4.card-title #{produce.pname}
                                     h6.quantity.my-3(style='font-weight: lighter;') medium
                                     h6.price.my-3(style='font-weight: lighter;') Ugx. #{produce.unit_price}
-                                    button.btn.btn-lg.add2cart-btn(type='button')
-                                        i.fa-sharp.fa-solid.fa-cart-shopping.px-2
-                                        | Add to cart
+                                    a.add2cart-btn.btn(href="/categories_check") Buy 
     .veg-category-boxes.mb-5.mt-5
         h6 Other Horticulture Boxes
     .container.mb-5.bxes
@@ -52,7 +50,7 @@ head
                     img.card-img-top(src='/img/veg-fruits_box.jpg' alt='...')
                     .card-body.mt-5.mb-5
                         h5.card-title.text-center
-                            a(href='/fruits') Fruits
+                            a.add2cart-btn.btn(href="/fruits") Fruits
             //- .col
             //-     .card.h-100
             //-         img.card-img-top(src='/img/salads_boxes.jpg' alt='...')
