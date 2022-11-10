@@ -38,6 +38,9 @@ const registerUsers_schema = new mongoose.Schema({
     directionsToPlace: {
         type: String
     },
+    farmer_email: {
+        type: String
+    },
     periodOfStay: {
         type: Number
     },

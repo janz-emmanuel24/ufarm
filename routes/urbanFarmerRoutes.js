@@ -4,6 +4,8 @@ const connectEnsureLogin = require('connect-ensure-login')
 
 const Produce_upload_model = require('../model/Produce_upload_model')
 const RegisterModel = require('../model/Register_usersModel')
+const User_orders = require('../model/OrdersSchema')
+const { request } = require('express')
 
 //image upload
 var storage = multer.diskStorage({
@@ -18,7 +20,8 @@ var storage = multer.diskStorage({
 //instantiating a variable to store multer's functionality
 var upload = multer({storage: storage})
 
-router.get('/', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
+//display urban farmer information
+router.get('/', connectEnsureLogin.ensureLoggedIn('/login'), async (req, res) => {
     //sets the user session to req.user which is the current user
     req.session.user = req.user
     
@@ -29,15 +32,14 @@ router.get('/', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
 
     const loggedInUrbanFarmer = await RegisterModel.findById(req.user._id)
 
-    // console.log('This is the logged in urban farmer', loggedInUrbanFarmer)
-
-    // console.log("The uploaded produce", userProduces);
+    //See all orders directed to him
+    const urbanFarmerOrders = await User_orders.find()
 
     //we are passing the user session data to the user object key
-    res.render('urban_farmer_dashboard', {userProduces, loggedInUrbanFarmer})
+    res.render('urban_farmer_dashboard', {userProduces, loggedInUrbanFarmer, urbanFarmerOrders})
 })
 
-
+//Upload a produce
 router.post('/', connectEnsureLogin.ensureLoggedIn(), upload.single("produce_image"), async (req, res) => {
 
     req.session.user = req.user
@@ -48,8 +50,8 @@ router.post('/', connectEnsureLogin.ensureLoggedIn(), upload.single("produce_ima
         produce.produce_image = req.file.path;
         produce.produce_owner = req.user._id;
 
-        console.log("This is from the produce", produce.produce_owner)
-        console.log("This is from the req.user", req.user._id)
+        // console.log("This is from the produce", produce.produce_owner)
+        // console.log("This is from the req.user", req.user._id)
 
         const ownerDetails = await RegisterModel.findById(produce.produce_owner)
 
@@ -65,7 +67,38 @@ router.post('/', connectEnsureLogin.ensureLoggedIn(), upload.single("produce_ima
 
     } catch(err) {
         console.log(err)
-    }
+    } 
+})
+
+//approving the order 
+router.post('/approve_user_order/:order_id', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
+    const order_id = req.params.order_id
+    
+    const requestedOrder = await User_orders.findOne({_id: order_id})
+
+    requestedOrder.order_status = req.body.approve_decline_order
+
+    console.log(requestedOrder)
+
+    await requestedOrder.save()
+
+    res.redirect('back')
+})
+
+//Update product availability
+router.post('/update_product_availability/:product_id', async (req, res) => {
+
+    const product_id = req.params.product_id;
+
+    const product_to_update = await Produce_upload_model.findOne({_id: product_id})
+
+    product_to_update.produce_availability = req.body.product_availability
+
+    // console.log(product_to_update);
+
+    product_to_update.save()
+
+    res.redirect('back')
 })
 
 module.exports = router;

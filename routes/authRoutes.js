@@ -3,8 +3,7 @@ const passport = require('passport')
 const connectEnsureLogin = require('connect-ensure-login')
 
 const RegisterUserModel = require('../model/Register_usersModel')
-const RegisterPublicUsersModel = require('../model/Register_usersModel')
-
+// const RegisterPublicUsersModel = require('../model/Register_usersModel')
 
 
 router.get('/login', (req, res) => {
@@ -15,11 +14,6 @@ router.post('/login', passport.authenticate('local', {failureRedirect: '/login'}
     //if login is successful - redirect to the right page
 
     req.session.user = req.user;
-
-    // let user = req.session.user;
-    // console.log(user.loginId, user.role)
-
-    // console.log(user)
 
     if(req.user.role === 'urban farmer') {
         res.redirect('/urban_farmer_dashboard')

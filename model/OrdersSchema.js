@@ -31,6 +31,9 @@ const orderSchema = new mongoose.Schema({
     produce_owner_contact: {
         type: String
     },
+    produce_owner_ward: {
+        type: String
+    },
     produce_owner_email: {
         type: String
     },

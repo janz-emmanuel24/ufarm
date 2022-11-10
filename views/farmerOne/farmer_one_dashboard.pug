@@ -75,13 +75,16 @@ body
                                                         strong Name:
                                                         i  #{urban_farmer_upload.pname}
                                                     p(style='text-align: left;')
+                                                        strong Status:
+                                                        i  #{urban_farmer_upload.product_status}
+                                                    p(style='text-align: left;')
                                                         strong Category:
                                                         i  #{urban_farmer_upload.produce_type}
                                                     p(style='text-align: left;')
                                                         strong Owner:
                                                         i  #{urban_farmer_upload.fullname}
                                                 .col-md-5.mt-3
-                                                    h6(style="color: #3F704D") Image
+                                                    h6(style="color: #3F704D") #{urban_farmer_upload.pname}
                                                     .text-center
                                                         img.img-thumbnail(src=`/${urban_farmer_upload.produce_image}` alt='...')
                                             hr
@@ -110,118 +113,26 @@ body
                 #bookings.tab-pane.fade(role='tabpanel' aria-labelledby='bookings-tab')
                     .container.mt-5
                         .row
-                            .col-md-6.mt-3
-                                p(style='text-align: left;')
-                                    strong Public User:
-                                    i  Jansuk
-                                p(style='text-align: left;')
-                                    strong Public User Phone:
-                                    i  0720000000
-                                p(style='text-align: left;')
-                                    strong Public User Location:
-                                    i  Wandegeya, Kulumba Zone
-                                h5 Bookings Details:
-                                p(style='text-align: left;')
-                                    strong Date:
-                                    i  12-10-2022
-                                p(style='text-align: left;')
-                                    strong Purchase Reference ID:
-                                    i  1KDJSK325DD
-                                p(style='text-align: left;')
-                                    strong Purchase Message:
-                                    i  Pending Approval
-                                h5 Delivery Details:
-                                p(style='text-align: left;')
-                                    strong Mode:
-                                    i  home
-                                p(style='text-align: left;')
-                                    strong Personel:
-                                    i  
-                                p(style='text-align: left;')
-                                    strong Personel Contact:
-                                    i  
-                                h5 Produce Details:
-                                p(style='text-align: left;')
-                                    strong Produce ID:
-                                    i  002
-                                p(style='text-align: left;')
-                                    strong Produce Category:
-                                    i  Horticulture
-                                p(style='text-align: left;')
-                                    strong Produce name:
-                                    i  tomatoes
-                                p(style='text-align: left;')
-                                    strong Produce Quantiy:
-                                    i  1kg
-                                p(style='text-align: left;')
-                                    strong Produce Price Per Quantity:
-                                    i  2000
-                                p(style='text-align: left;')
-                                    strong Urban Farmer:
-                                    i  Lucy
-                                .row
-                                    .col-md-6
-                                        // approve and a modal window shows up where we put the message(to change the purchase message) and the details of the delivered: contact and name
-                                        a.general_button(href='#') Approve Order
-                                    .col-md-6
-                                        // Decline order with a message to the user about referal of the money: this is in the purchase message
-                                        a(href='#') Decline Order
-                            .col-md-6.mt-3
-                                p(style='text-align: left;')
-                                    strong Public User:
-                                    i  Jansuk
-                                p(style='text-align: left;')
-                                    strong Public User Phone:
-                                    i  0720000000
-                                p(style='text-align: left;')
-                                    strong Public User Location:
-                                    i  Wandegeya, Kulumba Zone
-                                h5 Bookings Details:
-                                p(style='text-align: left;')
-                                    strong Date:
-                                    i  12-10-2022
-                                p(style='text-align: left;')
-                                    strong Purchase Reference ID:
-                                    i  1KDJSK325DD
-                                p(style='text-align: left;')
-                                    strong Purchase Message:
-                                    i  Pending Approval
-                                h5 Delivery Details:
-                                p(style='text-align: left;')
-                                    strong Mode:
-                                    i  home
-                                p(style='text-align: left;')
-                                    strong Personel:
-                                    i  
-                                p(style='text-align: left;')
-                                    strong Personel Contact:
-                                    i  
-                                h5 Produce Details:
-                                p(style='text-align: left;')
-                                    strong Produce ID:
-                                    i  002
-                                p(style='text-align: left;')
-                                    strong Produce Category:
-                                    i  Horticulture
-                                p(style='text-align: left;')
-                                    strong Produce name:
-                                    i  tomatoes
-                                p(style='text-align: left;')
-                                    strong Produce Quantiy:
-                                    i  1kg
-                                p(style='text-align: left;')
-                                    strong Produce Price Per Quantity:
-                                    i  2000
-                                p(style='text-align: left;')
-                                    strong Urban Farmer:
-                                    i  Lucy
-                                .row
-                                    .col-md-6
-                                        // approve and a modal window shows up where we put the message(to change the purchase message) and the details of the delivered: contact and name
-                                        a.general_button(href='#') Approve Order
-                                    .col-md-6
-                                        // Decline order with a message to the user about referal of the money: this is in the purchase message
-                                        a(href='#') Decline Order
+                            if user_orders_for_farmerOne_ward.length 
+                                each user_order_for_farmerOne_ward in user_orders_for_farmerOne_ward
+                                    if user_order_for_farmerOne_ward.produce_owner_ward === loggedInFarmerOne.ward
+                                        .col-md-4.mb-4
+                                            p(style='text-align: left')
+                                                strong Order Status 
+                                                i(style='color: #4CBB17; font-weight: bolder') #{user_order_for_farmerOne_ward.order_status} 
+                                            p(style='text-align: left')
+                                                strong Produce Ordered 
+                                                i #{user_order_for_farmerOne_ward.produce_ordered}
+                                            p(style='text-align: left')
+                                                strong Produce Quantity 
+                                                i #{user_order_for_farmerOne_ward.order_quantity}
+                                            p(style='text-align: left')
+                                                strong Price Per Quantity 
+                                                i #{user_order_for_farmerOne_ward.unit_price}
+                                            p(style='text-align: left')
+                                                // To be got after aggregations
+                                                strong Produce Total 
+                                                i #{user_order_for_farmerOne_ward.order_quantity}
                 // Approved Bookings
                 #approved-bookings.tab-pane.fade(role='tabpanel' aria-labelledby='approved-bookings-tab')
                     .container.mt-5

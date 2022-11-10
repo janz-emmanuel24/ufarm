@@ -42,17 +42,9 @@ head
                                     h4.card-title #{produce.pname}
                                     h6.quantity.my-3(style='font-weight: lighter;') medium
                                     h6.price.my-3(style='font-weight: lighter;') Ugx. #{produce.unit_price}
-                                    //- book order is a form with hidden fields containing produce id, produce owner id and we get the user who booked from session
-                                    //- form(action='/my_bookings' method='post') 
-                                    
-                                    //-     input(type='hidden' name='produce_id' value=`${produce._id}`)
-                                    //-     input(type='hidden' name='produce_owner' value=`${produce.produce_owner}`)
-                                    //-     button.add2cart-btn.btn(href='/my_bookings')
-                                    //-         | Book Order
-                                    button.add2cart-btn.btn(type='button' data-bs-toggle='modal' data-bs-target='#contact-sellerModal')
+                                    button.add2cart-btn.btn(type='button' data-bs-toggle='modal' data-bs-target=`#contact-sellerModal-${produce._id}`)
                                         | Book Order
-                                    // Modal
-                                    #contact-sellerModal.modal.fade(tabindex='-1' aria-labelledby='contact-sellerModalLabel' aria-hidden='true')
+                                    .modal.fade(tabindex='-1' id=`contact-sellerModal-${produce._id}` aria-labelledby=`contact-sellerModal-${produce._id}Label` aria-hidden='true')
                                         .modal-dialog.modal-lg
                                             .modal-content
                                                 .modal-header

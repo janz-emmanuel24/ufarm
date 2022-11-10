@@ -59,6 +59,16 @@ router.get('/categories_check', connectEnsureLogin.ensureLoggedIn('/user_login')
     res.render('market', {all_produces})
 })
 
+router.get('/my_orders', connectEnsureLogin.ensureLoggedIn('/user_login'), async (req, res) => {
+
+    //get the user's orders
+    const myOrders = await OrderSchemaModel.find();
+
+    console.log('These are my orders', myOrders)
+
+    res.render('my_bookings', {myOrders})
+})
+
 router.post('/create_booking', connectEnsureLogin.ensureLoggedIn('/user_login'), async (req, res) => {
     req.session.user = req.user
 
@@ -70,6 +80,8 @@ router.post('/create_booking', connectEnsureLogin.ensureLoggedIn('/user_login'),
     // console.log('This is the bookedPrduct', bookedProduct)
     order.produce_ordered = bookedProduct.pname
     order.unit_price = bookedProduct.unit_price
+    order.produce_owner_ward = bookedProduct.pward
+    order.produce_owner_email = bookedProduct.farmer_email
 
     //some aggregation is done to change the total price depending on the quantity ordered
 
@@ -83,9 +95,14 @@ router.post('/create_booking', connectEnsureLogin.ensureLoggedIn('/user_login'),
 
     //save the order schema
     console.log('This is the order Schema', order)
+    
+    //save the order to DB
+    order.save()
 
 
     //redirect the user to the mybookings page so that he can see his orders and general information
+
+    res.redirect('/my_orders')
 
     console.log('This is the user information', req.session.user)
 
