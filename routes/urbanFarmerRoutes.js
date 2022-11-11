@@ -35,6 +35,65 @@ router.get('/', connectEnsureLogin.ensureLoggedIn('/login'), async (req, res) =>
     //See all orders directed to him
     const urbanFarmerOrders = await User_orders.find()
 
+    //Get Produce totals according to category and based on the logged in user
+    const horticulture_totals = await Produce_upload_model.aggregate([
+        {$match: {produce_type: 'horticulture'}},
+        {$group: {
+            _id: {
+                _id: '$fullname',
+                fullname: '$fullname'
+            }, 
+            totalQuantity: {
+                $sum: '$quantity'
+            }, 
+            total_of_all_horticulture_products: {
+                $sum: {
+                    $multiply: ['$unit_price', '$quantity']
+                }
+            }
+        }}
+    ])
+
+    const poultry_totals = await Produce_upload_model.aggregate([
+        {$match: {produce_type: 'poultry'}},
+        {$group: {
+            _id: {
+                _id: '$fullname',
+                fullname: '$fullname'
+            }, 
+            totalQuantity: {
+                $sum: '$quantity'
+            }, 
+            total_of_all_poultry_products: {
+                $sum: {
+                    $multiply: ['$unit_price', '$quantity']
+                }
+            }
+        }}
+    ])
+
+    const diary_totals = await Produce_upload_model.aggregate([
+        {$match: {produce_type: 'diary'}},
+        {$group: {
+            _id: {
+                _id: '$fullname',
+                fullname: '$fullname'
+            }, 
+            totalQuantity: {
+                $sum: '$quantity'
+            }, 
+            total_of_all_diary_products: {
+                $sum: {
+                    $multiply: ['$unit_price', '$quantity']
+                }
+            }
+        }}
+    ])
+
+    console.log('This is total for Horticulture ', horticulture_totals)
+    console.log('This is total for poultry ', poultry_totals)
+    console.log('This is total for diary ', diary_totals)
+
     //we are passing the user session data to the user object key
     res.render('urban_farmer_dashboard', {userProduces, loggedInUrbanFarmer, urbanFarmerOrders})
 })

@@ -27,7 +27,7 @@ body
                 li.nav-item(role='presentation')
                     button#home-tab.nav-link.active(data-bs-toggle='tab' data-bs-target='#home' type='button' role='tab' aria-controls='home' aria-selected='true') Pending Orders
                 li.nav-item(role='presentation')
-                    button#profile-tab.nav-link(data-bs-toggle='tab' data-bs-target='#profile' type='button' role='tab' aria-controls='profile' aria-selected='false') Delivered Orders
+                    button#profile-tab.nav-link(data-bs-toggle='tab' data-bs-target='#profile' type='button' role='tab' aria-controls='profile' aria-selected='false') Approved Orders
                 //- li.nav-item(role='presentation')
                 //-     button#contact-tab.nav-link(data-bs-toggle='tab' data-bs-target='#contact' type='button' role='tab' aria-controls='contact' aria-selected='false') Declined
             #myTabContent.tab-content
@@ -37,38 +37,38 @@ body
                         .row
                             if myOrders.length 
                                 each myOrder in myOrders
-                                    if myOrder.order_status === 'booked & pending'  
+                                    if myOrder._id.order_status === 'booked & pending' 
                                         .col-md-4.mb-4
                                             p(style='text-align: left')
                                                 strong Order Status 
-                                                i(style='color: #4CBB17; font-weight: bolder') #{myOrder.order_status} 
+                                                i(style='color: #4CBB17; font-weight: bolder') #{myOrder._id.order_status} 
                                             p(style='text-align: left')
                                                 strong Produce Ordered 
-                                                i #{myOrder.produce_ordered}
+                                                i #{myOrder._id.produce_ordered}
                                             p(style='text-align: left')
                                                 strong Produce Quantity 
-                                                i #{myOrder.order_quantity}
+                                                i #{myOrder._id.order_quantity}
                                             p(style='text-align: left')
                                                 strong Price Per Quantity 
-                                                i #{myOrder.unit_price}
+                                                i #{myOrder._id.unit_price}
                                             p(style='text-align: left')
                                                 // To be got after aggregations
                                                 strong Produce Total 
-                                                i #{myOrder.order_quantity}
+                                                i #{myOrder.productTotal}
                                             // Button trigger modal
-                                            button.add2cart-btn.btn(type='button' data-bs-toggle='modal' data-bs-target=`#exampleModal-${myOrder._id}`)
+                                            button.add2cart-btn.btn(type='button' data-bs-toggle='modal' data-bs-target=`#exampleModal-${myOrder._id._id}`)
                                                 | Contact Seller
                                         // Modal
-                                        .modal.fade(tabindex='-1' id=`exampleModal-${myOrder._id}` aria-labelledby=`exampleModal-${myOrder._id}Label` aria-hidden='true')
+                                        .modal.fade(tabindex='-1' id=`exampleModal-${myOrder._id._id}` aria-labelledby=`exampleModal-${myOrder._id._id}Label` aria-hidden='true')
                                             .modal-dialog.modal-dialog-centered
                                                 .modal-content
                                                     .modal-header
-                                                        h5#exampleModalLabel.modal-title Product: #{myOrder.produce_ordered}
+                                                        h5#exampleModalLabel.modal-title Product: #{myOrder._id.produce_ordered}
                                                         button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
                                                     .modal-body
                                                         .row.mt-2.mb-2 
                                                             .col-12 
-                                                                h4 Seller Name: #{myOrder.produce_owner_name}
+                                                                h4 Seller Name: #{myOrder._id.produce_owner_name}
                                                                 .row 
                                                                     .col-4 
                                                                     .col-4 
@@ -76,17 +76,63 @@ body
                                                                     .col-4
                                                         .row 
                                                             .col-12 
-                                                                h5 Dail Contact: #{myOrder.produce_owner_contact}
+                                                                h5 Dail Contact: #{myOrder._id.produce_owner_contact}
                                                             .col-12.mt-3 
                                                                 h6.text-center 
-                                                                    a(href=`mailto:${myOrder.produce_owner_email}` style='text-decoration: none') Email #{myOrder.produce_owner_name}
+                                                                    a(href=`mailto:${myOrder._id.produce_owner_email}` style='text-decoration: none') Email #{myOrder._id.produce_owner_name}
                             else 
                                 p No Orders were made
-                // Uploaded Produce
+                // Delivered
                 #profile.tab-pane.fade(role='tabpanel' aria-labelledby='profile-tab')
                     .container.mt-5
                         .row
-                            p Delivered Orders                        
+                            if myOrders.length 
+                                each myOrder in myOrders
+                                    if myOrder._id.order_status === 'Approved for Delivery' 
+                                        .col-md-4.mb-4
+                                            p(style='text-align: left')
+                                                strong Order Status 
+                                                i(style='color: #4CBB17; font-weight: bolder') #{myOrder._id.order_status} 
+                                            p(style='text-align: left')
+                                                strong Produce Ordered 
+                                                i #{myOrder._id.produce_ordered}
+                                            p(style='text-align: left')
+                                                strong Produce Quantity 
+                                                i #{myOrder._id.order_quantity}
+                                            p(style='text-align: left')
+                                                strong Price Per Quantity 
+                                                i #{myOrder._id.unit_price}
+                                            p(style='text-align: left')
+                                                // To be got after aggregations
+                                                strong Produce Total 
+                                                i #{myOrder.productTotal}
+                                            // Button trigger modal
+                                            button.add2cart-btn.btn(type='button' data-bs-toggle='modal' data-bs-target=`#exampleModal-${myOrder._id._id}`)
+                                                | Contact Seller
+                                        // Modal
+                                        .modal.fade(tabindex='-1' id=`exampleModal-${myOrder._id._id}` aria-labelledby=`exampleModal-${myOrder._id._id}Label` aria-hidden='true')
+                                            .modal-dialog.modal-dialog-centered
+                                                .modal-content
+                                                    .modal-header
+                                                        h5#exampleModalLabel.modal-title Product: #{myOrder._id.produce_ordered}
+                                                        button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                                                    .modal-body
+                                                        .row.mt-2.mb-2 
+                                                            .col-12 
+                                                                h4 Seller Name: #{myOrder._id.produce_owner_name}
+                                                                .row 
+                                                                    .col-4 
+                                                                    .col-4 
+                                                                        hr
+                                                                    .col-4
+                                                        .row 
+                                                            .col-12 
+                                                                h5 Dail Contact: #{myOrder._id.produce_owner_contact}
+                                                            .col-12.mt-3 
+                                                                h6.text-center 
+                                                                    a(href=`mailto:${myOrder._id.produce_owner_email}` style='text-decoration: none') Email #{myOrder._id.produce_owner_name}
+                            else 
+                                p No Orders were made                    
                 // Declined
                 //- #contact.tab-pane.fade(role='tabpanel' aria-labelledby='contact-tab')
                 //-     .container.mt-5

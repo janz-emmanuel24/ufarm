@@ -62,9 +62,32 @@ router.get('/categories_check', connectEnsureLogin.ensureLoggedIn('/user_login')
 router.get('/my_orders', connectEnsureLogin.ensureLoggedIn('/user_login'), async (req, res) => {
 
     //get the user's orders
-    const myOrders = await OrderSchemaModel.find();
+    // const myOrders = await OrderSchemaModel.find();
 
-    console.log('These are my orders', myOrders)
+    const myOrders = await OrderSchemaModel.aggregate([
+        {$match: {$or: [{order_status: 'booked & pending'},{order_status: 'Approved for Delivery'}]}},
+        {$group: {
+            _id: {
+                _id: '$_id', 
+                order_status: '$order_status', 
+                produce_owner_name: '$produce_owner_name',
+                produce_ordered: '$produce_ordered',
+                order_quantity: '$order_quantity',
+                unit_price: '$unit_price',
+                produce_owner_email: '$produce_owner_email',
+                produce_owner_contact: '$produce_owner_contact'
+            }, 
+            productTotal: {
+                $sum: {
+                    $multiply: ["$order_quantity", "$unit_price"]
+                }
+            }
+        }}
+    ])
+
+    console.log('These are my orders with totals', myOrders)
+
+    console.log('This is the first item in the ordersWithTotals', myOrders[1]._id.produce_owner_name, 'And this is the total ', myOrders[1].productTotal);
 
     res.render('my_bookings', {myOrders})
 })
@@ -83,8 +106,6 @@ router.post('/create_booking', connectEnsureLogin.ensureLoggedIn('/user_login'),
     order.produce_owner_ward = bookedProduct.pward
     order.produce_owner_email = bookedProduct.farmer_email
 
-    //some aggregation is done to change the total price depending on the quantity ordered
-
     //get the user making the order's id
     const public_user_info = await Public_User.findOne({_id: req.session.user._id})
 
@@ -97,16 +118,15 @@ router.post('/create_booking', connectEnsureLogin.ensureLoggedIn('/user_login'),
     console.log('This is the order Schema', order)
     
     //save the order to DB
-    order.save()
-
+    // await order.save()
 
     //redirect the user to the mybookings page so that he can see his orders and general information
 
     res.redirect('/my_orders')
 
-    console.log('This is the user information', req.session.user)
+    // console.log('This is the user information', req.session.user)
 
-    console.log(req.body);
+    // console.log(req.body);
 })
 
 
