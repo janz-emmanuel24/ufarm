@@ -30,10 +30,38 @@ router.get('/', connectEnsureLogin.ensureLoggedIn('/login'), async (req, res) =>
 
     // console.log(req.user)
 
-    const loggedInUrbanFarmer = await RegisterModel.findById(req.user._id)
+    const loggedInUrbanFarmer = req.session.user
 
     //See all orders directed to him
-    const urbanFarmerOrders = await User_orders.find()
+    // const urbanFarmerOrders = await User_orders.find()
+
+    const urban_farmer_Orders = await User_orders.aggregate([
+        {$match: {order_status: 'booked & pending'}},
+        {$group: {
+            _id: {
+                _id: '$_id', 
+                order_status: '$order_status', 
+                produce_ordered: '$produce_ordered',
+                order_quantity: '$order_quantity',
+                unit_price: '$unit_price',
+                produce_owner_name: '$produce_owner_name',
+                produce_owner_email: '$produce_owner_email',
+                produce_owner_contact: '$produce_owner_contact',
+                public_user_name: '$public_user_name',
+                public_user_contact: '$public_user_contact',
+                public_user_email: '$public_user_email'
+            }, 
+            productTotal: {
+                $sum: {
+                    $multiply: ["$order_quantity", "$unit_price"]
+                }
+            }
+        }}
+    ])
+
+    console.log('These are the logged in urban Farmer_orders ', urban_farmer_Orders )
+
+    console.log('This is the logged in urbanFarmer', loggedInUrbanFarmer)
 
     //Get Produce totals according to category and based on the logged in user
     const horticulture_totals = await Produce_upload_model.aggregate([
@@ -73,7 +101,7 @@ router.get('/', connectEnsureLogin.ensureLoggedIn('/login'), async (req, res) =>
     ])
 
     const diary_totals = await Produce_upload_model.aggregate([
-        {$match: {produce_type: 'diary'}},
+        {$match: {produce_type: 'dairy'}},
         {$group: {
             _id: {
                 _id: '$fullname',
@@ -95,7 +123,7 @@ router.get('/', connectEnsureLogin.ensureLoggedIn('/login'), async (req, res) =>
     console.log('This is total for diary ', diary_totals)
 
     //we are passing the user session data to the user object key
-    res.render('urban_farmer_dashboard', {userProduces, loggedInUrbanFarmer, urbanFarmerOrders})
+    res.render('urban_farmer_dashboard', {userProduces, loggedInUrbanFarmer, urban_farmer_Orders, horticulture_totals, poultry_totals, diary_totals})
 })
 
 //Upload a produce
@@ -137,9 +165,32 @@ router.post('/approve_user_order/:order_id', connectEnsureLogin.ensureLoggedIn()
 
     requestedOrder.order_status = req.body.approve_decline_order
 
-    console.log(requestedOrder)
+    //find the product in the uploaded prodcts schema using the product id
+    const produce_quantity_to_change = await Produce_upload_model.findOne({_id: requestedOrder.produce_id})
+
+
+    // if req.body.approve_decline_order == Approved for Delivery
+    if(req.body.approve_decline_order === 'Approved for Delivery') {
+        //find the approvedProduct's quantity
+        const approved_product_quantity = requestedOrder.order_quantity
+
+        const newProductQuantity = produce_quantity_to_change.quantity - approved_product_quantity
+
+        //Change the quantity property in the produce_upload_model
+        produce_quantity_to_change.quantity = newProductQuantity
+
+        // console.log('This is the new product Quantity', newProductQuantity)
+    }
+
+    //set the new value of the quantity in the upload products to be minus that of the approve product quantity from orders
+
+    //save that new value
+
+    console.log('This is the approved order', requestedOrder)
+    console.log('This is the product found', produce_quantity_to_change)
 
     await requestedOrder.save()
+    await produce_quantity_to_change.save()
 
     res.redirect('back')
 })

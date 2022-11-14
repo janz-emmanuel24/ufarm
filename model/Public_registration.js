@@ -11,6 +11,9 @@ const publicRegSchema = new mongoose.Schema({
     },
     email: {
         type: String
+    },
+    profile_photo: {
+        type: String
     }
    }
 })

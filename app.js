@@ -44,7 +44,8 @@ authUser = async (request, accessToken, refreshToken, profile, done) => {
             google: {
                 id: profile.id,
                 name: profile.displayName,
-                email: profile.emails[0].value
+                email: profile.emails[0].value,
+                profile_photo: profile.photos[0].value
             }
         });
 

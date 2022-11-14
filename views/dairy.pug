@@ -19,47 +19,28 @@ head
                         a.nav-link.active(aria-current='page' href='#') Home
     img.banner-img(src='/img/veg_banner.jpg' alt='')
     .pdt-wrd
-        h2 Dairy
+        h2 Dairy Produces
     .pdt-desc
         | Enjoy the best of both worlds with our organic fruits and vegetables. We deliver a changing selection of organic fruits and vegetables
         | to your door, sorting the week&apos;s healthy cooking and snacking in one swoop. Every variety is 100% organic and preserved for maximum flavour.
 .pdt-main
     .pdt-category-boxes.mb-5
-        h6 Dairy Boxes
+        h6 Dairy Products
     .container.mb-5.bxes
         .row.row-cols-1.row-cols-md-2.row-cols-lg-4.g-4
-            .col
-                .card.h-100
-                    img.card-img-top(src='/img/veg-box.jpg' alt='...')
-                    .card-body.mt-5.mb-5
-                        h5.card-title.text-center
-                            a.add2cart-btn.btn(href='#') Milk Boxes
-            .col
-                .card.h-100
-                    img.card-img-top(src='/img/veg-fruits_box.jpg' alt='...')
-                    .card-body.mt-5.mb-5
-                        h5.card-title.text-center
-                            a.add2cart-btn.btn(href='#') Ghee Boxes
-            .col
-                .card.h-100
-                    img.card-img-top(src='/img/fruits_box.jpg' alt='...')
-                    .card-body.mt-5.mb-5
-                        h5.card-title.text-center
-                            a.add2cart-btn.btn(href='#') Butter Boxes
-            .col
-                .card.h-100
-                    img.card-img-top(src='/img/salads_boxes.jpg' alt='...')
-                    .card-body.mt-5.mb-5
-                        h5.card-title.text-center
-                            a.add2cart-btn.btn(href='#') Yoghurt Boxes
-            .col
-                .card.h-100
-                    img.card-img-top(src='/img/veg-box.jpg' alt='...')
-                    .card-body.mt-5.mb-5
-                        h5.card-title.text-center
-                            a.add2cart-btn.btn(href='#') Cheese Boxes
+            if all_dairy_produces.length 
+                each dairy_produce in all_dairy_produces
+                    if dairy_produce.product_status === 'approved'
+                        .col
+                            .card.h-100
+                                img.card-img-top.card-img-top.px-2.py-2(src=`/${dairy_produce.produce_image}` alt='...')
+                                .card-body.text-center.my-4
+                                    h4.card-title #{dairy_produce.pname}
+                                    h6.quantity.my-3(style='font-weight: lighter;') medium
+                                    h6.price.my-3(style='font-weight: lighter;') Ugx. #{dairy_produce.unit_price}
+                                    a.add2cart-btn.btn(href="/categories_check") Buy
     .pdt-category-boxes.mb-5
-        h6 Other Boxes
+        h6 Other Product Category
     .container.other-section
         .row.row-cols-1.row-cols-md-2.g-4.justify-content-center
             .col-md-4

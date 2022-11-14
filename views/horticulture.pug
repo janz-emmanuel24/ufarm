@@ -4,9 +4,10 @@ head
     meta(http-equiv='X-UA-Compatible' content='IE=edge')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
     link(rel='stylesheet' href='bootstrap-5.0.2-dist/css/bootstrap.min.css')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css' integrity='sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==' crossorigin='anonymous' referrerpolicy='no-referrer')
     link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT' crossorigin='anonymous')
     link(rel='stylesheet' href='css/style.css')
-    title Horticulture
+    title Vegetables
 #pdt-banner
     .banner_menu
          nav.navbar.navbar-expand-lg.navbar-light
@@ -19,48 +20,40 @@ head
                         a.nav-link.active(aria-current='page' href='#') Home
     img.banner-img(src='/img/veg_banner.jpg' alt='')
     .pdt-wrd
-        h2 Horticulture
+        h2 Horticulture Produces
     .pdt-desc
-        | Enjoy the best of both worlds with our organic fruits and vegetables. We deliver a changing selection of organic
-        | fruits and vegetables
-        | to your door, sorting the week&apos;s healthy cooking and snacking in one swoop. Every variety is 100% organic and
-        | preserved for maximum flavour.
-.pdt-main
-    .pdt-category-boxes.mb-5
-        h6 Horticulture Boxes
+        | Enjoy the best of both worlds with our organic fruits and vegetables. We deliver a changing selection of organic fruits and vegetables
+        | to your door, sorting the week&apos;s healthy cooking and snacking in one swoop. Every variety is 100% organic and preserved for maximum flavour.
+.veg-main
+    .veg-category-boxes.mb-5
+        h6 Horticulture Produces
+    .container
+        .row.row-cols-1.row-cols-md-3.row-cols-lg-4.g-4
+            if all_horticulture_produces
+                each horticulture_produce in all_horticulture_produces
+                    //- if produce.product_category == 'vegetable'
+                    if horticulture_produce.product_status === 'approved'
+                        .col
+                            .card.h-100
+                                img.card-img-top.card-img-top.px-2.py-2(src=`/${horticulture_produce.produce_image}` alt='...')
+                                .card-body.text-center.my-4
+                                    h4.card-title #{horticulture_produce.pname}
+                                    h6.quantity.my-3(style='font-weight: lighter;') medium
+                                    h6.price.my-3(style='font-weight: lighter;') Ugx. #{horticulture_produce.unit_price}
+                                    a.add2cart-btn.btn(href="/categories_check") Buy 
+    .veg-category-boxes.mb-5.mt-5
+        h6 Other Product Category
     .container.mb-5.bxes
-        .row.row-cols-1.row-cols-md-2.row-cols-lg-4.g-4
-            .col
-                .card.h-100
-                    img.card-img-top(src='/img/veg-box.jpg' alt='...')
-                    .card-body.mt-5.mb-5
-                        h5.card-title.text-center
-                            a.add2cart-btn.btn(href='/vegetables') Vegetable Boxes
-            .col
-                .card.h-100
-                    img.card-img-top(src='/img/veg-fruits_box.jpg' alt='...')
-                    .card-body.mt-5.mb-5
-                        h5.card-title.text-center
-                            a.add2cart-btn.btn(href='/fruits') Fruits Boxes
-            .col
-                .card.h-100
-                    img.card-img-top(src='/img/salads_boxes.jpg' alt='...')
-                    .card-body.mt-5.mb-5
-                        h5.card-title.text-center
-                            a.add2cart-btn.btn(href='../boxSelections/vegetable_Boxes.html') Mixed Boxes
-    .pdt-category-boxes.mb-5
-        h6 Other Boxes
-    .container.other-section
         .row.row-cols-1.row-cols-md-2.g-4.justify-content-center
             .col-md-4
                 .card
                     img.card-img-top(src='/img/poultry.jpg' alt='...')
-                    .card-body
+                    .card-body.h-100
                         .card-body.mt-3.mb-5.text-center
                             a.add2cart-btn.btn(href='/poultry') Poultry
             .col-md-4
-                .card
-                    img.card-img-top(src='/img/dairy.jpg' alt='...')
+                .card.h-100
+                    img.card-img-top(src='/img/horticulture.jpg' alt='...')
                     .card-body
                         .card-body.mt-3.mb-5.text-center
                             a.add2cart-btn.btn(href='/dairy') Dairy
@@ -108,6 +101,3 @@ head
                             a(href='#') Twitter
     .careof
         p.text-center &copy; 2022 Ufarm. All rights reserved
-script(src='bootstrap-5.0.2-dist/js/bootstrap.min.js')
-script(src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js' integrity='sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3' crossorigin='anonymous')
-script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js' integrity='sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz' crossorigin='anonymous')

@@ -11,88 +11,102 @@ head
     header
         nav.navbar.navbar-expand-lg
             .container-fluid
-                a.navbar-brand(href='#') Ufarm
+                a.navbar-brand(href='/')
+                    img.logo-img(src='/img/Ufarm_logo_1.svg')
                 button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navToExpand' aria-controls='navToExpand' aria-expanded='false' aria-label='Toggle navigation')
                     span.navbar-toggler-icon
                 #navToExpand.collapse.navbar-collapse
-                    ul.navbar-nav
-                        li.nav-item.dropdown.topNavItem
-                            a.nav-link.dropdown-toggle.sh(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
-                                | Shop
-                            div
-                            ul.dropdown-menu.shopDropdown
-                                li
-                                    a.dropdown-item.sh(href='/horticulture') Horticulture
-                                li
-                                    a.dropdown-item.sh(href='/dairy') Dairy
-                                li
-                                    a.dropdown-item.sh(href='/poultry') Poultry
+                    ul.navbar-nav.me-1
                         li.nav-item
                             a.nav-link.sh(href='/our_farmers') Our Farmers
                         li.nav-item
+                            a.nav-link.sh(href='/categories_in_shop') Our Market
+                        li.nav-item
                             a.nav-link.sh(href='#') About
-                        li.nav-item
-                            a.nav-link.sh(href='/user_login') Login
-                        li.nav-item
-                            a.nav-link.sh(href='/user_signup') Sign up
+                        if logged_in_public_user
+                            li.nav-item 
+                                a.nav-link.sh(href='#') My Bookings
+                            li.nav-item 
+                                .dropdown
+                                    button.btn.btn-success.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false') #{logged_in_public_user.google.name}
+                                        img.profile_img(src=`${logged_in_public_user.google.profile_photo}`, alt="user_image") 
+                                    ul.dropdown-menu(style='background: #00693E;') 
+                                        li.text-center.mt-3
+                                            form(action='/logout' method='post')
+                                                button.logout-btn(type='submit') Logout
+                            //- li.nav-item(style='padding-left: 1%') 
+                        else
+                            li.nav-item
+                                a.nav-link.sh.login-btn(href='/user_login') Login
+                        //- li.nav-item
+                        //-     a.nav-link.sh(href='/user_signup') Sign up
     #banner_word.text-center.text-white
-        h2.text-center Welcome to UFarm
-        p ~ A market place for all your horticulture, poultry and dairy products ~
+        if logged_in_public_user
+            h2.text-center Enjoy Your Shopping
+            p ~ A market place for all your horticulture, poultry and dairy products ~
+        else 
+            h2.text-center Welcome to UFarm
+            p ~ A market place for all your horticulture, poultry and dairy products ~
 section#main
-    .about.mt-5
-        h2.text-center About us
-        p.mb-5 ~ Bringing The Market To You ~
+    if logged_in_public_user
         .container
-            .row
-                .col-md-3.text-center
-                    img.img-fluid.rounded(src='/img/cabbage_jk.jpg' alt='...')
-                .col-md-7.mt-md-0.mt-sm-5
-                    h5.text-start Description
-                    p.text-start
-                        | Ufarm is an online agricultural platform that sells poultry, horticulture and diary products. It was started in the year 2022 and it aims to
-                        | promote and support urban farmining practice while easing market access and improving on the family earnings and livelihoods of the farmers within
-                        | the City centers.
-                    h5.text-center Our Mission
-                    p.text-start
-                        i
-                            | To tirelessly bring the market closer to your vicinity henceforth reducing your time moving in crowded and unhygienical markets.
-                    h5.text-center Our Vision
-                    p.text-start
-                        i
-                            | To become the leading Online Market place for all farmers located within the urban centers.
-    #howTo
-        h2 How To Order
-        p ~ Creating an order subscription is easy ~
-        .instrtns
-            .row
-                .mr-sm-1.ml-sm-1.col-sm-10.col-lg-3.inst
-                    .numbering
-                        span.num 1
-                    .instrtnsFollow
-                        h5 Shop Ufarm
-                        |               Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        |               Expedita deleniti dolorem, voluptates aut provident est?
-                .mr-sm-1.ml-sm-1.col-sm-10.col-md-10.col-lg-3.inst
-                    .numbering
-                        span.num 2
-                    .instrtnsFollow
-                        h5 Delivery
-                        |               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        |               Possimus quam corporis odit dicta nihil asperiores eum.
-                        |               Provident inventore velit asperiores enim at voluptate officiis
-                        |               voluptatibus.
-                .mr-sm-1.ml-sm-1.col-sm-10.col-lg-3.inst
-                    .numbering
-                        span.num 3
-                    .instrtnsFollow
-                        h5 Happy Delivery
-                        |               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                        |               Facere, laudantium fuga, voluptas iusto non ratione sit hic ut,
-                        |               ab corporis quas atque illum rem aspernatur.
-        a.viewShop(href='/categories_in_shop') View Our Shop
-    .viewShopSmall
-        h6
-            a(href='/categories_in_shop') View Our Shop
+            h1.pt-4 Hi #{logged_in_public_user.google.name} &#128522;, thank you for Choosing Ufarm.
+            h5 Getting Started?? Select a Category Below.
+    else 
+        .about.mt-5
+            h2.text-center About us
+            p.mb-5 ~ Bringing The Market To You ~
+            .container
+                .row
+                    .col-md-3.text-center
+                        img.img-fluid.rounded(src='/img/cabbage_jk.jpg' alt='...')
+                    .col-md-7.mt-md-0.mt-sm-5
+                        h5.text-start Description
+                        p.text-start
+                            | Ufarm is an online agricultural platform that sells poultry, horticulture and diary products. It was started in the year 2022 and it aims to
+                            | promote and support urban farmining practice while easing market access and improving on the family earnings and livelihoods of the farmers within
+                            | the City centers.
+                        h5.text-center Our Mission
+                        p.text-start
+                            i
+                                | To tirelessly bring the market closer to your vicinity henceforth reducing your time moving in crowded and unhygienical markets.
+                        h5.text-center Our Vision
+                        p.text-start
+                            i
+                                | To become the leading Online Market place for all farmers located within the urban centers.
+        #howTo
+            h2 How To Order
+            p ~ Creating an order subscription is easy ~
+            .instrtns
+                .row
+                    .mr-sm-1.ml-sm-1.col-sm-10.col-lg-3.inst
+                        .numbering
+                            span.num 1
+                        .instrtnsFollow
+                            h5 Shop Ufarm
+                            |               Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            |               Expedita deleniti dolorem, voluptates aut provident est?
+                    .mr-sm-1.ml-sm-1.col-sm-10.col-md-10.col-lg-3.inst
+                        .numbering
+                            span.num 2
+                        .instrtnsFollow
+                            h5 Delivery
+                            |               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            |               Possimus quam corporis odit dicta nihil asperiores eum.
+                            |               Provident inventore velit asperiores enim at voluptate officiis
+                            |               voluptatibus.
+                    .mr-sm-1.ml-sm-1.col-sm-10.col-lg-3.inst
+                        .numbering
+                            span.num 3
+                        .instrtnsFollow
+                            h5 Happy Delivery
+                            |               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            |               Facere, laudantium fuga, voluptas iusto non ratione sit hic ut,
+                            |               ab corporis quas atque illum rem aspernatur.
+            a.viewShop(href='/categories_in_shop') View Our Shop
+        .viewShopSmall
+            h6
+                a(href='/categories_in_shop') View Our Shop
     #exploreUfarm.container.mt-5
         h2 Explore Ufarm
         p ~ Discover the Different Categories To Shop ~
@@ -111,7 +125,7 @@ section#main
                 .card.h-100
                     img.card-img-top(src='/img/dairy.jpg' alt='...')
                     .card-body.mt-3.text-center
-                        a(href='/diary') Diary
+                        a(href='/dairy') Dairy
     .testimonials
         .row
             .col-md-5.our_features
@@ -157,11 +171,11 @@ section#main
                 h5 Pages:
                 ul
                     li
-                        a(href='#') Home
+                        a(href='/') Home
                     li
-                        a(href='#') Shop
+                        a(href='/categories_in_shop') Our Market
                     li
-                        a(href='#') Our Farmers
+                        a(href='/our_farmers') Our Farmers
                     li
                         a(href='#') About us
                     li

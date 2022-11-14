@@ -37,7 +37,8 @@ body
                         .row
                             if myOrders.length 
                                 each myOrder in myOrders
-                                    if myOrder._id.order_status === 'booked & pending' 
+                                    //- this should only be for the user that has logged in
+                                    if myOrder._id.order_status === 'booked & pending' && logged_in_public_user.google.name === myOrder._id.public_user_name
                                         .col-md-4.mb-4
                                             p(style='text-align: left')
                                                 strong Order Status 
@@ -88,7 +89,8 @@ body
                         .row
                             if myOrders.length 
                                 each myOrder in myOrders
-                                    if myOrder._id.order_status === 'Approved for Delivery' 
+                                    //- Get the logged in user so that we only see delivered produce for him only
+                                    if myOrder._id.order_status === 'Approved for Delivery' && logged_in_public_user.google.name === myOrder._id.public_user_name
                                         .col-md-4.mb-4
                                             p(style='text-align: left')
                                                 strong Order Status 

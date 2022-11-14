@@ -25,6 +25,29 @@ body
             h3.text-center Urban Farmer Dashboard
             p ~ Just some text ~
     .farmers-main
+        .container 
+            .row 
+                .col-4 
+                    h6 Horticulture 
+                    if horticulture_totals.length 
+                        each horticulture_total in horticulture_totals
+                            if horticulture_total._id.fullname === loggedInUrbanFarmer.fullname 
+                                p Total Quantity: #{horticulture_total.totalQuantity}
+                                p Total Income After Sell: #{horticulture_total.total_of_all_horticulture_products}
+                .col-4 
+                    h6 Poultry 
+                    if poultry_totals.length 
+                        each poultry_total in poultry_totals
+                            if poultry_total._id.fullname === loggedInUrbanFarmer.fullname 
+                                p Total Quantity: #{poultry_total.totalQuantity}
+                                p Total Income After Sell: #{poultry_total.total_of_all_poultry_products}
+                .col-4 
+                    h6 Diary 
+                    if diary_totals.length 
+                        each diary_total in diary_totals
+                            if diary_total._id.fullname === loggedInUrbanFarmer.fullname 
+                                p Total Quantity: #{diary_total.totalQuantity}
+                                p Total Income After Sell: #{diary_total.total_of_all_diary_products}
         .dashboard-tabs.urban-farmer-dashboard
             ul#myTab.nav.nav-tabs(role='tablist')
                 li.nav-item(role='presentation')
@@ -157,45 +180,45 @@ body
                 #publicUserBookings.tab-pane.fade(role='tabpanel' aria-labelledby='publicUserBookings-tab')
                     .container.mt-5 
                         .row
-                            if urbanFarmerOrders.length 
-                                each urbanFarmerOrder in urbanFarmerOrders 
-                                    if urbanFarmerOrder.produce_owner_name === loggedInUrbanFarmer.fullname && urbanFarmerOrder.order_status === 'booked & pending'
+                            if urban_farmer_Orders.length 
+                                each urban_farmer_Order in urban_farmer_Orders 
+                                    if urban_farmer_Order._id.produce_owner_name === loggedInUrbanFarmer.fullname && urban_farmer_Order._id.order_status === 'booked & pending'
                                         .col-md-4.mb-4
                                             p(style='text-align: left')
                                                 strong Order Status 
-                                                i(style='color: #4CBB17; font-weight: bolder') #{urbanFarmerOrder.order_status}
+                                                i(style='color: #4CBB17; font-weight: bolder') #{urban_farmer_Order._id.order_status}
                                             p(style='text-align: left')
                                                 strong Ordered By: 
-                                                i #{urbanFarmerOrder.public_user_name} : Email: #{urbanFarmerOrder.public_user_email} : Contact: #{urbanFarmerOrder.public_user_contact}
+                                                i #{urban_farmer_Order._id.public_user_name} : Email: #{urban_farmer_Order._id.public_user_email} : Contact: #{urban_farmer_Order._id.public_user_contact}
                                             p(style='text-align: left')
                                                 strong Date of Order: 
-                                                i #{urbanFarmerOrder.ordered_date}
+                                                i #{urban_farmer_Order._id.ordered_date}
                                             p(style='text-align: left')
                                                 strong Produce Ordered 
-                                                i #{urbanFarmerOrder.produce_ordered}
+                                                i #{urban_farmer_Order._id.produce_ordered}
                                             p(style='text-align: left')
                                                 strong Produce Quantity  
-                                                i #{urbanFarmerOrder.order_quantity}
+                                                i #{urban_farmer_Order._id.order_quantity}
                                             p(style='text-align: left')
                                                 strong Price Per Quantity 
-                                                i #{urbanFarmerOrder.unit_price}
+                                                i #{urban_farmer_Order._id.unit_price}
                                             p(style='text-align: left')
                                                 // To be got after aggregations
                                                 strong Produce Total 
-                                                i #{urbanFarmerOrder.order_quantity}
+                                                i #{urban_farmer_Order.productTotal}
                                             // Button trigger modal
-                                            button.add2cart-btn.btn(type='button' data-bs-toggle='modal' data-bs-target=`#exampleModal-${urbanFarmerOrder._id}`)
+                                            button.add2cart-btn.btn(type='button' data-bs-toggle='modal' data-bs-target=`#exampleModal-${urban_farmer_Order._id._id}`)
                                                 | Approve Order
                                         // modal - approve orders
-                                        .modal.fade(tabindex='-1' id=`exampleModal-${urbanFarmerOrder._id}` aria-labelledby=`exampleModal-${urbanFarmerOrder._id}Label` aria-hidden='true')
+                                        .modal.fade(tabindex='-1' id=`exampleModal-${urban_farmer_Order._id._id}` aria-labelledby=`exampleModal-${urban_farmer_Order._id._id}Label` aria-hidden='true')
                                             .modal-dialog.modal-lg
                                                 .modal-content
                                                     .modal-header
-                                                        h5#exampleModalLabel.modal-title Product: #{urbanFarmerOrder.produce_ordered} Ordered By: #{urbanFarmerOrder.public_user_name}
+                                                        h5#exampleModalLabel.modal-title Product: #{urban_farmer_Order._id.produce_ordered} Ordered By: #{urban_farmer_Order._id.public_user_name}
                                                         button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
                                                     .modal-body
                                                         .container
-                                                            form.mt-3(action=`/urban_farmer_dashboard/approve_user_order/${urbanFarmerOrder._id}` method='post')
+                                                            form.mt-3(action=`/urban_farmer_dashboard/approve_user_order/${urban_farmer_Order._id._id}` method='post')
                                                                 .form-check.d-inline-block.me-5.my-4
                                                                     input#approve.form-check-input(type='radio' name='approve_decline_order' value="Approved for Delivery")
                                                                     label.form-check-label(for='approve') Approve Order

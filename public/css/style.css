@@ -4,17 +4,53 @@ body {
     background: rgba(230, 242, 222, 0.52);
 }
 
-/* Header */
-#navToExpand {
-    justify-content: center;
+/* Logo Styles */
+
+.navbar-brand {
+    width: 100px;
 }
 
+.logo-img {
+    width: 65%;
+}
+
+/* Header */
+#navToExpand {
+    justify-content: end;
+    margin-right: 7%;
+}
+
+.logout-btn {
+    border: none;
+    padding: 3px 15px;
+    background: #fd5c63;
+    color: white;
+    border-radius: 15px;
+}
+
+.login-btn {
+    display: inline-block;
+    background: #00A693;
+    padding: 5px 25px;
+    color: white;
+    border-radius: 15px;
+    width: 100px;
+    text-align: center;
+}
+
+.profile_img {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    padding: 2%;
+}
 .navbar {
     background: rgba(33, 100, 60, 86%);
 }
 
 li .sh {
     color: white;
+    margin-right: 25px;
 }
 
 li .shopDropdown {

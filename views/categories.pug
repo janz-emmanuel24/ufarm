@@ -27,95 +27,50 @@ head
         | preserved for maximum flavour.
 .pdt-main
     .pdt-category-boxes.mb-5
-        h6 Horticulture Boxes
+        h6 Horticulture Produces
     .container.mb-5.bxes
         .row.row-cols-1.row-cols-md-2.row-cols-lg-4.g-4
-            .col
-                .card.h-100
-                    img.card-img-top(src='/img/veg-box.jpg' alt='...')
-                    .card-body.mt-5.mb-5
-                        h5.card-title.text-center
-                            a.add2cart-btn.btn(href="/vegetables") Vegetables
-            .col
-                .card.h-100
-                    img.card-img-top(src='/img/veg-fruits_box.jpg' alt='...')
-                    .card-body.mt-5.mb-5
-                        h5.card-title.text-center
-                            a.add2cart-btn.btn(href='/fruits') Fruits
-            .col
-                .card.h-100
-                    img.card-img-top(src='/img/fruits_box.jpg' alt='...')
-                    .card-body.mt-5.mb-5
-                        h5.card-title.text-center
-                            a.add2cart-btn.btn(href='#') Salads Boxes
-            .col
-                .card.h-100
-                    img.card-img-top(src='/img/salads_boxes.jpg' alt='...')
-                    .card-body.mt-5.mb-5
-                        h5.card-title.text-center
-                            a.add2cart-btn.btn(href='#') Mixed Boxes
+            if all_approved_produces
+                each approved_produce in all_approved_produces
+                    if approved_produce.produce_type === 'horticulture'
+                        .col
+                            .card.h-100
+                                img.card-img-top.card-img-top.px-2.py-2(src=`/${approved_produce.produce_image}` alt='...')
+                                .card-body.text-center.my-4
+                                    h4.card-title #{approved_produce.pname}
+                                    h6.quantity.my-3(style='font-weight: lighter;') medium
+                                    h6.price.my-3(style='font-weight: lighter;') Ugx. #{approved_produce.unit_price}
+                                    a.add2cart-btn.btn(href="/categories_check") Buy 
     .pdt-category-boxes.mb-5
-        h6 Poultry Boxes
+        h6 Poultry Produces
     .container.mb-5.bxes
         .row.row-cols-1.row-cols-md-2.row-cols-lg-4.g-4
-            .col
-                .card.h-100
-                    img.card-img-top(src='/img/veg-box.jpg' alt='...')
-                    .card-body.mt-5.mb-5
-                        h5.card-title.text-center
-                            a.add2cart-btn.btn(href='#') Chicken Boxes
-            .col
-                .card.h-100
-                    img.card-img-top(src='/img/veg-fruits_box.jpg' alt='...')
-                    .card-body.mt-5.mb-5
-                        h5.card-title.text-center
-                            a.add2cart-btn.btn(href='#') Duck Boxes
-            .col
-                .card.h-100
-                    img.card-img-top(src='/img/fruits_box.jpg' alt='...')
-                    .card-body.mt-5.mb-5
-                        h5.card-title.text-center
-                            a.add2cart-btn.btn(href='#') Geese Boxes
-            .col
-                .card.h-100
-                    img.card-img-top(src='/img/salads_boxes.jpg' alt='...')
-                    .card-body.mt-5.mb-5
-                        h5.card-title.text-center
-                            a.add2cart-btn.btn(href='#') Turkey Boxes
+            if all_approved_produces
+                each approved_produce in all_approved_produces
+                    if approved_produce.produce_type === 'poultry'
+                        .col
+                            .card.h-100
+                                img.card-img-top.card-img-top.px-2.py-2(src=`/${approved_produce.produce_image}` alt='...')
+                                .card-body.text-center.my-4
+                                    h4.card-title #{approved_produce.pname}
+                                    h6.quantity.my-3(style='font-weight: lighter;') medium
+                                    h6.price.my-3(style='font-weight: lighter;') Ugx. #{approved_produce.unit_price}
+                                    a.add2cart-btn.btn(href="/categories_check") Buy 
     .pdt-category-boxes.mb-5
-        h6 Diary Boxes
+        h6 Diary Produces
     .container.mb-5.bxes
         .row.row-cols-1.row-cols-md-2.row-cols-lg-4.g-4
-            .col
-                .card.h-100
-                    img.card-img-top(src='/img/veg-box.jpg' alt='...')
-                    .card-body.mt-5.mb-5
-                        h5.card-title.text-center
-                            a.add2cart-btn.btn(href='#') Milk Boxes
-            .col
-                .card.h-100
-                    img.card-img-top(src='/img/veg-fruits_box.jpg' alt='...')
-                    .card-body.mt-5.mb-5
-                        h5.card-title.text-center
-                            a.add2cart-btn.btn(href='#') Ghee Boxes
-            .col
-                .card.h-100
-                    img.card-img-top(src='/img/fruits_box.jpg' alt='...')
-                    .card-body.mt-5.mb-5
-                        h5.card-title.text-center
-                            a.add2cart-btn.btn(href='#') Butter Boxes
-            .col
-                .card.h-100
-                    img.card-img-top(src='/img/salads_boxes.jpg' alt='...')
-                    .card-body.mt-5.mb-5
-                        h5.card-title.text-center
-                            a.add2cart-btn.btn(href='#') Yoghurt Boxes
-            .col
-                .card.h-100
-                    img.card-img-top(src='/img/salads_boxes.jpg' alt='...')
-                    .card-body.mt-5.mb-5
-                        h5.card-title.text-center
-                            a.add2cart-btn.btn(href='#') Cheese Boxes
+            if all_approved_produces
+                each approved_produce in all_approved_produces
+                    if approved_produce.produce_type === 'dairy'
+                        .col
+                            .card.h-100
+                                img.card-img-top.card-img-top.px-2.py-2(src=`/${approved_produce.produce_image}` alt='...')
+                                .card-body.text-center.my-4
+                                    h4.card-title #{approved_produce.pname}
+                                    h6.quantity.my-3(style='font-weight: lighter;') medium
+                                    h6.price.my-3(style='font-weight: lighter;') Ugx. #{approved_produce.unit_price}
+                                    a.add2cart-btn.btn(href="/categories_check") Buy
 #footer
     .container
         .row

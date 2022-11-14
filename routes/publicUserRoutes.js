@@ -11,7 +11,12 @@ const Public_User = require('../model/Public_registration')
 /** OPEN PUBLIC ROUTES */
 
 router.get('/', (req, res) => {
-    res.render('landingpage')
+
+    logged_in_public_user = req.user;
+
+    console.log(logged_in_public_user)
+
+    res.render('landingpage', {logged_in_public_user})
 })
 
 router.get('/our_farmers', (req,res) => {
@@ -19,33 +24,33 @@ router.get('/our_farmers', (req,res) => {
 })
 
 router.get('/categories_in_shop', async (req, res) => {
-    res.render('categories')
+    const all_approved_produces = await Produce_upload_model.aggregate([{$match: {product_status: "approved"}}])
+    console.log(all_approved_produces)
+
+
+    res.render('categories', {all_approved_produces})
 })
 
 router.get('/horticulture', async (req, res) => {
     const all_horticulture_produces = await Produce_upload_model.aggregate([{$match: {produce_type: "horticulture"}}])
-    res.render('horticulture')
+    
+    res.render('horticulture', {all_horticulture_produces})
 })
 
 router.get('/dairy', async (req, res) => {
     const all_dairy_produces = await Produce_upload_model.aggregate([{$match: {produce_type: "dairy"}}])
-    res.render('dairy')
+
+    console.log('These are diary products', all_dairy_produces)
+
+    res.render('dairy', {all_dairy_produces})
 })
 
-router.get('/poultry', (req, res) => {
-    res.render('poultry')
-})
+router.get('/poultry', async (req, res) => {
+    const all_poultry_produces = await Produce_upload_model.aggregate([{$match: {produce_type: "poultry"}}])
 
-router.get('/vegetables', async (req, res) => {
-    const all_approved_produces = await Produce_upload_model.aggregate([{$match: {produce_type: "horticulture"}}])
-
-    res.render('vegetables', {all_approved_produces})
-})
-
-router.get('/fruits', async (req, res) => {
-    const all_fruits_produces = await Produce_upload_model.aggregate([{$match: {produce_type: "horticulture"}}])
-
-    res.render('fruits', {})
+    console.log('These are poultry products', all_poultry_produces)
+    
+    res.render('poultry', {all_poultry_produces})
 })
 
 
@@ -53,16 +58,34 @@ router.get('/fruits', async (req, res) => {
 
 router.get('/categories_check', connectEnsureLogin.ensureLoggedIn('/user_login'), async (req,res) => {
 
-    const all_produces = await Produce_upload_model.find();
+    let all_produces;
 
+    let searchQuery;
 
-    res.render('market', {all_produces})
+    if(req.query.search_produce) {
+        //store the query string and convert it to lowercase
+        searchQuery = req.query.search_produce.toLocaleLowerCase();
+
+        //query the DB with the search Query
+        all_produces = await Produce_upload_model.find({produce_type: searchQuery})
+    } else {
+        all_produces = await Produce_upload_model.find();
+    }
+
+    console.log('This is the searched word', searchQuery)
+    console.log('This is the returned results with the query String', all_produces)
+
+    res.render('market', {all_produces}) 
 })
 
 router.get('/my_orders', connectEnsureLogin.ensureLoggedIn('/user_login'), async (req, res) => {
 
     //get the user's orders
     // const myOrders = await OrderSchemaModel.find();
+
+    const logged_in_public_user = req.user;
+
+    console.log('This is the logged in user', logged_in_public_user)
 
     const myOrders = await OrderSchemaModel.aggregate([
         {$match: {$or: [{order_status: 'booked & pending'},{order_status: 'Approved for Delivery'}]}},
@@ -75,7 +98,8 @@ router.get('/my_orders', connectEnsureLogin.ensureLoggedIn('/user_login'), async
                 order_quantity: '$order_quantity',
                 unit_price: '$unit_price',
                 produce_owner_email: '$produce_owner_email',
-                produce_owner_contact: '$produce_owner_contact'
+                produce_owner_contact: '$produce_owner_contact',
+                public_user_name: '$public_user_name'
             }, 
             productTotal: {
                 $sum: {
@@ -89,7 +113,7 @@ router.get('/my_orders', connectEnsureLogin.ensureLoggedIn('/user_login'), async
 
     console.log('This is the first item in the ordersWithTotals', myOrders[1]._id.produce_owner_name, 'And this is the total ', myOrders[1].productTotal);
 
-    res.render('my_bookings', {myOrders})
+    res.render('my_bookings', {myOrders, logged_in_public_user})
 })
 
 router.post('/create_booking', connectEnsureLogin.ensureLoggedIn('/user_login'), async (req, res) => {
