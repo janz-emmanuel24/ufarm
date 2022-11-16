@@ -1,53 +1,12 @@
-doctype html
-head
-    meta(charset='UTF-8')
-    meta(http-equiv='X-UA-Compatible' content='IE=edge')
-    meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    link(rel='stylesheet' href='bootstrap-5.0.2-dist/css/bootstrap.min.css')
-    link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT' crossorigin='anonymous')
-    link(rel='stylesheet' href='css/style.css')
-    title Ufarm
-#topHeader_banner
-    header
-        nav.navbar.navbar-expand-lg
-            .container-fluid
-                a.navbar-brand(href='/')
-                    img.logo-img(src='/img/Ufarm_logo_1.svg')
-                button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navToExpand' aria-controls='navToExpand' aria-expanded='false' aria-label='Toggle navigation')
-                    span.navbar-toggler-icon
-                #navToExpand.collapse.navbar-collapse
-                    ul.navbar-nav.me-1
-                        li.nav-item
-                            a.nav-link.sh(href='/our_farmers') Our Farmers
-                        li.nav-item
-                            a.nav-link.sh(href='/categories_in_shop') Our Market
-                        li.nav-item
-                            a.nav-link.sh(href='#') About
-                        if logged_in_public_user
-                            li.nav-item 
-                                a.nav-link.sh(href='#') My Bookings
-                            li.nav-item 
-                                .dropdown
-                                    button.btn.btn-success.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false') #{logged_in_public_user.google.name}
-                                        img.profile_img(src=`${logged_in_public_user.google.profile_photo}`, alt="user_image") 
-                                    ul.dropdown-menu(style='background: #00693E;') 
-                                        li.text-center.mt-3
-                                            form(action='/logout' method='post')
-                                                button.logout-btn(type='submit') Logout
-                            //- li.nav-item(style='padding-left: 1%') 
-                        else
-                            li.nav-item
-                                a.nav-link.sh.login-btn(href='/user_login') Login
-                        //- li.nav-item
-                        //-     a.nav-link.sh(href='/user_signup') Sign up
-    #banner_word.text-center.text-white
-        if logged_in_public_user
-            h2.text-center Enjoy Your Shopping
-            p ~ A market place for all your horticulture, poultry and dairy products ~
-        else 
-            h2.text-center Welcome to UFarm
-            p ~ A market place for all your horticulture, poultry and dairy products ~
-section#main
+extends base.pug
+
+block title
+    if logged_in_public_user
+        title Home
+    else
+        title Welcome 
+block content
+    section#main
     if logged_in_public_user
         .container
             h1.pt-4 Hi #{logged_in_public_user.google.name} &#128522;, thank you for Choosing Ufarm.
@@ -126,82 +85,36 @@ section#main
                     img.card-img-top(src='/img/dairy.jpg' alt='...')
                     .card-body.mt-3.text-center
                         a(href='/dairy') Dairy
-    .testimonials
-        .row
-            .col-md-5.our_features
-                .row.mt-4.text-center
-                    .col-md-4.bx1
-                        img.us-img.organic(src='/img/organic.svg' alt='')
-                        h6.mt-2 100% Fresh &amp; Organic
-                        p Locally grown and sourced
-                    .col-md-4.bx1
-                        img.us-img.secure-ordering(src='/img/secured.svg' alt='')
-                        h6.mt-2 Secure Ordering
-                        p Encrypted transaction processing
-                    .col-md-3
-                    .col-md-4.bx1
-                        img.us-img.timeDelivery(src='/img/boxing_delivery.svg' alt='')
-                        h6.mt-2 Delivery
-                        p Timely delivery of produce
-            .col-md-5.user-testimonials
-                p ~ Why Choose us ~
-                h2 Testimonials
-                .testi
-                    p
-                        | Brillian service, good quality local produce delivered direct to your home. I feel it is really important
-                        | to support urban producers but I also want value for money and Ufarm gives me both.
-                    h6
-                        i Micheal Kiyimba
-                .testi.mt-4
-                    p
-                        | Brillian service, good quality local produce delivered direct to your home. I feel it is really important
-                        | to support urban producers but I also want value for money and Ufarm gives me both.
-                    h6
-                        i Micheal Kiyimba
-#footer
-    .container
-        .row
-            .col-md-4.p-3.mt-5
-                h5 Urban Farmer:
-                p From your farm to our stores and from our stores to your hand.
-                h5 Our Clients:
-                p From our stores to your household.
-                i We strive to make your meals delicious
-            .col-sm-4.col-md-4.p-3.mt-5
-                h5 Pages:
-                ul
-                    li
-                        a(href='/') Home
-                    li
-                        a(href='/categories_in_shop') Our Market
-                    li
-                        a(href='/our_farmers') Our Farmers
-                    li
-                        a(href='#') About us
-                    li
-                        a(href='#') Testimonials
-            .col-sm-4.col-md-4.p-3.mt-5
-                h5 Information:
-                h6 Main Office:
-                ul
-                    li Wandegeya Market
-                    li South Wing - shop 2001A
-                h6 Tel: 0789482852
-                h5 Opening Hours
-                ul
-                    li Monday - Friday: 8am - 8pm
-                    li Saturday - Sunday: 10am - 2pm
-                h5 Socials
-                .socials
-                    ul
-                        li
-                            a(href='#') Facebook
-                        li
-                            a(href='#') whatsApp
-                        li
-                            a(href='#') Twitter
-    .careof
-        p.text-center &copy; 2022 Ufarm. All rights reserved
-script(src='/bootstrap-5.0.2-dist/js/bootstrap.min.js')
-script(src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js' integrity='sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3' crossorigin='anonymous')
-script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js' integrity='sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz' crossorigin='anonymous')
+    if !logged_in_public_user
+        .testimonials
+            .row
+                .col-md-5.our_features
+                    .row.mt-4.text-center
+                        .col-md-4.bx1
+                            img.us-img.organic(src='/img/organic.svg' alt='')
+                            h6.mt-2 100% Fresh &amp; Organic
+                            p Locally grown and sourced
+                        .col-md-4.bx1
+                            img.us-img.secure-ordering(src='/img/secured.svg' alt='')
+                            h6.mt-2 Secure Ordering
+                            p Encrypted transaction processing
+                        .col-md-3
+                        .col-md-4.bx1
+                            img.us-img.timeDelivery(src='/img/boxing_delivery.svg' alt='')
+                            h6.mt-2 Delivery
+                            p Timely delivery of produce
+                .col-md-5.user-testimonials
+                    p ~ Why Choose us ~
+                    h2 Testimonials
+                    .testi
+                        p
+                            | Brillian service, good quality local produce delivered direct to your home. I feel it is really important
+                            | to support urban producers but I also want value for money and Ufarm gives me both.
+                        h6
+                            i Micheal Kiyimba
+                    .testi.mt-4
+                        p
+                            | Brillian service, good quality local produce delivered direct to your home. I feel it is really important
+                            | to support urban producers but I also want value for money and Ufarm gives me both.
+                        h6
+                            i Micheal Kiyimba

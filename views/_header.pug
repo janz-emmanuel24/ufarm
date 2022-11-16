@@ -1,21 +1,47 @@
-.topHeader_banner
-    header 
-        nav.navbar.navbar-expand-lg 
-            .container-fluid 
-                a.navbar-brand(href='#') Ufarm 
-                button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navToExpand"
-                aria-controls="navToExpand" aria-expanded="false" aria-label="Toggle navigation")   
-                    span.navbar-toggler-icon 
-                .collapse.navbar-collapse#navToExpand 
-                    ul.navbar-nav 
-                        li.nav-item.dropdown.topNavItem 
-                            a.nav-link.dropdown-toggle.sh(role="button" data-bs-toggle="dropdown" aria-expanded="false") Shop
-                            ul.dropdown-menu.shopDropdown 
-                                li: a.dropdown-item.sh(href='#') Horticulture 
-                                li: a.dropdown-item.sh(href='#') Diary 
-                                li: a.dropdown-item.sh(href='#') Poultry 
-                        li: a.nav-link.sh(href="#") Our Farmers 
-                        li: a.nav-link.sh(href="#") About     
-    .text-center.text-white 
-        h2.text-center Welcome to Ufarm 
-        p ~ A market place for all your horticulture, poultry and diary products ~
+#topHeader_banner
+    header
+        nav.navbar.navbar-expand-lg
+            .container-fluid
+                a.navbar-brand(href='/')
+                    img.logo-img(src='/img/Ufarm_logo_1.svg')
+                button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navToExpand' aria-controls='navToExpand' aria-expanded='false' aria-label='Toggle navigation')
+                    span.navbar-toggler-icon
+                #navToExpand.collapse.navbar-collapse
+                    ul.navbar-nav.me-1
+                        li.nav-item
+                            a.nav-link.sh(href='/') Home
+                        li.nav-item
+                            a.nav-link.sh(href='/our_farmers') Our Farmers
+                        li.nav-item
+                            a.nav-link.sh(href='/categories_in_shop') Our Market
+                        if logged_in_public_user
+                            li.nav-item
+                                a.nav-link.sh(href='/categories_check') Search Market
+                        li.nav-item
+                            a.nav-link.sh(href='#') About
+                        if logged_in_public_user
+                            li.nav-item 
+                                a.nav-link.sh(href='/my_orders') My Bookings
+                            li.nav-item 
+                                .dropdown
+                                    button.btn.btn-success.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false') #{logged_in_public_user.google.name}
+                                        img.profile_img(src=`${logged_in_public_user.google.profile_photo}` alt="user_image") 
+                                    ul.dropdown-menu(style='background: #00693E;') 
+                                        li.text-center.mt-3
+                                            form(action='/logout' method='post')
+                                                button.logout-btn(type='submit') Logout
+                            //- li.nav-item(style='padding-left: 1%') 
+                        else
+                            li.nav-item
+                                a.nav-link.sh.login-btn(href='/user_login') Login
+                        //- li.nav-item
+                        //-     a.nav-link.sh(href='/user_signup') Sign up
+    #banner_word.text-center.text-white
+        if logged_in_public_user
+            block page-view
+                h2.text-center Enjoy Your Shopping
+                p ~ A market place for all your horticulture, poultry and dairy products ~
+        else
+            block page-view 
+                h2.text-center Welcome to UFarm
+                p ~ A market place for all your horticulture, poultry and dairy products ~

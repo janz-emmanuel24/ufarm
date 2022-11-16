@@ -20,6 +20,19 @@ body {
     margin-right: 7%;
 }
 
+.searchBtn {
+    background: #01796F;
+    display: block;
+    padding: 5px 25px;
+    color: white;
+    border-radius: 15px;
+    width: 100px;
+    text-align: center;
+    border: none;
+    margin: 10px auto;
+    align-items: center;
+}
+
 .logout-btn {
     border: none;
     padding: 3px 15px;
@@ -165,9 +178,9 @@ li .shopDropdown {
     border-radius: 20px;
 }
 
-.general_button {
+/* .general_button {
 
-}
+} */
 
 .farmers-main .registered-farmers-info .farmImg {
     display: flex;

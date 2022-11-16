@@ -113,7 +113,7 @@ passport.deserializeUser((user, done) => {
 app.get('/auth/google', passport.authenticate('google', {scope: ['email', 'profile']}))
 
 //once logged in redirect to the right page
-app.get('/auth/google/callback', passport.authenticate('google', {successRedirect: '/categories_check', failureRedirect: '/user_login'}))
+app.get('/auth/google/callback', passport.authenticate('google', {successRedirect: '/', failureRedirect: '/user_login'}))
 
 //Farmers
 passport.use(RegisterUserModel.createStrategy())

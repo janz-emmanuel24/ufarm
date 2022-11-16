@@ -16,33 +16,44 @@ router.get('/', (req, res) => {
 
     console.log(logged_in_public_user)
 
-    res.render('landingpage', {logged_in_public_user})
+    res.render('landingpage', {logged_in_public_user}) 
 })
 
 router.get('/our_farmers', (req,res) => {
-    res.render('ourfarmers')
+
+    logged_in_public_user = req.user;
+
+    res.render('ourfarmers', {logged_in_public_user})
 })
 
 router.get('/categories_in_shop', async (req, res) => {
+
+    logged_in_public_user = req.user;
+
     const all_approved_produces = await Produce_upload_model.aggregate([{$match: {product_status: "approved"}}])
-    console.log(all_approved_produces)
 
-
-    res.render('categories', {all_approved_produces})
+    res.render('categories', {all_approved_produces, logged_in_public_user})
 })
 
 router.get('/horticulture', async (req, res) => {
+
+    logged_in_public_user = req.user;
+
+
     const all_horticulture_produces = await Produce_upload_model.aggregate([{$match: {produce_type: "horticulture"}}])
     
-    res.render('horticulture', {all_horticulture_produces})
+    res.render('horticulture', {all_horticulture_produces, logged_in_public_user})
 })
 
 router.get('/dairy', async (req, res) => {
+
+    logged_in_public_user = req.user;
+
     const all_dairy_produces = await Produce_upload_model.aggregate([{$match: {produce_type: "dairy"}}])
 
     console.log('These are diary products', all_dairy_produces)
 
-    res.render('dairy', {all_dairy_produces})
+    res.render('dairy', {all_dairy_produces, logged_in_public_user})
 })
 
 router.get('/poultry', async (req, res) => {
@@ -67,7 +78,9 @@ router.get('/categories_check', connectEnsureLogin.ensureLoggedIn('/user_login')
         searchQuery = req.query.search_produce.toLocaleLowerCase();
 
         //query the DB with the search Query
-        all_produces = await Produce_upload_model.find({produce_type: searchQuery})
+        all_produces = await Produce_upload_model.aggregate([
+            {$match: {$or: [{produce_type: searchQuery},{pname: searchQuery}]}}
+        ])
     } else {
         all_produces = await Produce_upload_model.find();
     }
@@ -111,7 +124,7 @@ router.get('/my_orders', connectEnsureLogin.ensureLoggedIn('/user_login'), async
 
     console.log('These are my orders with totals', myOrders)
 
-    console.log('This is the first item in the ordersWithTotals', myOrders[1]._id.produce_owner_name, 'And this is the total ', myOrders[1].productTotal);
+    // console.log('This is the first item in the ordersWithTotals', myOrders[1]._id.produce_owner_name, 'And this is the total ', myOrders[1].productTotal);
 
     res.render('my_bookings', {myOrders, logged_in_public_user})
 })
@@ -142,15 +155,11 @@ router.post('/create_booking', connectEnsureLogin.ensureLoggedIn('/user_login'),
     console.log('This is the order Schema', order)
     
     //save the order to DB
-    // await order.save()
+    await order.save()
 
     //redirect the user to the mybookings page so that he can see his orders and general information
 
     res.redirect('/my_orders')
-
-    // console.log('This is the user information', req.session.user)
-
-    // console.log(req.body);
 })
 
 
