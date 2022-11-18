@@ -1,29 +1,6 @@
-doctype html
-head
-    meta(charset='UTF-8')
-    meta(http-equiv='X-UA-Compatible' content='IE=edge')
-    meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    link(rel='stylesheet' href='bootstrap-5.0.2-dist/bootstrapCss/bootstrap.css')
-    link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT' crossorigin='anonymous')
-    link(rel='stylesheet' href='css/style.css')
-    title Farmer One Dashboard
-body
-    .farmers-header
-        .banner_menu
-            nav.navbar.navbar-expand-lg.navbar-light
-                .container-fluid
-                    a.navbar-brand(href='#') Navbar
-                    button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation')
-                        span.navbar-toggler-icon
-                    #navbarNavAltMarkup.collapse.navbar-collapse
-                        .navbar-nav 
-                            a.nav-link.active(href="/" aria-current="page") Home
-                            form.justify-content-end(action="/logout" method='post')
-                                button.btn.btn-primary.d-flex.justify-content-end(type="submit") Logout 
-        img(src='img/ourfarmers.jpg' alt='')
-        .farmers-head
-            h3.text-center Farmer One Dashboard
-            p ~ Just some text ~
+extends ../farmers_layout.pug
+
+block main_content
     .farmers-main
         .container 
             .row 
@@ -39,7 +16,7 @@ body
                         p Total Income After Sell: 0
                 .col-4
                     h6 Poultry
-                    if poultry_totals_based_on_ward.length 
+                    if poultry_totals_based_on_ward.length >= 1 
                         each poultry_total_based_on_ward in poultry_totals_based_on_ward
                             if loggedInFarmerOne.ward == poultry_total_based_on_ward._id._id
                                 if poultry_total_based_on_ward.totalQuantity    
@@ -50,7 +27,7 @@ body
                         p Total Income After Sell: 0
                 .col-4
                     h6 Diary
-                    if diary_totals_based_on_ward.length 
+                    if diary_totals_based_on_ward.length >= 1
                         each diary_total_based_on_ward in diary_totals_based_on_ward
                             if loggedInFarmerOne.ward == diary_total_based_on_ward._id._id   
                                 p Total Quantity:  #{diary_total_based_on_ward.totalQuantity}
@@ -97,7 +74,7 @@ body
                 #profile.tab-pane.fade(role='tabpanel' aria-labelledby='profile-tab')
                     .container.mt-5
                         .row
-                            if urban_farmers_uploads 
+                            if urban_farmers_uploads.length >= 1 
                                 each urban_farmer_upload in urban_farmers_uploads
                                     if urban_farmer_upload.product_status === 'pending' && urban_farmer_upload.pward === loggedInFarmerOne.ward
                                         .col-md-6.mt-3
@@ -142,11 +119,13 @@ body
                                                                             label.form-check-label(for='decline') Decline
                                                                         button.btn_dec_app.btn.btn-secondary.d-block.mt-2(type='submit' style="width: 150px; padding: 1%;") Submit
                                             hr
+                            else 
+                                h6 No produce to approve
                 // Bookings and Orders
                 #bookings.tab-pane.fade(role='tabpanel' aria-labelledby='bookings-tab')
                     .container.mt-5
                         .row
-                            if user_orders_for_farmerOne_ward.length 
+                            if user_orders_for_farmerOne_ward.length
                                 each user_order_for_farmerOne_ward in user_orders_for_farmerOne_ward
                                     if user_order_for_farmerOne_ward.produce_owner_ward === loggedInFarmerOne.ward
                                         .col-md-4.mb-4
@@ -175,6 +154,9 @@ body
                                                 strong Produce Owner Contact 
                                                 i #{user_order_for_farmerOne_ward.produce_owner_email}
                                             hr
+                                    else 
+                                        h6 No bookings as yet
+                            
                 // Approved Bookings
                 //- #approved-bookings.tab-pane.fade(role='tabpanel' aria-labelledby='approved-bookings-tab')
                 //-     .container.mt-5
@@ -303,50 +285,3 @@ body
                                     label.form-label(for='password') Password
                                     input#id_to_login.form-control(type='password' name='password')
                             button.form_btn.mt-5(type='submit') Register
-#footer
-    .container
-        .row
-            .col-md-4.p-3.mt-5
-                h5 Urban Farmer:
-                p From your farm to our stores and from our stores to your hand.
-                h5 Our Clients:
-                p From our stores to your household.
-                i We strive to make your meals delicious
-            .col-sm-4.col-md-4.p-3.mt-5
-                h5 Pages:
-                ul
-                    li
-                        a(href='#') Home
-                    li
-                        a(href='#') Shop
-                    li
-                        a(href='#') Our Farmers
-                    li
-                        a(href='#') About us
-                    li
-                        a(href='#') Testimonials
-            .col-sm-4.col-md-4.p-3.mt-5
-                h5 Information:
-                h6 Main Office:
-                ul
-                    li Wandegeya Market
-                    li South Wing - shop 2001A
-                h6 Tel: 0789482852
-                h5 Opening Hours
-                ul
-                    li Monday - Friday: 8am - 8pm
-                    li Saturday - Sunday: 10am - 2pm
-                h5 Socials
-                .socials
-                    ul
-                        li
-                            a(href='#') Facebook
-                        li
-                            a(href='#') whatsApp
-                        li
-                            a(href='#') Twitter
-    .careof
-        p.text-center &copy; 2022 Ufarm. All rights reserved
-script(src='../../srcs/bootstrap-5.0.2-dist/js/bootstrap.min.js')
-script(src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js' integrity='sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3' crossorigin='anonymous')
-script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js' integrity='sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz' crossorigin='anonymous')

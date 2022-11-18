@@ -11,12 +11,15 @@ router.get('/', connectEnsureLogin.ensureLoggedIn('/login'), async (req, res) =>
     //get the farmer One Session Details
     req.session.user = req.user;
 
+    const logged_in_user = req.user;
     const loggedInFarmerOne = req.session.user;
 
     console.log('This is th logged in farmer one',loggedInFarmerOne);
 
     const urbanfarmers = await Register_usersModel.find({role: "urban farmer"});
     const urban_farmers_uploads = await Produce_upload_model.find();
+    const produce_images = await Produce_upload_model.find();
+
 
     //Aggregations to get the total produces for different categories
 
@@ -80,13 +83,23 @@ router.get('/', connectEnsureLogin.ensureLoggedIn('/login'), async (req, res) =>
         }}
     ])
 
-    console.log('Total horticulture produces based on ward', horticulture_totals_based_on_ward)
-    console.log('Total poultry produces based on ward', poultry_totals_based_on_ward)
-    console.log('Total diary produces based on ward', diary_totals_based_on_ward)
+    // console.log('Total horticulture produces based on ward', horticulture_totals_based_on_ward)
+    // console.log('Total poultry produces based on ward', poultry_totals_based_on_ward)
+    // console.log('Total diary produces based on ward', diary_totals_based_on_ward)
 
     
 
-    res.render('farmer_one_dashboard', {urbanfarmers, urban_farmers_uploads, loggedInFarmerOne, user_orders_for_farmerOne_ward, horticulture_totals_based_on_ward, poultry_totals_based_on_ward, diary_totals_based_on_ward})
+    res.render('farmer_one_dashboard', {
+        urbanfarmers, 
+        urban_farmers_uploads, 
+        loggedInFarmerOne, 
+        user_orders_for_farmerOne_ward, 
+        horticulture_totals_based_on_ward, 
+        poultry_totals_based_on_ward, 
+        diary_totals_based_on_ward,
+        logged_in_user,
+        produce_images
+    })
 })
 
 router.post('/approve_decline/:productId', async (req, res) => {

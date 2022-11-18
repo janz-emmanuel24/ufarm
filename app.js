@@ -60,7 +60,7 @@ authUser = async (request, accessToken, refreshToken, profile, done) => {
 
 //pug config
 app.set('view engine', 'pug')
-app.set('views', [path.join(__dirname, 'views'), path.join(__dirname, 'views/agricOfficer'), path.join(__dirname, 'views/urbanFarmer'), path.join(__dirname, 'views/farmerOne'),  path.join(__dirname, 'views/BoxSelections')])
+app.set('views', [path.join(__dirname, 'views'), path.join(__dirname, 'views/agricOfficer'), path.join(__dirname, 'views/urbanFarmer'), path.join(__dirname, 'views/farmerOne'),  path.join(__dirname, 'views/templates')])
 
 //express session setup
 app.use(session({

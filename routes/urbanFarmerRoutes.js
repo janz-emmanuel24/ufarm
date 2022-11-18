@@ -32,6 +32,12 @@ router.get('/', connectEnsureLogin.ensureLoggedIn('/login'), async (req, res) =>
 
     const loggedInUrbanFarmer = req.session.user
 
+    //for the template header
+    const logged_in_user = req.user;
+
+    const produce_images = await Produce_upload_model.find();
+
+
     //See all orders directed to him
     // const urbanFarmerOrders = await User_orders.find()
 
@@ -59,9 +65,9 @@ router.get('/', connectEnsureLogin.ensureLoggedIn('/login'), async (req, res) =>
         }}
     ])
 
-    console.log('These are the logged in urban Farmer_orders ', urban_farmer_Orders )
+    // console.log('These are the logged in urban Farmer_orders ', urban_farmer_Orders )
 
-    console.log('This is the logged in urbanFarmer', loggedInUrbanFarmer)
+    // console.log('This is the logged in urbanFarmer', loggedInUrbanFarmer)
 
     //Get Produce totals according to category and based on the logged in user
     const horticulture_totals = await Produce_upload_model.aggregate([
@@ -118,12 +124,21 @@ router.get('/', connectEnsureLogin.ensureLoggedIn('/login'), async (req, res) =>
         }}
     ])
 
-    console.log('This is total for Horticulture ', horticulture_totals)
-    console.log('This is total for poultry ', poultry_totals)
-    console.log('This is total for diary ', diary_totals)
+    // console.log('This is total for Horticulture ', horticulture_totals)
+    // console.log('This is total for poultry ', poultry_totals)
+    // console.log('This is total for diary ', diary_totals)
 
     //we are passing the user session data to the user object key
-    res.render('urban_farmer_dashboard', {userProduces, loggedInUrbanFarmer, urban_farmer_Orders, horticulture_totals, poultry_totals, diary_totals})
+    res.render('urban_farmer_dashboard', {
+        userProduces, 
+        loggedInUrbanFarmer, 
+        urban_farmer_Orders, 
+        horticulture_totals, 
+        poultry_totals, 
+        diary_totals,
+        logged_in_user,
+        produce_images
+    })
 })
 
 //Upload a produce
