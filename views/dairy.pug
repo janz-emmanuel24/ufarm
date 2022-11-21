@@ -20,31 +20,35 @@ block content
                                         h4.card-title #{dairy_produce.pname}
                                         h6.quantity.my-3(style='font-weight: lighter;') medium
                                         h6.price.my-3(style='font-weight: lighter;') Ugx. #{dairy_produce.unit_price}
-                                            if logged_in_public_user
-                                                button.add2cart-btn.btn(type='button' data-bs-toggle='modal' data-bs-target=`#contact-sellerModal-${dairy_produce._id}`)
-                                                    | Book Order
-                                                .modal.fade(tabindex='-1' id=`contact-sellerModal-${dairy_produce._id}` aria-labelledby=`contact-sellerModal-${dairy_produce._id}Label` aria-hidden='true')
-                                                    .modal-dialog.modal-lg
-                                                        .modal-content
-                                                            .modal-header
-                                                                h5#exampleModalLabel.modal-title #{dairy_produce.pname} / Specify your Quantity
-                                                                button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
-                                                            .modal-body
-                                                                form(action="/create_booking" method='post')
-                                                                    label(for='quantity') Quantity 
-                                                                    input(type='number' name='order_quantity')
-                                                                    br
-                                                                    label(for='public_user_contact') Contact
-                                                                    input(type='text' name='public_user_contact')
-                                                                    input(type='hidden' name='produce_id' value=`${dairy_produce._id}`)
-                                                                    input(type='hidden' name='produce_owner_name' value=`${dairy_produce.fullname}`)
-                                                                    input(type='hidden' name='produce_owner_contact' value=`${dairy_produce.contact}`)
-                                                                    button.add2cart-btn.btn(type='submit') Confirm
-                                                            .modal-footer
-                                                                button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
-                                                                button.btn.btn-primary(type='button') Save changes
-                                            else
-                                                a.add2cart-btn.btn(href="/categories_check") Buy 
+                                        if logged_in_public_user
+                                            button.bk-btn.btn-primary.btn(type='button' data-bs-toggle='modal' data-bs-target=`#contact-sellerModal-${dairy_produce._id}`)
+                                                | Book Order
+                                            .modal.fade(tabindex='-1' id=`contact-sellerModal-${dairy_produce._id}` aria-labelledby=`contact-sellerModal-${dairy_produce._id}Label` aria-hidden='true')
+                                                .modal-dialog
+                                                    .modal-content
+                                                        .modal-header
+                                                            h5#exampleModalLabel.modal-title #{dairy_produce.pname} / Specify your Quantity
+                                                            button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                                                        .modal-body
+                                                            form(action="/create_booking" method='post')
+                                                                .container
+                                                                    .row 
+                                                                        .col-2.mb-3
+                                                                            label.form-label(for='quantity') Quantity 
+                                                                        .col-7.mb-3
+                                                                            input.form-control(type='number' name='order_quantity' placeholder='Enter a number')
+                                                                        .col-3.mb-3
+                                                                        .col-2
+                                                                            label.form-label(for='public_user_contact') Contact
+                                                                        .col-7       
+                                                                            input.form-control(type='text' name='public_user_contact')
+                                                                        .col-3
+                                                                input(type='hidden' name='produce_id' value=`${dairy_produce._id}`)
+                                                                input(type='hidden' name='produce_owner_name' value=`${dairy_produce.fullname}`)
+                                                                input(type='hidden' name='produce_owner_contact' value=`${dairy_produce.contact}`)
+                                                                button.bk-btn.btn-primary.btn.mt-3(type='submit') Confirm
+                                        else
+                                            a.add2cart-btn.ancBtn.mt-2(href="/categories_check") Buy 
         .pdt-category-boxes.mb-5
             h6 Other Product Category
         .container.other-section
@@ -54,10 +58,10 @@ block content
                         img.card-img-top(src='/img/poultry.jpg' alt='...')
                         .card-body.h-100
                             .card-body.mt-3.mb-5.text-center
-                                a.add2cart-btn.btn(href='/poultry') Poultry
+                                a.add2cart-btn.ancBtn(href='/poultry') Poultry
                 .col-md-4
                     .card.h-100
                         img.card-img-top(src='/img/horticulture.jpg' alt='...')
                         .card-body
                             .card-body.mt-3.mb-5.text-center
-                                a.add2cart-btn.btn(href='/horticulture') Horticulture
+                                a.add2cart-btn.ancBtn(href='/horticulture') Horticulture

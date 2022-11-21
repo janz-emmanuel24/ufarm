@@ -2,39 +2,39 @@ extends ../farmers_layout.pug
 
 block main_content
     .farmers-main
-        .container 
+        .container.mb-5 
             .row 
-                .col-4
-                    h6 Horticulture
+                .col-md-4.col-sm-12.mx-sm-auto
+                    h4 Horticulture
                     if horticulture_totals_based_on_ward.length 
                         each horticulture_total_based_on_ward in horticulture_totals_based_on_ward
                             if loggedInFarmerOne.ward === horticulture_total_based_on_ward._id._id   
-                                p Total Quantity:  #{horticulture_total_based_on_ward.totalQuantity}
-                                p Total Income After Sell: #{horticulture_total_based_on_ward.total_horticulture}
+                                h6.ps-3 Total Quantity:  #{horticulture_total_based_on_ward.totalQuantity}
+                                h6.ps-3 Total Income After Sell: #{horticulture_total_based_on_ward.total_horticulture}
                     else 
                         p Total Quantity: 0
                         p Total Income After Sell: 0
-                .col-4
-                    h6 Poultry
+                .col-md-4.col-sm-12
+                    h4 Poultry
                     if poultry_totals_based_on_ward.length >= 1 
                         each poultry_total_based_on_ward in poultry_totals_based_on_ward
                             if loggedInFarmerOne.ward == poultry_total_based_on_ward._id._id
                                 if poultry_total_based_on_ward.totalQuantity    
-                                    p Total Quantity:  #{poultry_total_based_on_ward.totalQuantity}
-                                    p Total Income After Sell: #{poultry_total_based_on_ward.total_poultry}
-                    else 
-                        p Total Quantity: 0
-                        p Total Income After Sell: 0
-                .col-4
-                    h6 Diary
+                                    h6.ps-3 Total Quantity:  #{poultry_total_based_on_ward.totalQuantity}
+                                    h6.ps-3 Total Income After Sell: #{poultry_total_based_on_ward.total_poultry}
+                            else 
+                                h6 Total Quantity: 0
+                                h6 Total Income After Sell: 0
+                .col-4.md-4.col-md-4
+                    h4 Dairy
                     if diary_totals_based_on_ward.length >= 1
                         each diary_total_based_on_ward in diary_totals_based_on_ward
                             if loggedInFarmerOne.ward == diary_total_based_on_ward._id._id   
-                                p Total Quantity:  #{diary_total_based_on_ward.totalQuantity}
-                                p Total Income After Sell: #{diary_total_based_on_ward.total_diary}
-                    else 
-                        p Total Quantity: 0
-                        p Total Income After Sell: 0
+                                h6.ps-3 Total Quantity:  #{diary_total_based_on_ward.totalQuantity}
+                                h6.ps-3 Total Income After Sell: #{diary_total_based_on_ward.total_diary}
+                            else 
+                                h6 Total Quantity: 0
+                                h6 Total Income After Sell: 0
         .dashboard-tabs.urban-farmer-dashboard
             ul#myTab.nav.nav-tabs(role='tablist')
                 li.nav-item(role='presentation')
@@ -74,7 +74,7 @@ block main_content
                 #profile.tab-pane.fade(role='tabpanel' aria-labelledby='profile-tab')
                     .container.mt-5
                         .row
-                            if urban_farmers_uploads.length >= 1 
+                            if urban_farmers_uploads.length > 0 
                                 each urban_farmer_upload in urban_farmers_uploads
                                     if urban_farmer_upload.product_status === 'pending' && urban_farmer_upload.pward === loggedInFarmerOne.ward
                                         .col-md-6.mt-3
@@ -156,58 +156,6 @@ block main_content
                                             hr
                                     else 
                                         h6 No bookings as yet
-                            
-                // Approved Bookings
-                //- #approved-bookings.tab-pane.fade(role='tabpanel' aria-labelledby='approved-bookings-tab')
-                //-     .container.mt-5
-                //-         .row
-                //-             .col-md-6.mt-3
-                //-                 p(style='text-align: left;')
-                //-                     strong Public User:
-                //-                     i  Jansuk
-                //-                 p(style='text-align: left;')
-                //-                     strong Public User Phone:
-                //-                     i  0720000000
-                //-                 p(style='text-align: left;')
-                //-                     strong Public User Location:
-                //-                     i  Wandegeya, Kulumba Zone
-                //-                 h5 Bookings Details:
-                //-                 p(style='text-align: left;')
-                //-                     strong Purchase Message:
-                //-                     i  Approved for Delivery
-                //-                 h5 Delivery Details:
-                //-                 p(style='text-align: left;')
-                //-                     strong Mode:
-                //-                     i  home
-                //-                 p(style='text-align: left;')
-                //-                     strong Personel:
-                //-                     i  Ngabz Leonard
-                //-                 p(style='text-align: left;')
-                //-                     strong Personel Contact:
-                //-                     i  078887876
-                //-                 h5 Produce Details:
-                //-                 p(style='text-align: left;')
-                //-                     strong Produce ID:
-                //-                     i  002
-                //-                 p(style='text-align: left;')
-                //-                     strong Produce Category:
-                //-                     i  Horticulture
-                //-                 p(style='text-align: left;')
-                //-                     strong Produce name:
-                //-                     i  tomatoes
-                //-                 p(style='text-align: left;')
-                //-                     strong Produce Quantiy:
-                //-                     i  1kg
-                //-                 p(style='text-align: left;')
-                //-                     strong Produce Price Per Quantity:
-                //-                     i  2000
-                //-                 p(style='text-align: left;')
-                //-                     strong Urban Farmer:
-                //-                     i  Lucy
-                //-                 .row
-                //-                     .col-md-6
-                //-                         // Once Delivered I can delete the details from database
-                //-                         a(href='#') Delete
                 // Registration
                 #contact.tab-pane.fade(role='tabpanel' aria-labelledby='contact-tab')
                     .container.mt-5
@@ -218,15 +166,7 @@ block main_content
                                     input#fo_name.form-control(type='text' name='fullname')
                                 .col-md-2.mb-3
                                     label.form-label(for='fo_ward') Ward Name:
-                                    input#fo_ward.form-control(type='text' name='ward')
-                                //- Activities undertake
-                                //- .col-md-3.mb-3
-                                //-     label.form-label(for='fo_ward_staus') FO Status in ward:
-                                //-     select#fo_ward_staus.form-select
-                                //-         option(selected='') Select a status
-                                //-         option(value='appointed') Appoointed
-                                //-         option(value='removed') Removed
-                                //-         option(value='not_appointed') Never appointed
+                                    input#fo_ward.form-control(type='text' name='ward' value=`${loggedInFarmerOne.ward}` readonly)
                                 .col-md-3.mb-3
                                     label.form-label.d-block.mb-3 Gender:
                                     .form-check.d-inline-block
@@ -240,44 +180,18 @@ block main_content
                                 .col-md-4.mb-3
                                     label.form-label(for='date_of_birth') Date of Birth:
                                     input#date_of_birth.form-control(type='date' name='dob')
-                                .col-md-4.mb-3
-                                    label.form-label(for='date_of_birth') Date of Registration:
-                                    input#date_of_birth.form-control(type='date' name='dor')
+                                //- .col-md-4.mb-3
+                                //-     label.form-label(for='date_of_birth') Date of Registration:
+                                //-     input#date_of_birth.form-control(type='date' name='dor')
                                 .col-md-2.mb-3
                                     label.form-label(for='role') Role
-                                    input#role.form-control(type='text' name='role' value='urban farmer')
-                                //- .col-md-6
-                                //-     label.form-label.d-block.mb-3 Contacts:
-                                //-     .form-check.d-inline-block
-                                //-         input#approve_produces.form-check-input(type='checkbox' name='approve_produces')
-                                //-         label.form-check-label(for='approve_produces')
-                                //-             | Approve Produces
-                                //-     .form-check.d-inline-block.ms-4
-                                //-         input#foresee_bookings.form-check-input(type='checkbox' name='foresee_bookings')
-                                //-         label.form-check-label(for='foresee_bookings')
-                                //-             | Foresee bookings
-                                //-     .form-check.d-inline-block.ms-4
-                                //-         input#register_urban_farmers.form-check-input(type='checkbox' name='register_urban_farmers')
-                                //-         label.form-check-label(for='register_urban_farmers')
-                                //-             | Register Urban Farmers
+                                    input#role.form-control(type='text' name='role' value='urban farmer' readonly)
                                 .col-md-4.mb-3
                                     label.form-label(for='nin') NIN
                                     input#nin.form-control(type='text' name='nin')
                                 .col-md-2.mb-3
                                     label.form-label(for='phone') Phone
                                     input#phone.form-control(type='text' name='phone')
-                                //- .col-md-3.mb-3
-                                //-     label.form-label(for='fo_residence_type') Residence Type:
-                                //-     select#fo_residence_type.form-select(name="residence")
-                                //-         option(selected='') Select a residence type
-                                //-         option(value='permanent') Permanent
-                                //-         option(value='temporary') Temporary
-                                //- .col-md-3.mb-3
-                                //-     label.form-label(for='period_of_stay') Period of Stay in Residence:
-                                //-     input#period_of_stay.form-control(type='text' name='period_of_stay' placeholder='10')
-                                //- .col-md-4.mb-3
-                                //-     label.form-label(for='directions_to_fo_place') Directions to farmer One Home
-                                //-     input#directions_to_fo_place.form-control(type='text' name='directions_to_fo_place')
                                 .col-md-2.mb-3
                                     label.form-label(for='loginId') Urban Farmer Login ID
                                     input#loginId.form-control(type='text' name='loginId')

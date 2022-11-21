@@ -16,8 +16,7 @@ const registerUsers_schema = new mongoose.Schema({
         type: String
     },
     dob: {
-        type: Date,
-        default: () => Date.now()
+        type: Date
     },
     dor: {
         type: Date,

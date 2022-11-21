@@ -6,6 +6,7 @@ const produce_Schema = new mongoose.Schema({
     },
     pward: {
         type: String,
+        lowercase: true
     },
     produce_owner: {
         type: mongoose.Types.ObjectId,

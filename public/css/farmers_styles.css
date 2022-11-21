@@ -32,10 +32,11 @@
     position: relative;
 }
 
-.overlay h6 {
+.overlay h4 {
     position: absolute;
-    top: 50%;
+    top: 45%;
     z-index: 2;
-    color: white;
-    left: 46%;
+    color: #F0EAD6;
+    left: 40%;
+    right: 40%;
 }

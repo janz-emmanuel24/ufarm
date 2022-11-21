@@ -43,19 +43,22 @@ block main_content
                     .container.mt-5
                         .row
                             if registeredFarmerOnes 
-                                each registeredFarmerOne in registeredFarmerOnes  
+                                each registeredFarmerOne, index in registeredFarmerOnes  
                                     .col-md-6.mt-3
                                         p(style='text-align: left;')
-                                            strong F.O Name:
+                                            strong Farmer One Name:
                                             i  #{registeredFarmerOne.fullname}
                                         p(style='text-align: left;')
-                                            strong F.O Ward:
+                                            strong Farmer Ward:
                                             i  #{registeredFarmerOne.ward}
                                         p(style='text-align: left;')
-                                            strong F.O Residence:
+                                            strong Farmer Residence:
                                             i  #{registeredFarmerOne.residence}
                                         p(style='text-align: left;')
-                                            strong F.O Status:
+                                            strong Period Of Stay:
+                                            i  #{registeredFarmerOne.periodOfStay}
+                                        p(style='text-align: left;')
+                                            strong Farmer Status in ward:
                                             i  #{registeredFarmerOne.status_appointed}
                                         p(style='text-align: left;')
                                             strong Date of appointment:
@@ -63,7 +66,7 @@ block main_content
                                         p(style='text-align: left;')
                                             strong Gender:
                                             i  #{registeredFarmerOne.gender}
-                                        a(href=`/agric_dashboard/updateFarmerOne/${registeredFarmerOne._id}`) Update FO
+                                        a(href=`/agric_dashboard/updateFarmerOne/${registeredFarmerOne._id}`) Update Farmer
                                         hr.my-4
                             else 
                                 p All farmers will be listed Here
@@ -71,20 +74,20 @@ block main_content
                     .container.mt-5
                         form(action='/agric_dashboard/registerFarmerOnes' method='post')
                             .row
-                                .col-md-4.mb-3
+                                .col-md-4.mb-5
                                     label.form-label(for='fo_name') Farmer one Name:
                                     input#fo_name.form-control(type='text' name='fullname')
-                                .col-md-4.mb-3
+                                .col-md-4.mb-5
                                     label.form-label(for='ward') Farmer one ward:
                                     input#fo_ward.form-control(type='text' name='ward')
-                                .col-md-4.mb-3
+                                .col-md-4.mb-5
                                     label.form-label(for='staus_in_ward') Farmer one status in ward:
                                     select#fo_ward_staus.form-select(name='status_appointed')
                                         option(selected='') Select a status
                                         option(value='appointed') Appointed  
                                         option(value='removed') Removed   
                                         option(value='Not-Appointed') Never Appointed   
-                                .col-md-4.mb-3
+                                .col-md-4.mb-5
                                     label.form-label.d-block.mb-3 Gender:
                                     .form-check.d-inline-block
                                         input#gender.form-check-input(type='radio' name='gender' value='male')
@@ -92,34 +95,48 @@ block main_content
                                     .form-check.d-inline-block.ms-4 
                                         input#female.form-check-input(type='radio' name='gender' value='female')
                                         label.form-check-label(for='gender')  female
-                                .col-md-4.mb-3
+                                .col-md-4.mb-5
                                     label.form-label(for='date_of_birth') Date of Birth:
                                     input#date_of_birth.form-control(type='date' name='dob')
-                                .col-md-4.mb-3
+                                .col-md-4.mb-5
                                     label.form-label(for='nin') NIN
                                     input#nin.form-control(type='text' name='nin')
-                                .col-md-2.mb-3
+                                .col-md-2.mb-5
                                     label.form-label(for='phone') Phone
                                     input#phone.form-control(type='text' name='phone')
-                                .col-md-2.mb-3
+                                .col-md-2.mb-5
                                     label.form-label(for='role') Role
-                                    input#role.form-control(type='text' name='role' value='farmer one')
-                                .col-md-3.mb-3
+                                    input#role.form-control(type='text' name='role' value='farmer one' readonly)
+                                .col-md-4.mb-5
+                                    label.form-label.d-block.mb-3 Activities:
+                                    .form-check.d-inline-block.pe-4
+                                        input#activ1.form-check-input(type='checkbox' name='activities' value='register farmers' )
+                                        label.form-check-label(for='activ1')
+                                            | Register Farmers One
+                                    .form-check.d-inline-block
+                                        input#activ2.form-check-input(type='checkbox' name='activities' value='inspect produce')
+                                        label.form-check-label(for='activ2')
+                                            | Inpsect produce
+                                    .form-check.d-inline-block.pe-4
+                                        input#activ3.form-check-input(type='checkbox' name='activities' value='approve produce')
+                                        label.form-check-label(for='activ3')
+                                            | Approve produce
+                                .col-md-3.mb-5
                                     label.form-label(for='fo_residence_type') Residence Type:
                                     select#fo_residence_type.form-select(name="residence")
                                         option(selected='') Select a residence type
                                         option(value='permanent') Permanent
                                         option(value='temporary') Temporary
-                                .col-md-3.mb-3
+                                .col-md-3.mb-5
                                     label.form-label(for='period_of_stay') Period of Stay in Residence:
                                     input#period_of_stay.form-control(type='number' name='periodOfStay' placeholder='10')
-                                .col-md-4.mb-3
+                                .col-md-4.mb-5
                                     label.form-label(for='directions_to_fo_place') Directions to farmer One Home
                                     input#directions_to_fo_place.form-control(type='text' name='directionsToPlace')
-                                .col-md-2.mb-3 
+                                .col-md-2.mb-5 
                                     label.form-label(for='loginId') Farmer One Login ID
                                     input#loginId.form-control(type='text' name='loginId')
-                                .col-md-2.mb-3 
+                                .col-md-2.mb-5 
                                     label.form-label(for='password') Password
                                     input#id_to_login.form-control(type='password' name='password')
                             button.form_btn.mt-5(type='submit') Register

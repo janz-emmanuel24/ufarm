@@ -364,6 +364,37 @@ li .shopDropdown {
     float: right;
 } 
 
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    color: white;
+}
+
+.ancBtn {
+    /* width: 100px; */
+    display: inline-block;
+    height: 40px;
+    padding-top: 2%;
+}
+
+.bk-btn {
+    background: #008080;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 20px;
+}
+
+.bk-btn:hover {
+    background: #D0F0C0;
+}
+
+/* .modal-st {
+    background: #008B8B;
+} */
+
 /* Expore Ufarm */
 #exploreUfarm {
     margin-bottom: 5%;
@@ -494,10 +525,9 @@ li .shopDropdown {
     border-radius: 25px;
 }
 
-.btn-lg:hover {
-    border: 1px solid red
+.btn-btn:hover {
+    background: #01796F !important;
 }
-
 
 
 /* >>>>>>>>>>>>>>>>>>>>> SCREENS STYLES <<<<<<<<<<<<<<<<<<<<<<<<<< */

@@ -5,12 +5,21 @@ nav.farmers_nav.navbar.navbar-expand-lg
         button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
             span.navbar-toggler-icon
         #navbarNav.collapse.justify-content-end.navbar-collapse
-            ul.navbar-nav
+            ul.navbar-nav.me-4
+                if logged_in_user.role === 'agricultural officer'
+                    li.nav-item.pe-3.pt-2(style='color: #F7E7CE')
+                        h6(style='border-right: 1px solid #F7E7CE; padding-right: 8px;') Agricultural Officer
+                else if logged_in_user.role === 'farmer one'
+                    li.nav-item.pe-3.pt-2(style='color: #F7E7CE')
+                        h6(style='border-right: 1px solid #F7E7CE; padding-right: 8px;') Farmer One 
+                else 
+                    li.nav-item.pe-3.pt-2(style='color: #F7E7CE')
+                        h6(style='border-right: 1px solid #F7E7CE; padding-right: 8px;') Urban Farmer
                 if logged_in_user.role !== 'agricultural officer'
-                    li.nav-item.pe-3.pt-2(style='color: #fff')
+                    li.nav-item.pe-3.pt-2(style='color: #F7E7CE')
                         h6 Your Ward is: #{logged_in_user.ward} 
                 li.nav-item
-                    .dropdown
+                    .dropdown.mb-2
                         button.btn.btn-success.dropdown-toggle(type='button' data-bs-toggle='dropdown' aria-expanded='false') #{logged_in_user.fullname}
                         ul.dropdown-menu(style='background: #00693E;')
                             li.text-center.mt-3
@@ -18,7 +27,7 @@ nav.farmers_nav.navbar.navbar-expand-lg
                                     button.logout-btn(type='submit') Logout
 .overlay.mb-5
     block header-title
-        h6 
+        h4.justify-content-center Welcome to Your Dashboard
     #carouselExampleSlidesOnly.carousel.slide(data-bs-ride='carousel')
         .carousel-inner
             if produce_images.length > 0

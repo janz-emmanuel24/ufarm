@@ -21,30 +21,34 @@ block content
                                         h6.quantity.my-3(style='font-weight: lighter;') medium
                                         h6.price.my-3(style='font-weight: lighter;') Ugx. #{approved_produce.unit_price}
                                         if logged_in_public_user
-                                            button.add2cart-btn.btn(type='button' data-bs-toggle='modal' data-bs-target=`#contact-sellerModal-${approved_produce._id}`)
+                                            button.bk-btn.btn-primary.btn(type='button' data-bs-toggle='modal' data-bs-target=`#contact-sellerModal-${approved_produce._id}`)
                                                 | Book Order
                                             .modal.fade(tabindex='-1' id=`contact-sellerModal-${approved_produce._id}` aria-labelledby=`contact-sellerModal-${approved_produce._id}Label` aria-hidden='true')
-                                                .modal-dialog.modal-lg
+                                                .modal-dialog
                                                     .modal-content
                                                         .modal-header
                                                             h5#exampleModalLabel.modal-title #{approved_produce.pname} / Specify your Quantity
                                                             button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
                                                         .modal-body
                                                             form(action="/create_booking" method='post')
-                                                                label(for='quantity') Quantity 
-                                                                input(type='number' name='order_quantity')
-                                                                br
-                                                                label(for='public_user_contact') Contact
-                                                                input(type='text' name='public_user_contact')
+                                                                .container
+                                                                    .row 
+                                                                        .col-2.mb-3
+                                                                            label.form-label(for='quantity') Quantity 
+                                                                        .col-7.mb-3
+                                                                            input.form-control(type='number' name='order_quantity' placeholder='Enter a number')
+                                                                        .col-3.mb-3
+                                                                        .col-2
+                                                                            label.form-label(for='public_user_contact') Contact
+                                                                        .col-7       
+                                                                            input.form-control(type='text' name='public_user_contact')
+                                                                        .col-3
                                                                 input(type='hidden' name='produce_id' value=`${approved_produce._id}`)
                                                                 input(type='hidden' name='produce_owner_name' value=`${approved_produce.fullname}`)
                                                                 input(type='hidden' name='produce_owner_contact' value=`${approved_produce.contact}`)
-                                                                button.add2cart-btn.btn(type='submit') Confirm
-                                                        .modal-footer
-                                                            button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
-                                                            button.btn.btn-primary(type='button') Save changes
+                                                                button.bk-btn.btn-primary.btn.mt-3(type='submit') Confirm
                                         else
-                                            a.add2cart-btn.btn(href="/categories_check") Buy  
+                                            a.add2cart-btn.ancBtn(href="/categories_check") Buy  
         .pdt-category-boxes.mb-5
             h6 Poultry Produces
         .container.mb-5.bxes
@@ -60,7 +64,7 @@ block content
                                         h6.quantity.my-3(style='font-weight: lighter;') medium
                                         h6.price.my-3(style='font-weight: lighter;') Ugx. #{approved_produce.unit_price}
                                         if logged_in_public_user
-                                            button.add2cart-btn.btn(type='button' data-bs-toggle='modal' data-bs-target=`#contact-sellerModal-${approved_produce._id}`)
+                                            button.bk-btn.btn-primary.btn(type='button' data-bs-toggle='modal' data-bs-target=`#contact-sellerModal-${approved_produce._id}`)
                                                 | Book Order
                                             .modal.fade(tabindex='-1' id=`contact-sellerModal-${approved_produce._id}` aria-labelledby=`contact-sellerModal-${approved_produce._id}Label` aria-hidden='true')
                                                 .modal-dialog.modal-lg
@@ -70,22 +74,26 @@ block content
                                                             button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
                                                         .modal-body
                                                             form(action="/create_booking" method='post')
-                                                                label(for='quantity') Quantity 
-                                                                input(type='number' name='order_quantity')
-                                                                br
-                                                                label(for='public_user_contact') Contact
-                                                                input(type='text' name='public_user_contact')
+                                                                .container
+                                                                    .row 
+                                                                        .col-2.mb-3
+                                                                            label.form-label(for='quantity') Quantity 
+                                                                        .col-7.mb-3
+                                                                            input.form-control(type='number' name='order_quantity' placeholder='Enter a number')
+                                                                        .col-3.mb-3
+                                                                        .col-2
+                                                                            label.form-label(for='public_user_contact') Contact
+                                                                        .col-7       
+                                                                            input.form-control(type='text' name='public_user_contact')
+                                                                        .col-3
                                                                 input(type='hidden' name='produce_id' value=`${approved_produce._id}`)
                                                                 input(type='hidden' name='produce_owner_name' value=`${approved_produce.fullname}`)
                                                                 input(type='hidden' name='produce_owner_contact' value=`${approved_produce.contact}`)
-                                                                button.add2cart-btn.btn(type='submit') Confirm
-                                                        .modal-footer
-                                                            button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
-                                                            button.btn.btn-primary(type='button') Save changes
+                                                                button.bk-btn.btn-primary.btn.mt-3(type='submit') Confirm
                                         else
-                                            a.add2cart-btn.btn(href="/categories_check") Buy 
+                                            a.add2cart-btn.ancBtn(href="/categories_check") Buy 
         .pdt-category-boxes.mb-5
-            h6 Diary Produces
+            h6 Dairy Produces
         .container.mb-5.bxes
             .row.row-cols-1.row-cols-md-2.row-cols-lg-4.g-4
                 if all_approved_produces
@@ -99,27 +107,31 @@ block content
                                         h6.quantity.my-3(style='font-weight: lighter;') medium
                                         h6.price.my-3(style='font-weight: lighter;') Ugx. #{approved_produce.unit_price}
                                         if logged_in_public_user
-                                            button.add2cart-btn.btn(type='button' data-bs-toggle='modal' data-bs-target=`#contact-sellerModal-${approved_produce._id}`)
+                                            button.bk-btn.btn-primary.btn(type='button' data-bs-toggle='modal' data-bs-target=`#contact-sellerModal-${approved_produce._id}`)
                                                 | Book Order
                                             .modal.fade(tabindex='-1' id=`contact-sellerModal-${approved_produce._id}` aria-labelledby=`contact-sellerModal-${approved_produce._id}Label` aria-hidden='true')
-                                                .modal-dialog.modal-lg
+                                                .modal-dialog
                                                     .modal-content
                                                         .modal-header
                                                             h5#exampleModalLabel.modal-title #{approved_produce.pname} / Specify your Quantity
                                                             button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
                                                         .modal-body
                                                             form(action="/create_booking" method='post')
-                                                                label(for='quantity') Quantity 
-                                                                input(type='number' name='order_quantity')
-                                                                br
-                                                                label(for='public_user_contact') Contact
-                                                                input(type='text' name='public_user_contact')
+                                                                .container
+                                                                    .row 
+                                                                        .col-2.mb-3
+                                                                            label.form-label(for='quantity') Quantity 
+                                                                        .col-7.mb-3
+                                                                            input.form-control(type='number' name='order_quantity' placeholder='Enter a number')
+                                                                        .col-3.mb-3
+                                                                        .col-2
+                                                                            label.form-label(for='public_user_contact') Contact
+                                                                        .col-7       
+                                                                            input.form-control(type='text' name='public_user_contact')
+                                                                        .col-3
                                                                 input(type='hidden' name='produce_id' value=`${approved_produce._id}`)
                                                                 input(type='hidden' name='produce_owner_name' value=`${approved_produce.fullname}`)
                                                                 input(type='hidden' name='produce_owner_contact' value=`${approved_produce.contact}`)
-                                                                button.add2cart-btn.btn(type='submit') Confirm
-                                                        .modal-footer
-                                                            button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
-                                                            button.btn.btn-primary(type='button') Save changes
+                                                                button.bk-btn.btn-primary.btn.mt-3(type='submit') Confirm
                                         else
-                                            a.add2cart-btn.btn(href="/categories_check") Buy 
+                                            a.add2cart-btn.ancBtn(href="/categories_check") Buy 
