@@ -12,7 +12,7 @@ const produce_Schema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: "Registered_users"
     },
-    // fullname: {
+    // sale_description: {
     //     type: String,
     // },
     upload_date: {
@@ -32,7 +32,8 @@ const produce_Schema = new mongoose.Schema({
         type: String
     }, 
     produce_availability: {
-        type: String
+        type: String,
+        default: 'available'
     },
     fullname: {
         type: String

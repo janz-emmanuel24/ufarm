@@ -4,7 +4,6 @@ const passport = require('passport')
 const connectEnsureLogin = require('connect-ensure-login')
 
 const Produce_upload_model = require('../model/Produce_upload_model');
-const RegisterPublicUsersModel = require('../model/Public_registration')
 const OrderSchemaModel = require('../model/OrdersSchema')
 const Public_User = require('../model/Public_registration')
 

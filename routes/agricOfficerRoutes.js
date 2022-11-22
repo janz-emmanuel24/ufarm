@@ -3,30 +3,15 @@ const RegistrationModel = require('../model/Register_usersModel')
 const UploadProduceModel = require('../model/Produce_upload_model')
 const connectEnsureLogin = require('connect-ensure-login')
 
-router.get('/', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
-    const logged_in_user = req.user
-    const registeredFarmerOnes = await RegistrationModel.find({role: "farmer one"})
-    const produce_images = await UploadProduceModel.find();
-
-    console.log(produce_images);
-    
-    res.render('agric_officer_dashboard', {registeredFarmerOnes, logged_in_user, produce_images})
-})
+//agricultural officer controller
+const agricultural_officer_controller = require('../controller/agricultural_officer_Controller')
 
 
-router.get('/updateFarmerOne/:farmerOne_id', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
-    const farmerOne_id = req.params.farmerOne_id;
-    const logged_in_user = req.user
-    const produce_images = await UploadProduceModel.find();
-    const farmerOne = await RegistrationModel.findById({_id: farmerOne_id})    
-    res.render('agUpdate_farmer_one', {farmerOne, logged_in_user, produce_images})
-})
+router.get('/', connectEnsureLogin.ensureLoggedIn('/login'), agricultural_officer_controller.get_dashboard(RegistrationModel, UploadProduceModel))
 
-router.post('/updateFarmerOne/:farmerOne_id', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
-    const farmerOne_id = req.params.farmerOne_id;
-    await RegistrationModel.findByIdAndUpdate(farmerOne_id, req.body)
-    res.redirect('/agric_dashboard')
-})
+router.get('/updateFarmerOne/:farmerOne_id', connectEnsureLogin.ensureLoggedIn('/login'), agricultural_officer_controller.get_farmer_one_to_update(UploadProduceModel, RegistrationModel))
+
+router.post('/updateFarmerOne/:farmerOne_id', connectEnsureLogin.ensureLoggedIn('/login'), agricultural_officer_controller.update_farmer_one(RegistrationModel))
 
 
 module.exports = router;

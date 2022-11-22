@@ -233,22 +233,22 @@ block main_content
                                 //-     .col-md-4.mb-3
                                 //-         label.form-label(for='fo_name') Produce Owner Name:
                                 //-         input#fo_name.form-control(type='text' name='fullname' value=user.fullname)
-                                .col-md-4.mb-3
+                                .col-md-4.mb-5
                                     label.form-label(for='fo_name') Produce Name:
                                     input#fo_name.form-control(type='text' name='pname')
-                                .col-md-2.mb-3
+                                .col-md-2.mb-5
                                     label.form-label(for='fo_ward') Produce Ward:
                                     input#fo_ward.form-control(type='text' name='pward' value=`${loggedInUrbanFarmer.ward}` readonly)
                                 //- .col-md-4.mb-3
                                 //-     label.form-label(for='upload_date') Upload Date:
                                 //-     input#date_of_birth.form-control(type='date' name='upload_date')
-                                .col-md-4.mb-3
+                                .col-md-4.mb-5
                                     label.form-label(for='unit_price') Unit Price:
                                     input#unit_price.form-control(type='number' name='unit_price')
-                                .col-md-2.mb-3
+                                .col-md-2.mb-5
                                     label.form-label(for='quantity') Quantity
                                     input#quantity.form-control(type='number' name='quantity')
-                                .col-md-3.mb-3
+                                .col-md-3.mb-5
                                     label.form-label(for='produce_type') Produce Type:
                                     select#produce_type.form-select(name="produce_type")
                                         option(selected='') Select a produce type
@@ -258,13 +258,13 @@ block main_content
                                 //- .col-md-3.mb-3
                                 //-     label.form-label(for='produce_status') Produce Status:
                                 //-     input#period_of_stay.form-control(type='text' name='produce_status')
-                                .col-md-4.mb-3
-                                    label.form-label(for='produce_image') produce Image
+                                .col-md-4.mb-5
+                                    label.form-label(for='produce_image') Produce Image:
                                     input#produce_image.form-control(type='file' name='produce_image')
-                                .col-md-2.mb-3
-                                    label.form-label(for='produce_availability') Produce Availability
-                                    input#produce_availability.form-control(type='text' name='produce_availability')
-                                .col-md-3.mb-3
+                                .col-md-2.mb-5
+                                    label.form-label(for='produce_availability') Sales Description:
+                                    input#produce_availability.form-control(type='text' name='sales_description' placeholder='per kg/per carton')
+                                .col-md-3.mb-5
                                     label.form-label.d-block.mb-3 Mode of Payment:
                                     .form-check.d-inline-block
                                         input#mode_of_payment.form-check-input(type='radio' name='mode_of_payment' value='mobile money')

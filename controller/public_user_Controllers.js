@@ -27,7 +27,6 @@ exports.horticulture = Model => async (req, res) => {
 
     logged_in_public_user = req.user;
 
-
     const all_horticulture_produces = await Model.aggregate([{$match: {produce_type: "horticulture"}}])
     
     res.render('horticulture', {all_horticulture_produces, logged_in_public_user})
@@ -72,13 +71,9 @@ exports.categories_check = Model => async (req,res) => {
 
 exports.my_orders = Model => async (req, res) => {
 
-    //get the user's orders
-    // const myOrders = await OrderSchemaModel.find();
-
     const logged_in_public_user = req.user;
 
-    console.log('This is the logged in user', logged_in_public_user)
-
+    //get the user's orders
     const myOrders = await Model.aggregate([
         {$match: {$or: [{order_status: 'booked & pending'},{order_status: 'Approved for Delivery'}]}},
         {$group: {
@@ -101,10 +96,6 @@ exports.my_orders = Model => async (req, res) => {
         }}
     ])
 
-    console.log('These are my orders with totals', myOrders)
-
-    // console.log('This is the first item in the ordersWithTotals', myOrders[1]._id.produce_owner_name, 'And this is the total ', myOrders[1].productTotal);
-
     res.render('my_bookings', {myOrders, logged_in_public_user})
 }
 
@@ -116,7 +107,8 @@ exports.create_booking = (Model1, Model2, Model3) => async (req, res) => {
 
     //get the ordered produce by its ID from the uploaded produce schema
     const bookedProduct = await Model2.findOne({_id: req.body.produce_id})//model2--Produce_uploadMod
-    // console.log('This is the bookedPrduct', bookedProduct)
+    
+    //update fields
     order.produce_ordered = bookedProduct.pname
     order.unit_price = bookedProduct.unit_price
     order.produce_owner_ward = bookedProduct.pward
@@ -129,9 +121,6 @@ exports.create_booking = (Model1, Model2, Model3) => async (req, res) => {
     order.public_user_email = public_user_info.google.email
     order.public_user_name = public_user_info.google.name
     order.booked_by = public_user_info._id
-
-    //save the order schema
-    console.log('This is the order Schema', order)
     
     //save the order to DB
     await order.save()
