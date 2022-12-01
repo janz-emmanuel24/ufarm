@@ -43,8 +43,6 @@ block main_content
                     button#profile-tab.nav-link(data-bs-toggle='tab' data-bs-target='#profile' type='button' role='tab' aria-controls='profile' aria-selected='false') Uploaded Produce
                 li.nav-item(role='presentation')
                     button#bookings-tab.nav-link(data-bs-toggle='tab' data-bs-target='#bookings' type='button' role='tab' aria-controls='booings' aria-selected='false') Bookings and Orders
-                //- li.nav-item(role='presentation')
-                    //- button#approved-bookings-tab.nav-link(data-bs-toggle='tab' data-bs-target='#approved-bookings' type='button' role='tab' aria-controls='approved-bookings' aria-selected='false') Approved Bookings
                 li.nav-item(role='presentation')
                     button#contact-tab.nav-link(data-bs-toggle='tab' data-bs-target='#contact' type='button' role='tab' aria-controls='contact' aria-selected='false') Registration
             // Urban Farmers
@@ -100,7 +98,6 @@ block main_content
                                             hr
                                             .row.btnApproveDecline
                                                 .col-md-6
-                                                    //- form(action=`/farmer_one_dashboard/decline/${urban_farmer_upload._id}`)
                                                     button.btn_dec_app.btn.btn-primary(type='button' data-bs-toggle='modal' data-bs-target='#staticBackdrop')
                                                         | Approve / Decline
                                                     #staticBackdrop.modal.fade(data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-labelledby='staticBackdropLabel' aria-hidden='true')
@@ -163,7 +160,7 @@ block main_content
                             .row
                                 .col-md-4.mb-3
                                     label.form-label(for='fo_name') Urban Farmer Name:
-                                    input#fo_name.form-control(type='text' name='fullname')
+                                    input#fo_name.form-control(type='text' name='fullname' required)
                                 .col-md-2.mb-3
                                     label.form-label(for='fo_ward') Ward Name:
                                     input#fo_ward.form-control(type='text' name='ward' value=`${loggedInFarmerOne.ward}` readonly)
@@ -180,22 +177,19 @@ block main_content
                                 .col-md-4.mb-3
                                     label.form-label(for='date_of_birth') Date of Birth:
                                     input#date_of_birth.form-control(type='date' name='dob')
-                                //- .col-md-4.mb-3
-                                //-     label.form-label(for='date_of_birth') Date of Registration:
-                                //-     input#date_of_birth.form-control(type='date' name='dor')
                                 .col-md-2.mb-3
                                     label.form-label(for='role') Role
                                     input#role.form-control(type='text' name='role' value='urban farmer' readonly)
                                 .col-md-4.mb-3
                                     label.form-label(for='nin') NIN
-                                    input#nin.form-control(type='text' name='nin')
+                                    input#nin.form-control(type='text' name='nin' required)
                                 .col-md-2.mb-3
                                     label.form-label(for='phone') Phone
-                                    input#phone.form-control(type='text' name='phone')
+                                    input#phone.form-control(type='text' name='phone' required)
                                 .col-md-2.mb-3
                                     label.form-label(for='loginId') Urban Farmer Login ID
-                                    input#loginId.form-control(type='text' name='loginId')
+                                    input#loginId.form-control(type='text' name='loginId' required)
                                 .col-md-2.mb-3 
                                     label.form-label(for='password') Password
-                                    input#id_to_login.form-control(type='password' name='password')
+                                    input#id_to_login.form-control(type='password' name='password' required)
                             button.form_btn.mt-5(type='submit') Register

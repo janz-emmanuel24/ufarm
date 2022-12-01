@@ -2,19 +2,19 @@ const mongoose = require('mongoose')
 
 const produce_Schema = new mongoose.Schema({
     pname: {
-        type: String
+        type: String,
+        lowercase: true
     },
     pward: {
         type: String,
-        lowercase: true
     },
     produce_owner: {
         type: mongoose.Types.ObjectId,
         ref: "Registered_users"
     },
-    // sale_description: {
-    //     type: String,
-    // },
+    sales_description: {
+        type: String,
+    },
     upload_date: {
         type: Date,
         default: () => Date.now()
@@ -29,7 +29,8 @@ const produce_Schema = new mongoose.Schema({
         type: String
     },
     produce_type: {
-        type: String
+        type: String,
+        lowercase: true
     }, 
     produce_availability: {
         type: String,

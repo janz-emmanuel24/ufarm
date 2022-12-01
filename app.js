@@ -8,9 +8,6 @@ const passport = require('passport')
 const session = require('express-session')
 const GoogleStrategy = require('passport-google-oauth20').Strategy
 
-const connectEnsureLogin = require('connect-ensure-login')
-
-
 //Required
 const RegisterUserModel = require('./model/Register_usersModel');
 const RegisterPublicUsersModel = require('./model/Public_registration');
@@ -80,15 +77,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(passport.initialize())
 //initializing passport to use sessions
 app.use(passport.session())
-
-//declaring static methods to use on the model
-
-
-//public
-// passport.use('users', RegisterPublicUsersModel.createStrategy())
-// //public
-// passport.serializeUser(RegisterPublicUsersModel.serializeUser())
-// passport.deserializeUser(RegisterPublicUsersModel.deserializeUser())
 
 // public user strategy
 passport.use(new GoogleStrategy({

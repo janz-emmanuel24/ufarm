@@ -35,10 +35,9 @@ block content
                                                 strong Produce Quantity 
                                                 i #{myOrder._id.order_quantity}
                                             p(style='text-align: left')
-                                                strong Price Per Quantity 
-                                                i #{myOrder._id.unit_price}
+                                                strong Price: 
+                                                i #{myOrder._id.unit_price} #{myOrder._id.sales_description}
                                             p(style='text-align: left')
-                                                // To be got after aggregations
                                                 strong Produce Total 
                                                 i #{myOrder.productTotal}
                                             // Button trigger modal

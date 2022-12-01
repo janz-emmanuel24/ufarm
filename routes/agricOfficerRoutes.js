@@ -13,5 +13,15 @@ router.get('/updateFarmerOne/:farmerOne_id', connectEnsureLogin.ensureLoggedIn('
 
 router.post('/updateFarmerOne/:farmerOne_id', connectEnsureLogin.ensureLoggedIn('/login'), agricultural_officer_controller.update_farmer_one(RegistrationModel))
 
+//farmer One registration
+router.post('/registerFarmerOnes', connectEnsureLogin.ensureLoggedIn('/login'), async (req, res) => {
+    const RegisterFarmerOne = new RegistrationModel(req.body)
+    console.log(RegisterFarmerOne)
+    await RegistrationModel.register(RegisterFarmerOne, req.body.password, function (err, user){
+        if(err) {console.log(err)}
+        // console.log(user)
+        res.redirect('/agric_dashboard')
+    })
+})
 
 module.exports = router;

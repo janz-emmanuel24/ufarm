@@ -18,7 +18,7 @@ block content
                                     img.card-img-top.card-img-top.px-2.py-2(src=`/${approved_produce.produce_image}` alt='...')
                                     .card-body.text-center.my-4
                                         h4.card-title #{approved_produce.pname}
-                                        h6.quantity.my-3(style='font-weight: lighter;') medium
+                                        h6.quantity.my-3(style='font-weight: lighter;') #{approved_produce.sales_description}
                                         h6.price.my-3(style='font-weight: lighter;') Ugx. #{approved_produce.unit_price}
                                         if logged_in_public_user
                                             button.bk-btn.btn-primary.btn(type='button' data-bs-toggle='modal' data-bs-target=`#contact-sellerModal-${approved_produce._id}`)
@@ -61,7 +61,7 @@ block content
                                     img.card-img-top.card-img-top.px-2.py-2(src=`/${approved_produce.produce_image}` alt='...')
                                     .card-body.text-center.my-4
                                         h4.card-title #{approved_produce.pname}
-                                        h6.quantity.my-3(style='font-weight: lighter;') medium
+                                        h6.quantity.my-3(style='font-weight: lighter;') #{approved_produce.sales_description}
                                         h6.price.my-3(style='font-weight: lighter;') Ugx. #{approved_produce.unit_price}
                                         if logged_in_public_user
                                             button.bk-btn.btn-primary.btn(type='button' data-bs-toggle='modal' data-bs-target=`#contact-sellerModal-${approved_produce._id}`)
@@ -104,7 +104,7 @@ block content
                                     img.card-img-top.card-img-top.px-2.py-2(src=`/${approved_produce.produce_image}` alt='...')
                                     .card-body.text-center.my-4
                                         h4.card-title #{approved_produce.pname}
-                                        h6.quantity.my-3(style='font-weight: lighter;') medium
+                                        h6.quantity.my-3(style='font-weight: lighter;') #{approved_produce.sales_description}
                                         h6.price.my-3(style='font-weight: lighter;') Ugx. #{approved_produce.unit_price}
                                         if logged_in_public_user
                                             button.bk-btn.btn-primary.btn(type='button' data-bs-toggle='modal' data-bs-target=`#contact-sellerModal-${approved_produce._id}`)

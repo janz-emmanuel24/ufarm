@@ -17,6 +17,9 @@ const orderSchema = new mongoose.Schema({
     },
     unit_price: {
         type: Number
+    },
+    sales_description: {
+        type: String
     }, 
     total_price: {
         type: Number

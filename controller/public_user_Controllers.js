@@ -86,7 +86,8 @@ exports.my_orders = Model => async (req, res) => {
                 unit_price: '$unit_price',
                 produce_owner_email: '$produce_owner_email',
                 produce_owner_contact: '$produce_owner_contact',
-                public_user_name: '$public_user_name'
+                public_user_name: '$public_user_name',
+                sales_description: '$sales_description'
             }, 
             productTotal: {
                 $sum: {
@@ -113,6 +114,7 @@ exports.create_booking = (Model1, Model2, Model3) => async (req, res) => {
     order.unit_price = bookedProduct.unit_price
     order.produce_owner_ward = bookedProduct.pward
     order.produce_owner_email = bookedProduct.farmer_email
+    order.sales_description = bookedProduct.sales_description
 
     //get the user making the order's id
     const public_user_info = await Model3.findOne({_id: req.session.user._id})//model3--public_userModel

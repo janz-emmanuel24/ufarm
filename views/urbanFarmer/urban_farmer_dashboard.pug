@@ -25,7 +25,7 @@ block main_content
                         h6.ps-3 Total Quantity: 0
                         h6.ps-3 Total Income After Sell: 0
                 .col-4 
-                    h4 Diary 
+                    h4 Dairy 
                     if diary_totals.length >= 1
                         each diary_total in diary_totals
                             if diary_total._id.fullname === loggedInUrbanFarmer.fullname 
@@ -125,8 +125,6 @@ block main_content
                                                 i  #{userProduce.produce_availability}
                                             button.add2cart-btn.btn(type='button' data-bs-toggle='modal' data-bs-target=`#exampleModal-${userProduce._id}`)
                                                 | Update Product Availability
-                                            //- form(action=`/urban_farmer_dashboard/update_product_availability/${userProduce._id}`)
-                                            //-     button.add2cart-btn.btn(type='submit') Update Product Availability
                                             .modal.fade(tabindex='-1' id=`exampleModal-${userProduce._id}` aria-labelledby=`exampleModal-${userProduce._id}Label` aria-hidden='true')
                                                 .modal-dialog.modal-dialog-centered
                                                     .modal-content
@@ -226,44 +224,31 @@ block main_content
                     .container.mt-5
                         form(action='/urban_farmer_dashboard' method='post' enctype="multipart/form-data")
                             .row
-                                //- if user
-                                //-     .col-md-4.mb-3
-                                //-         label.form-label(for='fo_name') Produce Owner ID:
-                                //-         input#fo_name.form-control(type='text' name='produce_owner' value=user._id)
-                                //-     .col-md-4.mb-3
-                                //-         label.form-label(for='fo_name') Produce Owner Name:
-                                //-         input#fo_name.form-control(type='text' name='fullname' value=user.fullname)
                                 .col-md-4.mb-5
                                     label.form-label(for='fo_name') Produce Name:
-                                    input#fo_name.form-control(type='text' name='pname')
+                                    input#fo_name.form-control(type='text' name='pname' required)
                                 .col-md-2.mb-5
                                     label.form-label(for='fo_ward') Produce Ward:
                                     input#fo_ward.form-control(type='text' name='pward' value=`${loggedInUrbanFarmer.ward}` readonly)
-                                //- .col-md-4.mb-3
-                                //-     label.form-label(for='upload_date') Upload Date:
-                                //-     input#date_of_birth.form-control(type='date' name='upload_date')
                                 .col-md-4.mb-5
                                     label.form-label(for='unit_price') Unit Price:
-                                    input#unit_price.form-control(type='number' name='unit_price')
+                                    input#unit_price.form-control(type='number' name='unit_price' required)
                                 .col-md-2.mb-5
                                     label.form-label(for='quantity') Quantity
-                                    input#quantity.form-control(type='number' name='quantity')
+                                    input#quantity.form-control(type='number' name='quantity' required)
                                 .col-md-3.mb-5
                                     label.form-label(for='produce_type') Produce Type:
                                     select#produce_type.form-select(name="produce_type")
                                         option(selected='') Select a produce type
                                         option(value='horticulture') Horticulture
                                         option(value='poultry') Poultry
-                                        option(value='diary') Diary
-                                //- .col-md-3.mb-3
-                                //-     label.form-label(for='produce_status') Produce Status:
-                                //-     input#period_of_stay.form-control(type='text' name='produce_status')
+                                        option(value='dairy') Diary
                                 .col-md-4.mb-5
                                     label.form-label(for='produce_image') Produce Image:
                                     input#produce_image.form-control(type='file' name='produce_image')
                                 .col-md-2.mb-5
                                     label.form-label(for='produce_availability') Sales Description:
-                                    input#produce_availability.form-control(type='text' name='sales_description' placeholder='per kg/per carton')
+                                    input#produce_availability.form-control(type='text' name='sales_description' placeholder='per kg/per carton' required)
                                 .col-md-3.mb-5
                                     label.form-label.d-block.mb-3 Mode of Payment:
                                     .form-check.d-inline-block

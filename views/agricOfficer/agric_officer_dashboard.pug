@@ -76,17 +76,21 @@ block main_content
                             .row
                                 .col-md-4.mb-5
                                     label.form-label(for='fo_name') Farmer one Name:
-                                    input#fo_name.form-control(type='text' name='fullname')
+                                    input#fo_name.form-control(type='text' name='fullname' required)
                                 .col-md-4.mb-5
                                     label.form-label(for='ward') Farmer one ward:
-                                    input#fo_ward.form-control(type='text' name='ward')
+                                    select#fo_ward.form-select(name='ward')
+                                        option(selected) Select a ward 
+                                        option(value='LC1') LC1
+                                        option(value='LC2') LC2
+                                        option(value='LC3') LC3
+                                        option(value='LC4') LC4
                                 .col-md-4.mb-5
                                     label.form-label(for='staus_in_ward') Farmer one status in ward:
                                     select#fo_ward_staus.form-select(name='status_appointed')
-                                        option(selected='') Select a status
+                                        option(selected value='not appointed') Select a status
                                         option(value='appointed') Appointed  
-                                        option(value='removed') Removed   
-                                        option(value='Not-Appointed') Never Appointed   
+                                        option(value='removed') Removed      
                                 .col-md-4.mb-5
                                     label.form-label.d-block.mb-3 Gender:
                                     .form-check.d-inline-block
@@ -100,13 +104,13 @@ block main_content
                                     input#date_of_birth.form-control(type='date' name='dob')
                                 .col-md-4.mb-5
                                     label.form-label(for='nin') NIN
-                                    input#nin.form-control(type='text' name='nin')
+                                    input#nin.form-control(type='text' name='nin' required)
                                 .col-md-2.mb-5
                                     label.form-label(for='phone') Phone
-                                    input#phone.form-control(type='text' name='phone')
+                                    input#phone.form-control(type='text' name='phone' required)
                                 .col-md-2.mb-5
                                     label.form-label(for='role') Role
-                                    input#role.form-control(type='text' name='role' value='farmer one' readonly)
+                                    input#role.form-control(type='text' name='role' value='farmer one' readonly required)
                                 .col-md-4.mb-5
                                     label.form-label.d-block.mb-3 Activities:
                                     .form-check.d-inline-block.pe-4
@@ -124,19 +128,19 @@ block main_content
                                 .col-md-3.mb-5
                                     label.form-label(for='fo_residence_type') Residence Type:
                                     select#fo_residence_type.form-select(name="residence")
-                                        option(selected='') Select a residence type
+                                        option(selected) Select a residence type
                                         option(value='permanent') Permanent
                                         option(value='temporary') Temporary
                                 .col-md-3.mb-5
                                     label.form-label(for='period_of_stay') Period of Stay in Residence:
-                                    input#period_of_stay.form-control(type='number' name='periodOfStay' placeholder='10')
+                                    input#period_of_stay.form-control(type='number' name='periodOfStay' placeholder='10' required)
                                 .col-md-4.mb-5
                                     label.form-label(for='directions_to_fo_place') Directions to farmer One Home
-                                    input#directions_to_fo_place.form-control(type='text' name='directionsToPlace')
+                                    input#directions_to_fo_place.form-control(type='text' name='directionsToPlace' required)
                                 .col-md-2.mb-5 
                                     label.form-label(for='loginId') Farmer One Login ID
-                                    input#loginId.form-control(type='text' name='loginId')
+                                    input#loginId.form-control(type='text' name='loginId' required)
                                 .col-md-2.mb-5 
                                     label.form-label(for='password') Password
-                                    input#id_to_login.form-control(type='password' name='password')
+                                    input#id_to_login.form-control(type='password' name='password' required)
                             button.form_btn.mt-5(type='submit') Register

@@ -48,14 +48,14 @@ router.post('/farmer_one_dashboard/register_urban_farmer', connectEnsureLogin.en
     })
 })
 
-router.post('/agric_dashboard/registerFarmerOnes', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
-    const RegisterFarmerOne = new RegisterUserModel(req.body)
-    // console.log(RegisterFarmerOne)
-    await RegisterUserModel.register(RegisterFarmerOne, req.body.password, function (err, user){
-        if(err) {console.log(err)}
-        // console.log(user)
-        res.redirect('/agric_dashboard')
-    })
-})
+// router.post('/agric_dashboard/registerFarmerOnes', connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
+//     const RegisterFarmerOne = new RegisterUserModel(req.body)
+//     // console.log(RegisterFarmerOne)
+//     await RegisterUserModel.register(RegisterFarmerOne, req.body.password, function (err, user){
+//         if(err) {console.log(err)}
+//         // console.log(user)
+//         res.redirect('/agric_dashboard')
+//     })
+// })
 
 module.exports = router
